@@ -4,9 +4,28 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="CSRF漏洞介绍, 白芨的小屋">
-    <meta name="description" content="CSRF(跨站请求伪造)什么是CSRF？CSRF（Cross-site request forgery），跨站请求伪造。
-​    攻击者盗用了你的身份，以你的名义对服务器进行请求（请求伪造），服务器误以为这个请求是由你来进行发送的。导致攻">
+    <meta name="keywords" content="Java基础语法(Part-1), 白芨的小屋">
+    <meta name="description" content="Java基础1、注释
+单行注释
+
+//单行注释
+
+
+多行注释
+
+/*
+	多行注释
+	多行注释
+	多行注释
+*/
+
+
+文档注释
+
+//Javadoc：文档注释  /**  */
+/**
+*@Description HelloWorld
+*@A">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +37,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>CSRF漏洞介绍 | 白芨的小屋</title>
+    <title>Java基础语法(Part-1) | 白芨的小屋</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -310,12 +329,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/banner/csrf.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/banner/java.jpeg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">CSRF漏洞介绍</h1>
+                    <h1 class="description center-align post-title">Java基础语法(Part-1)</h1>
                 </div>
             </div>
         </div>
@@ -431,8 +450,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/web%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80/">
-                                <span class="chip bg-color">web安全基础</span>
+                            <a href="/tags/Java/">
+                                <span class="chip bg-color">Java</span>
                             </a>
                         
                     </div>
@@ -447,7 +466,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-01-15
+                    2022-02-28
                 </div>
                 
 
@@ -456,7 +475,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    840
+                    1.1k
                 </div>
                 
 
@@ -476,36 +495,231 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="CSRF-跨站请求伪造"><a href="#CSRF-跨站请求伪造" class="headerlink" title="CSRF(跨站请求伪造)"></a>CSRF(跨站请求伪造)</h1><h2 id="什么是CSRF？"><a href="#什么是CSRF？" class="headerlink" title="什么是CSRF？"></a>什么是CSRF？</h2><p>CSRF（Cross-site request forgery），跨站请求伪造。</p>
-<p>​    攻击者盗用了你的身份，以你的名义对服务器进行请求（请求伪造），服务器误以为这个请求是由你来进行发送的。导致攻击者成功的完成了他的非法操作。如：修改密码，非法转账等。（危害取决于你的权限有多大）</p>
-<h2 id="CSRF分类"><a href="#CSRF分类" class="headerlink" title="CSRF分类"></a>CSRF分类</h2><ul>
-<li><p>GET</p>
+                <h1 id="Java基础"><a href="#Java基础" class="headerlink" title="Java基础"></a>Java基础</h1><h2 id="1、注释"><a href="#1、注释" class="headerlink" title="1、注释"></a>1、注释</h2><ul>
+<li>单行注释</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//单行注释</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>多行注释</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/*
+	多行注释
+	多行注释
+	多行注释
+*/</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>文档注释</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//Javadoc：文档注释  /**  */</span>
+<span class="token comment">/**
+*@Description HelloWorld
+*@Author 白芨
+*/</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="2、标识符"><a href="#2、标识符" class="headerlink" title="2、标识符"></a>2、标识符</h2><p>Java所有组成部分都需要名字，<strong>类名</strong>、<strong>变量名</strong>以及<strong>方法名</strong>都称为标识符。</p>
+<ul>
+<li>所有标识符应该以字母（ A-Z 或者 a-z ）美元符（ $ ）下划线( _ ) 开始</li>
+<li><strong>不能使用关键字作为变量名、方法名</strong></li>
+<li>标识符<strong>大小写敏感</strong></li>
+</ul>
+<h2 id="3、数据类型"><a href="#3、数据类型" class="headerlink" title="3、数据类型"></a>3、数据类型</h2><p><strong>强类型语言</strong></p>
+<ul>
+<li>要求变量使用严格符合规定，所有变量要求先定义才能使用</li>
+</ul>
+<h3 id="基本类型（primitive-type）"><a href="#基本类型（primitive-type）" class="headerlink" title="基本类型（primitive type）"></a>基本类型（primitive type）</h3><!--八大基本数据类型-->
+
+<table>
+<thead>
+<tr>
+<th>数值类型</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>整数类型</td>
+<td><code>byte</code>占<code>1</code>个字节；</td>
+<td><code>short</code>占<code>2</code>个字节；</td>
+<td><code>int</code>占<code>4</code>个字节；</td>
+<td><code>long</code>占<code>8</code>个字节,<code>long</code>类型要在数字后加<code>L</code>;</td>
+</tr>
+<tr>
+<td>浮点类型</td>
+<td><code>double</code>占<code>8</code>个字节</td>
+<td></td>
+<td></td>
+<td><code>float</code>占<code>4</code>个字节,<code>float</code>类型要在数字后加<code>F</code>；</td>
+</tr>
+<tr>
+<td>字符类型</td>
+<td><code>char</code>占<code>2</code>个字节</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>Boolean</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>占<code>1</code><strong>位</strong>，其值只有<code>true</code>和<code>false</code>两个。</td>
+</tr>
+</tbody></table>
+<p><strong>补充：</strong></p>
+<p><strong>位</strong>（<code>bit</code>）：计算机内部<strong>数据存储</strong>最小单位</p>
+<p><strong>字节</strong>（<code>byte</code>）：计算机<strong>数据处理</strong>基本单位，习惯用大写<strong>B</strong>表示。</p>
+<p><code>1B（byte，字节）=8bit（位）</code></p>
+<h3 id="引用类型（reference-type）"><a href="#引用类型（reference-type）" class="headerlink" title="引用类型（reference type）"></a>引用类型（reference type）</h3><ul>
+<li>类</li>
+<li>接口</li>
+<li>数组</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//整数扩展：进制表示： 二进制0b		八进制0		十进制		十六进制0x</span>
+<span class="token comment">//浮点数扩展：有限 离散 舍入误差 接近但不等于；最好完全避免使用浮点数进行比较</span>
+<span class="token comment">//字符扩展：所有字符本质还是数字；Unicode编码表：两个字节 0-65536；表示：\u0061 = a</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h3><p>Java是强类型语言，运算时需将不同类型数据转换为同一类型然后进行运算。</p>
+<p>优先级低 -&gt; 高：byte、short、char、-&gt; int  -&gt; long -&gt; float -&gt; double</p>
+<ul>
+<li>强制类型转换：(类型)变量名         高-&gt;低</li>
+<li>自动类型转换</li>
+</ul>
+<!--1、不能对布尔值转换-->
+
+<!--2、不能把对象类型转换为不相干类型-->
+
+<!--3、转换时可能存在内存溢出，或精度问题-->
+
+<h2 id="4、变量、常量"><a href="#4、变量、常量" class="headerlink" title="4、变量、常量"></a>4、变量、常量</h2><ul>
+<li>Java每个变量必须声明其类型</li>
+<li>Java变量是程序中最基本的<strong>存储单元</strong>，其类型包括<strong>变量名</strong>、<strong>变量类型</strong>、<strong>作用域</strong></li>
+<li>每个变量都有类型，可以是<strong>基本类型</strong>、也可以是<strong>引用类型</strong></li>
+<li>变量名必须是合法标识符</li>
+<li>变量声明是一条完整语句，以分号<code>;</code>结束。</li>
+</ul>
+<p><strong>变量：</strong></p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//局部变量,写方法中；只在对应方法中生效。</span>
+		<span class="token comment">//main方法</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">//局部变量，必须声明和初始化值</span>
+        <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token comment">//---------------------------------------</span>
+<span class="token comment">//实例变量：写在类之内，方法之外。从属于对象；</span>
+<span class="token comment">/*如果不自行初始化，输出对应类型的默认值；
+	数值：0 0.0 
+	布尔：false
+	除基本类型其余默认值：null
+*/</span>
+<span class="token comment">//----------------------------------------</span>
+<span class="token comment">//类变量：static</span>
+<span class="token comment">//从属于类</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>命名规范：</p>
+<ul>
+<li>所有变量、方法名、类名：见名知意</li>
+<li>类成员变量、类名、方法名：首字母小写驼峰原则<strong>monthSalary</strong></li>
+<li>常量：大写字母和下划线<strong>MAX_VALUE</strong></li>
+</ul>
+<p><strong>常量：</strong></p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//常量 初始化后不能再改变，一般使用大些字符</span>
+<span class="token comment">//final 修饰符，不存在先后顺序</span>
+<span class="token keyword">final</span> 常量名 <span class="token operator">=</span> 值；
+<span class="token keyword">final</span> <span class="token keyword">double</span> PI <span class="token operator">=</span> <span class="token number">3.14</span>； <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="5、运算符、字符串连接符"><a href="#5、运算符、字符串连接符" class="headerlink" title="5、运算符、字符串连接符"></a>5、运算符、字符串连接符</h2><h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><ul>
+<li>算数运算符</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/* -------------------------------------
+	加、减、乘、除、取余（模运算）、自增、自减；
+	‘+’ 、 ‘-’ 、 ‘*’ 、’/‘（注意类型）、‘%’ 、‘++’、‘--’；
+	--------------------------------------
+*/</span>
+<span class="token comment">//例：’a++‘(先执行后自增)、‘++a’(先自增后执行)</span>
+<span class="token comment">//幂运算(java 中无 '^'; 需借助工具类如下2^3表示：)</span>
+    <span class="token keyword">double</span> pow <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>pow<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><p>赋值运算符 =</p>
 </li>
-<li><p>POST</p>
-<p>对于CSRF来说，GET、POST是没有任何区别的，只是POST请求方式多了一些代码。</p>
+<li><p>关系运算符 <code>&#39;&gt;&#39;、&#39;&lt;&#39;、&#39;&gt;=&#39;、&#39;&lt;=&#39;、‘==’、&#39;!=&#39;</code></p>
 </li>
 </ul>
-<h2 id="CSRF漏洞利用过程："><a href="#CSRF漏洞利用过程：" class="headerlink" title="CSRF漏洞利用过程："></a>CSRF漏洞利用过程：</h2><!--本故事纯属虚构，重在理解利用过程-->
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/*-----------------------------------
+大于、小于、大于等于、小于等于、等于、不等于
+'>'、'&lt;'、'>='、'&lt;='、‘==’、'!='
+ ------------------------------------
+*/</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>1、<strong>小胖</strong>在银行有一笔巨款，这天他登陆了这个银行的网站准备将这笔巨款转给他的爸爸<strong>Jaa</strong>。假设转账url地址为<code>http://www.xxxbank.com/withdraw?account=AccoutName&amp;amount=1000&amp;for=Jaa</code></p>
-<p>2、在<strong>小胖</strong>将要转账时，看到了一个带有诱惑的图片，已登陆银行网站的<strong>小胖</strong>因抵制力不足，点击了这张图片。（该图为黑客<strong>zsan</strong>构造的恶意链接，<code>&lt;img src=&quot;http://www.xxxbank.com/withdraw?account=xiaopang&amp;amount=1000&amp;for=zsan&quot;&gt;)</code></p>
-<p>3、而在服务器看来这是一次正常的请求，即<strong>小胖</strong>给<strong>zsan</strong>转账1000元，小胖白白损失了这笔巨款。</p>
-<p>漏洞利用前提：</p>
-<p>1、登录受信任网站A、并在本地生成cookie。</p>
-<p>2、在没有登出的情况下，访问恶意网站B。</p>
-<h2 id="检测CSRF漏洞"><a href="#检测CSRF漏洞" class="headerlink" title="检测CSRF漏洞"></a>检测CSRF漏洞</h2><p>​    注册合法用户，确认该用户可执行哪些敏感操作如：修改密码、修改删除敏感信息、发表留言、转账等。</p>
-<p>确认敏感操作后，构造CSRF POC进行修改。（劫持用户操作）</p>
-<!--Burp Suite提供了CSRF POC的构造方法-->
+<ul>
+<li>逻辑运算符<code>’&amp;&amp;(与)‘、  ’||（或）‘、  ‘!（非）’</code></li>
+<li>位运算符</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/*----------------------------------------------------------
+与、或、异或（相同为0，不同为1）、取反、左移(2&lt;&lt;3 == 2*2*2*2)、右移
+'&amp;'、'|'、 '^'、 '~'、'&lt;&lt;'、‘>>’
+ -----------------------------------------------------------
+*/</span>
+<span class="token comment">/*--------------
+例：
+A = 0011 1100
+B = 0000 1101
+  
+A&amp;B = 0000 1100
+A|B = 0011 1101
+A^B = 0011 0001
+~B = 1111 0010
+---------------
+*/</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>可在敏感操作处使用<strong>Burp Suite</strong>进行抓包、右键选择<strong>Engagement tools</strong> – <strong>Generate CSRF PoC</strong>来伪造请求。</p>
-<h2 id="CSRF漏洞防御"><a href="#CSRF漏洞防御" class="headerlink" title="CSRF漏洞防御"></a>CSRF漏洞防御</h2><p>1、二次确认</p>
-<p>​    在进行敏感操作时对用户身份进行二次确认，如再次输入密码。或在敏感操作时要求用户输入验证码。</p>
-<p>2、验证HTTP Referer字段</p>
-<p>​    在HTTP协议中，Referer字段记录了该HTTP请求的来源地址。当用户通过黑客的地址向网站发送请求时，该请求的Referer字段指向的是黑客的地址，所以只要对每一个敏感请求验证他的来源地址是否与合法请求者为同一个地址，便可判断是否为合法请求。然而这种方法并非完全可靠，攻击者往往可以通过二次抓包伪造referer值来绕过验证。</p>
-<p>3、 Token认证</p>
-<p>​    Token 是在服务端产生的。当用户成功登录信息后，服务端返产生Token随机值给分配给用户，并同时存储在Session中，当用户访问某些界面时，该值会直接传递在用户界面或者Cookie中。当用户提交请求时，该Token值也会随之提交，服务器收到数据后，会判断该值是否与Session中存储的一致。若一致，则为合法请求，否则可能是CSRF攻击。</p>
-<p>补充：若为GET请求，则考虑使用在Cookie中存储Token。</p>
-<p>​    当网站同时存在XSS、CSRF漏洞时，Token防御机制会失效，攻击者可通过JavaScript获取Tocen值。因此，当网站存在XSS时，使用Token防范CSRF是没有任何意义的。</p>
+<ul>
+<li>条件运算符  </li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//例：</span>
+<span class="token comment">//x ? y : z;</span>
+<span class="token comment">//x 若为true则结果为y；false则结果为z；</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>扩展赋值运算符<code>（a+=b）等于 a=a+b</code></li>
+</ul>
+<h3 id="字符串连接符"><a href="#字符串连接符" class="headerlink" title="字符串连接符"></a>字符串连接符</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java">a <span class="token operator">=</span> <span class="token number">10</span>
+b <span class="token operator">=</span> <span class="token number">8</span>
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token operator">+</span>a<span class="token operator">+</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//108</span>
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a<span class="token operator">+</span>b<span class="token operator">+</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//18</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="6、包机制"><a href="#6、包机制" class="headerlink" title="6、包机制"></a>6、包机制</h2><ul>
+<li>Java包机制，用于区别于类名的命名空间。</li>
+<li>包语句语法格式：</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">pk1</span><span class="token punctuation">[</span><span class="token punctuation">.</span>pk2<span class="token punctuation">[</span><span class="token punctuation">.</span>pk3<span class="token punctuation">]</span><span class="token punctuation">]</span>				<span class="token comment">//定义包</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li><strong>一般利用公司域名倒置作为包名</strong>：com.baidu.www</li>
+<li>使用<code>import</code>语句导入包，可使用该包的成员</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token namespace">pk1</span><span class="token punctuation">[</span><span class="token punctuation">.</span>pk2<span class="token punctuation">[</span><span class="token punctuation">.</span>pk3<span class="token punctuation">]</span><span class="token punctuation">]</span>				<span class="token comment">//导入包</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="7、JavaDoc生成文档"><a href="#7、JavaDoc生成文档" class="headerlink" title="7、JavaDoc生成文档"></a>7、JavaDoc生成文档</h2><ul>
+<li>javadoc命令用来生成自己的API文档</li>
+<li><strong>参数信息</strong><ul>
+<li>@author 作者名</li>
+<li>@version 版本号</li>
+<li>@since 指明需要最早使用的jdk版本</li>
+<li>@param 参数名</li>
+<li>@return 返回值情况</li>
+<li>@throws 异常抛出情况</li>
+</ul>
+</li>
+</ul>
 
                 
             </div>
@@ -532,7 +746,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://jaasenyi.github.io/2022/01/15/csrf/">http://jaasenyi.github.io/2022/01/15/csrf/</a>
+                    <a href="http://jaasenyi.github.io/2022/02/28/java-ji-chu/">http://jaasenyi.github.io/2022/02/28/java-ji-chu/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -570,8 +784,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/web%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80/">
-                                    <span class="chip bg-color">web安全基础</span>
+                                <a href="/tags/Java/">
+                                    <span class="chip bg-color">Java</span>
                                 </a>
                             
                         </div>
@@ -1011,17 +1225,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/01/15/luo-ji-yue-quan/">
+                <a href="/2022/02/28/java-ji-chu/">
                     <div class="card-image">
                         
+                        <img src="/medias/banner/java.jpeg" class="responsive-img" alt="Java基础语法(Part-1)">
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="逻辑越权介绍">
-                        
-                        <span class="card-title">逻辑越权介绍</span>
+                        <span class="card-title">Java基础语法(Part-1)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1031,9 +1245,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-15
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-28
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -1042,11 +1256,12 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/web%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80/">
-                        <span class="chip bg-color">web安全基础</span>
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
                     </a>
                     
                 </div>
@@ -1060,12 +1275,12 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/01/15/sql-zhu-ru-lou-dong-jie-shao/">
+                <a href="/2022/02/22/wen-jian-shang-chuan-rao-guo/">
                     <div class="card-image">
                         
-                        <img src="/medias/banner/sql.jpeg" class="responsive-img" alt="SQL注入漏洞介绍">
+                        <img src="/medias/banner/upload.jpeg" class="responsive-img" alt="文件上传绕过">
                         
-                        <span class="card-title">SQL注入漏洞介绍</span>
+                        <span class="card-title">文件上传绕过</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1076,7 +1291,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-15
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-22
                             </span>
                         <span class="publish-author">
                             
