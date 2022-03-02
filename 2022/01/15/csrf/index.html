@@ -456,7 +456,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    840
+                    866
                 </div>
                 
 
@@ -485,8 +485,7 @@
 <p>对于CSRF来说，GET、POST是没有任何区别的，只是POST请求方式多了一些代码。</p>
 </li>
 </ul>
-<h2 id="CSRF漏洞利用过程："><a href="#CSRF漏洞利用过程：" class="headerlink" title="CSRF漏洞利用过程："></a>CSRF漏洞利用过程：</h2><!--本故事纯属虚构，重在理解利用过程-->
-
+<h2 id="CSRF漏洞利用过程："><a href="#CSRF漏洞利用过程：" class="headerlink" title="CSRF漏洞利用过程："></a>CSRF漏洞利用过程：</h2><p><em><strong>本故事纯属虚构，重在理解利用过程</strong></em></p>
 <p>1、<strong>小胖</strong>在银行有一笔巨款，这天他登陆了这个银行的网站准备将这笔巨款转给他的爸爸<strong>Jaa</strong>。假设转账url地址为<code>http://www.xxxbank.com/withdraw?account=AccoutName&amp;amount=1000&amp;for=Jaa</code></p>
 <p>2、在<strong>小胖</strong>将要转账时，看到了一个带有诱惑的图片，已登陆银行网站的<strong>小胖</strong>因抵制力不足，点击了这张图片。（该图为黑客<strong>zsan</strong>构造的恶意链接，<code>&lt;img src=&quot;http://www.xxxbank.com/withdraw?account=xiaopang&amp;amount=1000&amp;for=zsan&quot;&gt;)</code></p>
 <p>3、而在服务器看来这是一次正常的请求，即<strong>小胖</strong>给<strong>zsan</strong>转账1000元，小胖白白损失了这笔巨款。</p>
@@ -495,8 +494,7 @@
 <p>2、在没有登出的情况下，访问恶意网站B。</p>
 <h2 id="检测CSRF漏洞"><a href="#检测CSRF漏洞" class="headerlink" title="检测CSRF漏洞"></a>检测CSRF漏洞</h2><p>​    注册合法用户，确认该用户可执行哪些敏感操作如：修改密码、修改删除敏感信息、发表留言、转账等。</p>
 <p>确认敏感操作后，构造CSRF POC进行修改。（劫持用户操作）</p>
-<!--Burp Suite提供了CSRF POC的构造方法-->
-
+<p><em><strong>Burp Suite提供了CSRF POC的构造方法</strong></em></p>
 <p>可在敏感操作处使用<strong>Burp Suite</strong>进行抓包、右键选择<strong>Engagement tools</strong> – <strong>Generate CSRF PoC</strong>来伪造请求。</p>
 <h2 id="CSRF漏洞防御"><a href="#CSRF漏洞防御" class="headerlink" title="CSRF漏洞防御"></a>CSRF漏洞防御</h2><p>1、二次确认</p>
 <p>​    在进行敏感操作时对用户身份进行二次确认，如再次输入密码。或在敏感操作时要求用户输入验证码。</p>
@@ -1240,7 +1238,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">15.7k</span>
+                        class="white-color">17.6k</span>
             
             
             

