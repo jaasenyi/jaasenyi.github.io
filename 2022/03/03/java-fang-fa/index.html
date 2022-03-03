@@ -4,12 +4,15 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="SQL, 白芨的小屋">
-    <meta name="description" content="AccessAccess 数据库了解：
+    <meta name="keywords" content="Java方法(Part-3), 白芨的小屋">
+    <meta name="description" content="Java方法详解学习：狂神说Java(秦疆老师)视频所记笔记
+1、什么是方法
+System.out.println
+调用系统类system中的标准输出对象out中的println方法；
 
-Access数据库属于文件型数据库，所以不需要端口号。
-Access数据库中没有注释符号.因此 /**/  、 –  和  #  都没法使用。
-Access 结构：表名—-&amp;gt;列名—-&amp;gt;内">
+方法是语句的集合，他们在一起执行一个功能
+
+方法是解">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -21,7 +24,7 @@ Access 结构：表名—-&amp;gt;列名—-&amp;gt;内">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>SQL | 白芨的小屋</title>
+    <title>Java方法(Part-3) | 白芨的小屋</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -313,12 +316,12 @@ Access 结构：表名—-&amp;gt;列名—-&amp;gt;内">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/banner/java.jpeg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">SQL</h1>
+                    <h1 class="description center-align post-title">Java方法(Part-3)</h1>
                 </div>
             </div>
         </div>
@@ -432,9 +435,13 @@ Access 结构：表名—-&amp;gt;列名—-&amp;gt;内">
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Java/">
+                                <span class="chip bg-color">Java</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -446,7 +453,7 @@ Access 结构：表名—-&amp;gt;列名—-&amp;gt;内">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-01-21
+                    2022-03-03
                 </div>
                 
 
@@ -455,7 +462,7 @@ Access 结构：表名—-&amp;gt;列名—-&amp;gt;内">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    497
+                    742
                 </div>
                 
 
@@ -475,36 +482,128 @@ Access 结构：表名—-&amp;gt;列名—-&amp;gt;内">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Access"><a href="#Access" class="headerlink" title="Access"></a>Access</h2><p><strong>Access 数据库了解：</strong></p>
+                <h1 id="Java方法详解"><a href="#Java方法详解" class="headerlink" title="Java方法详解"></a>Java方法详解</h1><p><em>学习：狂神说Java(秦疆老师)视频所记笔记</em></p>
+<h2 id="1、什么是方法"><a href="#1、什么是方法" class="headerlink" title="1、什么是方法"></a>1、什么是方法</h2><ul>
+<li><p>System.out.println</p>
+<p>调用系统类<code>system</code>中的标准输出对象<code>out</code>中的<code>println</code>方法；</p>
+</li>
+<li><p>方法是语句的集合，他们在一起执行一个功能</p>
 <ul>
-<li>Access数据库属于文件型数据库，所以不需要端口号。</li>
-<li>Access数据库中没有注释符号.因此 /**/  、 –  和  #  都没法使用。</li>
-<li>Access 结构：<strong>表名—-&gt;列名—-&gt;内容数据</strong> ；无数据库的概念，所有的表都是在同一个数据库下。因此不用去判断当前的数据库名，也不存在 database() 函数。</li>
-<li>Access数据库特有的表是：<strong>msysobjects</strong> ，所以可以用它来判断是否是Access数据库</li>
+<li>方法是解决一类问题的步骤的有序组合</li>
+<li>方法包含于类或对象中</li>
+<li>方法在程序中被创建，在其他地方被调用</li>
 </ul>
-<p><strong>Access 注入：</strong></p>
+</li>
+</ul>
+<h2 id="2、方法的定义和调用"><a href="#2、方法的定义和调用" class="headerlink" title="2、方法的定义和调用"></a>2、方法的定义和调用</h2><ul>
+<li>Java 方法类似于其他语言的函数</li>
+</ul>
+<p><strong>方法定义：</strong></p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">修饰符 返回值类型 方法名<span class="token punctuation">(</span>参数类型 参数名<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+	<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+	方法体
+	<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+	<span class="token keyword">return</span> 返回值； 
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">/*参数类型：
+形式参数：在方法调用时用于接收外界输入的数据
+实参：调用方法时实际传给方法的数据
+*/</span>
+<span class="token comment">//return 终止方法</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>方法调用：</strong></p>
 <ul>
-<li>联合查询：只能靠猜和借助字典得到数据。先用order by判断<strong>字段</strong>的长度，然后联合查询表，回显正常即为表存在，反之为不存在。</li>
-<li>偏移注入：<!--此种方法比较靠运气，可做了解）--></li>
+<li><p>调用方法：<code>对象名.方法名(实参列表)</code></p>
+</li>
+<li><p>Java支持两种调用方法的方式，根据方法是否返回值来选择</p>
+<ul>
+<li><p>方法返回一个值时，方法调用通常被当做一个值</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">int</span> large <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>方法返回值时<code>void</code>，方法调用一定是一条语句</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Hello,World!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ul>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">#适用于在Accesss数据库中已知表名，无法获取字段的SQL注入。</span>
-<span class="token comment"># 例：已知：表admin</span>
-<span class="token comment">#1、order by 判断字段的长度</span>
-<span class="token comment">#2、我们用*代替admin表内存在的字段，从最后一个字段开始，逐步缩减字段数,直到页面返回正常。</span>
-<span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">9</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">11</span><span class="token punctuation">,</span><span class="token number">12</span><span class="token punctuation">,</span><span class="token number">13</span><span class="token punctuation">,</span><span class="token number">14</span><span class="token punctuation">,</span><span class="token number">15</span><span class="token punctuation">,</span><span class="token number">16</span><span class="token punctuation">,</span><span class="token number">17</span><span class="token punctuation">,</span><span class="token number">18</span><span class="token punctuation">,</span><span class="token number">19</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">,</span><span class="token number">21</span><span class="token punctuation">,</span><span class="token number">22</span> <span class="token keyword">from</span> admin
-<span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">9</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">11</span><span class="token punctuation">,</span><span class="token number">12</span><span class="token punctuation">,</span><span class="token number">13</span><span class="token punctuation">,</span><span class="token number">14</span><span class="token punctuation">,</span><span class="token number">15</span><span class="token punctuation">,</span><span class="token number">16</span><span class="token punctuation">,</span><span class="token number">17</span><span class="token punctuation">,</span><span class="token number">18</span><span class="token punctuation">,</span><span class="token number">19</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">,</span><span class="token number">21</span><span class="token punctuation">,</span><span class="token operator">*</span> <span class="token keyword">from</span> admin			<span class="token comment">#错误</span>
-<span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">9</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">11</span><span class="token punctuation">,</span><span class="token number">12</span><span class="token punctuation">,</span><span class="token number">13</span><span class="token punctuation">,</span><span class="token number">14</span><span class="token punctuation">,</span><span class="token number">15</span><span class="token punctuation">,</span><span class="token number">16</span><span class="token punctuation">,</span><span class="token number">17</span><span class="token punctuation">,</span><span class="token number">18</span><span class="token punctuation">,</span><span class="token number">19</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">,</span><span class="token operator">*</span> <span class="token keyword">from</span> admin				<span class="token comment">#错误</span>
-<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>																																									<span class="token comment">#错误</span>
-<span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">9</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">11</span><span class="token punctuation">,</span><span class="token number">12</span><span class="token punctuation">,</span><span class="token number">13</span><span class="token punctuation">,</span><span class="token number">14</span><span class="token punctuation">,</span><span class="token number">15</span><span class="token punctuation">,</span><span class="token number">16</span><span class="token punctuation">,</span><span class="token operator">*</span> <span class="token keyword">from</span> admin										<span class="token comment">#正常					</span>
-<span class="token comment">#此时说明表admin下有6个字段（22-16=6）</span>
-<span class="token comment">#一级偏移语句：22-6x2=10</span>
-<span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">9</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token operator">*</span> <span class="token keyword">from</span> <span class="token punctuation">(</span>admin <span class="token keyword">as</span> a <span class="token keyword">inner</span> <span class="token keyword">join</span> admin <span class="token keyword">as</span> b <span class="token keyword">on</span> a<span class="token punctuation">.</span>id<span class="token operator">=</span>b<span class="token punctuation">.</span>id<span class="token punctuation">)</span>
-<span class="token comment">#此时可以查看页面是否爆出我们需要的数据，如果没有的话可以查看源代码，若源代码也没有。。。那么</span>
+</li>
+</ul>
+<h2 id="3、方法的重载"><a href="#3、方法的重载" class="headerlink" title="3、方法的重载"></a>3、方法的重载</h2><p><strong>重载</strong>：一个类中有<strong>相同方法名</strong>，但<strong>形参不同</strong>的<strong>方法</strong></p>
+<p><strong>方法重载规则</strong></p>
+<ul>
+<li>方法名必须<strong>相同</strong></li>
+<li>参数列表必须<strong>不同</strong>（个数不同、类型不同、参数排列顺序不同等）</li>
+</ul>
+<h2 id="4、命令传参"><a href="#4、命令传参" class="headerlink" title="4、命令传参"></a>4、命令传参</h2><ul>
+<li>当希望<strong>运行一个程序时</strong>再传给他消息，这要靠传递<strong>命令行参数</strong>给<code>main()</code>函数实现。</li>
+<li>在命令行需要找到包的路径进行加载</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//例：</span>
+<span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>jaa<span class="token punctuation">.</span>method</span><span class="token punctuation">;</span>
 
-<span class="token comment">#二级偏移语句：22-6x3=4</span>
-<span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span>a<span class="token punctuation">.</span>id<span class="token punctuation">,</span>b<span class="token punctuation">.</span>id<span class="token punctuation">,</span>c<span class="token punctuation">.</span>id<span class="token punctuation">,</span><span class="token operator">*</span> <span class="token keyword">from</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>admin <span class="token keyword">as</span> a <span class="token keyword">inner</span> <span class="token keyword">join</span> admin <span class="token keyword">as</span> b <span class="token keyword">on</span> a<span class="token punctuation">.</span>id <span class="token operator">=</span> b<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token keyword">inner</span> <span class="token keyword">join</span> admin <span class="token keyword">as</span> c <span class="token keyword">on</span> a<span class="token punctuation">.</span>id<span class="token operator">=</span>c<span class="token punctuation">.</span>id<span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Demo01</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> args<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"arg["</span><span class="token operator">+</span> i <span class="token operator">+</span> <span class="token string">"]="</span><span class="token operator">+</span>args<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
+        <span class="token punctuation">&#125;</span>
+
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">/*------------------------------------
+命令行：
+javac Demo01																//编译
+java com.jaa.method.Demo01 hello world  		//加载（需跳转到com同一路径下、并加包路径执行）						
+---------------------------------------
+结果：
+arg[0]=hello
+arg[1]=world
+*/</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>5、可变参数</p>
+<ul>
+<li>Java支持传递<strong>同类型的可变参数</strong>给一个方法</li>
+<li>在方法声明中，在<strong>指定参数类型后</strong>加一个省略号<code>(...)</code></li>
+<li>一个方法中只能指定一个可变参数，他<strong>必须是方法的最后一个参数</strong>。</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//例：</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Demo02</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">Demo02</span> demo02 <span class="token operator">=</span> <span class="token keyword">new</span>  <span class="token class-name">Demo02</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        demo02<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> i<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>					
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>i<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>		
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>i<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>i<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+<span class="token punctuation">&#125;</span>
+<span class="token comment">/*结果：
+1
+3
+5
+*/</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="5、递归"><a href="#5、递归" class="headerlink" title="5、递归"></a>5、递归</h2><p>递归结构包括两个部分：</p>
+<ul>
+<li>递归头：<strong>什么时候不调用自身方法</strong>；如果没有头，将陷入死循环。</li>
+<li>递归体：<strong>什么时候需要调用自身方法</strong>。</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//阶乘计算</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Demo05</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token function">f</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>n<span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span><span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> n<span class="token operator">*</span><span class="token function">f</span><span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><em>时间和空间的消耗比较大；重复计算；调用栈溢出；尽量不使用递归</em></p>
 
                 
             </div>
@@ -521,7 +620,7 @@ Access 结构：表名—-&amp;gt;列名—-&amp;gt;内">
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">BaiJi</a>
+                    <a href="/about" rel="external nofollow noreferrer">白芨</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -531,7 +630,7 @@ Access 结构：表名—-&amp;gt;列名—-&amp;gt;内">
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://jaasenyi.github.io/2022/01/21/sql/">http://jaasenyi.github.io/2022/01/21/sql/</a>
+                    <a href="http://jaasenyi.github.io/2022/03/03/java-fang-fa/">http://jaasenyi.github.io/2022/03/03/java-fang-fa/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -544,7 +643,7 @@ Access 结构：表名—-&amp;gt;列名—-&amp;gt;内">
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="/about" target="_blank">BaiJi</a>
+                    <a href="/about" target="_blank">白芨</a>
                     !
                 </span>
             </div>
@@ -568,7 +667,11 @@ Access 结构：表名—-&amp;gt;列名—-&amp;gt;内">
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/Java/">
+                                    <span class="chip bg-color">Java</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -1010,12 +1113,12 @@ Access 结构：表名—-&amp;gt;列名—-&amp;gt;内">
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/02/22/wen-jian-shang-chuan-rao-guo/">
+                <a href="/2022/03/03/java-shu-zu/">
                     <div class="card-image">
                         
-                        <img src="/medias/banner/upload.jpeg" class="responsive-img" alt="文件上传绕过">
+                        <img src="/medias/banner/java.jpeg" class="responsive-img" alt="Java数组(Part-4)">
                         
-                        <span class="card-title">文件上传绕过</span>
+                        <span class="card-title">Java数组(Part-4)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1026,7 +1129,7 @@ Access 结构：表名—-&amp;gt;列名—-&amp;gt;内">
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-02-22
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-03-03
                         </span>
                         <span class="publish-author">
                             
@@ -1039,8 +1142,8 @@ Access 结构：表名—-&amp;gt;列名—-&amp;gt;内">
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/web%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80/">
-                        <span class="chip bg-color">web安全基础</span>
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
                     </a>
                     
                 </div>
@@ -1054,13 +1157,12 @@ Access 结构：表名—-&amp;gt;列名—-&amp;gt;内">
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/01/15/wen-jian-bao-han/">
+                <a href="/2022/03/02/java-liu-cheng-kong-zhi/">
                     <div class="card-image">
                         
+                        <img src="/medias/banner/java.jpeg" class="responsive-img" alt="Java流程控制(Part-2)">
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="文件包含漏洞介绍">
-                        
-                        <span class="card-title">文件包含漏洞介绍</span>
+                        <span class="card-title">Java流程控制(Part-2)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1071,7 +1173,7 @@ Access 结构：表名—-&amp;gt;列名—-&amp;gt;内">
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-15
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-02
                             </span>
                         <span class="publish-author">
                             
@@ -1084,8 +1186,8 @@ Access 结构：表名—-&amp;gt;列名—-&amp;gt;内">
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/web%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80/">
-                        <span class="chip bg-color">web安全基础</span>
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
                     </a>
                     
                 </div>
