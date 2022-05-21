@@ -640,7 +640,7 @@ XML被设计为传输和存储">
 <li>还可以使用 DTD 来<strong>验证您自身的数据</strong>。</li>
 </ul>
 <h1 id="XXE漏洞"><a href="#XXE漏洞" class="headerlink" title="XXE漏洞"></a>XXE漏洞</h1><p><strong>前置知识：</strong>    </p>
-<p>​    XML被设计为传输和存储数据。XML文档结构包括XML声明、DTD文档类型定义（可选）、文档元素。其焦点是数据的内容。 详情–&gt;<a href="">XML介绍</a></p>
+<p>​    XML被设计为传输和存储数据。XML文档结构包括XML声明、DTD文档类型定义（可选）、文档元素。其焦点是数据的内容。 详情–&gt;<a href>XML介绍</a></p>
 <h2 id="1、XXE漏洞简介"><a href="#1、XXE漏洞简介" class="headerlink" title="1、XXE漏洞简介"></a>1、XXE漏洞简介</h2><p>​    <strong>XXE</strong>（XML External Entity Injection）即<strong>XML</strong>外部实体注入漏洞。XXE漏洞发生在应用程序解析XML输入时，<strong>没有禁止外部实体的加载</strong>，导致可加载恶意外部文件，造成文件读取、命令执行、内网端口扫描、攻击内网网站等危害。</p>
 <h2 id="2、XXE漏洞触发点"><a href="#2、XXE漏洞触发点" class="headerlink" title="2、XXE漏洞触发点"></a>2、XXE漏洞触发点</h2><p>可以上传XML文件的位置且未对XML文件进行过滤</p>
 <h2 id="3、XXE漏洞测试"><a href="#3、XXE漏洞测试" class="headerlink" title="3、XXE漏洞测试"></a>3、XXE漏洞测试</h2><ul>
