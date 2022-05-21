@@ -870,13 +870,13 @@ http:<span class="token comment">//IP/Less-5?id=1' and extractvalue(1,concat(0x7
 <h3 id="4-1、POST注入"><a href="#4-1、POST注入" class="headerlink" title="4.1、POST注入"></a>4.1、POST注入</h3><h4 id="4-1-1、使用BurpSuie"><a href="#4-1-1、使用BurpSuie" class="headerlink" title="4.1.1、使用BurpSuie"></a>4.1.1、使用BurpSuie</h4><p>当参数以POST方式提交时，无法直接在url中注入。因此利用<code>Burpsuite</code>进行抓包，在请求包中寻找注入点：</p>
 <p>例如登录框：</p>
 <p>我们在登录框分别输入<code>user;password</code>进行抓包，并发送到<code>Repeater</code>模块重放入下图所示：</p>
-<p><img src="https://img-blog.csdnimg.cn/20210204153824963.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phYXNlbnlp,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20210204153824963.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phYXNlbnlp,size_16,color_FFFFFF,t_70"></p>
 <ul>
 <li>我们在user后加单引号，点击Go可以看到页面发生了报错</li>
 </ul>
 <pre class="line-numbers language-none"><code class="language-none">uname&#x3D;user&#39;&amp;passwd&#x3D;password&amp;submit&#x3D;Submit<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="https://img-blog.csdnimg.cn/20210204153836589.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phYXNlbnlp,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20210204153836589.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phYXNlbnlp,size_16,color_FFFFFF,t_70"></p>
 <ul>
 <li>接着我们在user’ 后添加# 注释掉后边的内容可以看到页面恢复了正常。</li>
 </ul>
@@ -1842,7 +1842,7 @@ http:<span class="token comment">//ip/Less-1/?id=-1' union select 1,2,"&lt;?php@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">49.9k</span>
+                        class="white-color">50k</span>
             
             
             

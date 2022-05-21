@@ -464,7 +464,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.1k
+                    2.2k
                 </div>
                 
 
@@ -486,7 +486,7 @@
             <div id="articleContent">
                 <h1 id="linux基础命令补充"><a href="#linux基础命令补充" class="headerlink" title="linux基础命令补充"></a>linux基础命令补充</h1><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><p>多用户操作系统</p>
 <p>/ -&gt; home -&gt; 用户</p>
-<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><h3 id="Part1-（终端基础）"><a href="#Part1-（终端基础）" class="headerlink" title="**Part1:**（终端基础）"></a>**Part1:**（终端基础）</h3><table>
+<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><h3 id="Part1-（终端基础）"><a href="#Part1-（终端基础）" class="headerlink" title="Part1:（终端基础）"></a>Part1:（终端基础）</h3><table>
 <thead>
 <tr>
 <th>命令</th>
@@ -641,8 +641,7 @@
 <p>执行<code>ssh-keygen</code>,生成SSH公钥。</p>
 </li>
 <li><p>上传公钥到服务器</p>
-<!--让远程服务器记住我们的公钥-->
-
+<p>（让远程服务器记住我们的公钥）</p>
 <p>执行<code>ssh-copy-id -p port user@remote</code></p>
 </li>
 </ul>
@@ -721,8 +720,12 @@
 <li><p><code>chmod</code> 可修改<strong>用户/组</strong>对<strong>文件/目录</strong>的权限</p>
 </li>
 <li><p><code>chmod +/- rwx 文件名｜目录名</code></p>
-<p>例：<code>chmod +r 1.py </code>给文件<code>1.py</code>增加可读权限</p>
-<!--此方式会一次性修改·拥有者/组和其他用户·的权限--></li>
+<ul>
+<li><p>例：<code>chmod +r 1.py </code>给文件<code>1.py</code>增加可读权限</p>
+<p><em>此方式会一次性修改·拥有者/组和其他用户·的权限</em></p>
+</li>
+</ul>
+</li>
 <li><p><code>chmod -R 777 文件名｜目录名</code> 递归修改文件权限；<code>777</code>-&gt;（用户、组、其他用户 均为<code>rwx</code>）</p>
 </li>
 </ul>
@@ -778,7 +781,8 @@
 <td>修改用户的登录<code>shell</code></td>
 </tr>
 </tbody></table>
-<!--useradd添加用户无sudo权限，可将其添加附加组到sudo--></li>
+<p><code> useradd添加用户无sudo权限，可将其添加附加组到sudo</code></p>
+</li>
 </ul>
 <p><strong>3、用户</strong></p>
 <table>
@@ -861,7 +865,7 @@
 <p><strong>5、chown</strong></p>
 <p><strong>修改拥有者</strong></p>
 <p><code>chown 用户名 文件名｜目录名</code></p>
-<h3 id="Part-8-（系统信息）"><a href="#Part-8-（系统信息）" class="headerlink" title="**Part 8:**（系统信息）"></a>**Part 8:**（系统信息）</h3><table>
+<h3 id="Part-8-（系统信息）"><a href="#Part-8-（系统信息）" class="headerlink" title="Part 8:（系统信息）"></a>Part 8:（系统信息）</h3><table>
 <thead>
 <tr>
 <th>命令</th>
@@ -910,8 +914,7 @@
 <td>终止进程代号的进程，<code>-9</code>表示强行终止</td>
 </tr>
 </tbody></table>
-<!--使用`kill`，终止`root`身份开启的进程可能导致系统崩溃-->
-
+<p><code> 使用&#39;kill&#39;，终止&#39;root&#39;身份开启的进程可能导致系统崩溃</code></p>
 <p><strong>8.2、find</strong></p>
 <table>
 <thead>
@@ -968,7 +971,7 @@
 <td>解包文件</td>
 </tr>
 <tr>
-<td><!--tar选项：c、x、v、f--></td>
+<td><em>tar选项：c、x、v、f</em></td>
 <td><code>c</code>生成档案文件，创建打包文件；<code>x</code>解开档案文件；<code>v</code>列出归档解档详细过程，显示进度；<code>f</code>指定文件名称，<strong>须放最后</strong>，跟.tar文件。</td>
 </tr>
 </tbody></table>
@@ -1773,7 +1776,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">49.9k</span>
+                        class="white-color">50k</span>
             
             
             
